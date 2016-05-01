@@ -12,7 +12,7 @@ touch ~/.hushlogin
 echo "Done!!"
 
 echo "Install Atom? y/n"
-case $atom
+case $atom in
   'y')
     echo "
     Adding repository for Atom:"
@@ -44,7 +44,7 @@ esac
 
 echo "
 Install encryption library? y/n"
-case $encryption_library
+case $encryption_library in
   'y')
     sudo /usr/share/doc/libdvdread4/install-css.sh
     echo "Done!!"
@@ -54,7 +54,7 @@ case $encryption_library
 
 echo "
 Run .bashrc configuration? 'y/n'"
-case $bashrc_configuration
+case $bashrc_configuration in
   'y')
     echo ".bashrc file configuration..."
     cat bashrc.txt >> ~/.bashrc
@@ -98,7 +98,7 @@ fi
 
 echo "
 Do you want to run network configuration? y/n"
-  case
+  case $network_configuration in
     'y')
       echo "Enter desired static IP address: "
       read ip_address
@@ -130,7 +130,7 @@ fi
 
 echo "
 Install make_shortcut and sshcopy? y/n"
-case $custom
+case $custom in
   'y')
     echo "
     Installing make_shortcut.."
