@@ -12,6 +12,7 @@ touch ~/.hushlogin
 echo "Done!!"
 
 echo "Install Atom? y/n"
+read atom
 case $atom in
   'y')
     echo "
@@ -28,6 +29,7 @@ esac
 
 echo "
 Update and install software? y/n"
+read update_software
 case $update_software in
   'y')
     sudo apt-get update
@@ -44,6 +46,7 @@ esac
 
 echo "
 Install encryption library? y/n"
+read encryption_library
 case $encryption_library in
   'y')
     sudo /usr/share/doc/libdvdread4/install-css.sh
@@ -55,6 +58,7 @@ esac
 
 echo "
 Run .bashrc configuration? 'y/n'"
+read bashrc_configuration
 case $bashrc_configuration in
   'y')
     echo ".bashrc file configuration..."
@@ -99,18 +103,19 @@ fi
 
 echo "
 Do you want to run network configuration? y/n"
-  case $network_configuration in
-    'y')
-      echo "Enter desired static IP address: "
-      read ip_address
-      sudo cat network.txt > /etc/network/interfaces
-      sudo echo "  address ${ip_address}" >> /etc/network/interfaces
-      sudo /etc/init.d/networking restart
-      echo "Done!!"
-      ;;
-    *)
-      echo "Skipping network configuration..."
-      ;;
+read network_configuration
+case $network_configuration in
+  'y')
+    echo "Enter desired static IP address: "
+    read ip_address
+    sudo cat network.txt > /etc/network/interfaces
+    sudo echo "  address ${ip_address}" >> /etc/network/interfaces
+    sudo /etc/init.d/networking restart
+    echo "Done!!"
+    ;;
+  *)
+    echo "Skipping network configuration..."
+    ;;
 esac
 
 echo "Checking for id_rsa..."
@@ -131,6 +136,7 @@ fi
 
 echo "
 Install make_shortcut and sshcopy? y/n"
+read custom
 case $custom in
   'y')
     echo "
