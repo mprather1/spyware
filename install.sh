@@ -6,9 +6,6 @@ read -n 1
 
 current_directory="$(pwd)"
 
-echo "Enter desired static IP address: "
-read ip_address
-
 echo "
 Creating .hushlogin file..."
 touch ~/.hushlogin
@@ -24,7 +21,7 @@ case $atom
     sudo apt-get install atom
     echo "Done!!!"
     ;;
-  'n')
+  *)
     echo "Skipping..."
     ;;
 esac
@@ -40,7 +37,7 @@ case $update_software in
     sudo apt-get upgrade -y
     echo "Done!!"
     ;;
-  'n')
+  *)
     echo "Skipping update and software installation..."
     ;;
 esac
@@ -52,7 +49,7 @@ case $encryption_library
     sudo /usr/share/doc/libdvdread4/install-css.sh
     echo "Done!!"
     ;;
-  'n')
+  *)
     echo "Skipping encryption library..."
 
 echo "
@@ -63,8 +60,8 @@ case $bashrc_configuration
     cat bashrc.txt >> ~/.bashrc
     echo "Done!!"
     ;;
-  'n')
-    echo "Skipping..."
+  *)
+    echo "Skipping bashrc configuration..."
     ;;
 esac
 
@@ -76,6 +73,10 @@ if [ ! -f ~/.bash_aliases ]
     echo "
     Installing Spyware..."
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
+    printf "alias cloned='cd ${current_directory}/git_clone.sh\n" >> ~/.bash_aliases
+    printf "alias gitd='cd ${current_directory}/git_commit.sh\n" >> ~/.bash_aliases
+    printf "alias git_new='cd ${current_directory}/git_init.sh\n" >> ~/.bash_aliases
+    printf "alias gitp='cd ${current_directory}/git_commit_push_master.sh\n" >> ~/.bash_aliases
     echo "Done!!"
   else
     echo ".bash_aliases already exits!!"
@@ -95,19 +96,19 @@ if [ ! -f ~/.vimrc ]
     echo "Skipping vim configuration..."
 fi
 
-
-
 echo "
 Do you want to run network configuration? y/n"
   case
     'y')
+      echo "Enter desired static IP address: "
+      read ip_address
       sudo cat network.txt > /etc/network/interfaces
       sudo echo "  address ${ip_address}" >> /etc/network/interfaces
       sudo /etc/init.d/networking restart
       echo "Done!!"
       ;;
-    'n')
-      echo "Skipping..."
+    *)
+      echo "Skipping network configuration..."
       ;;
 esac
 
@@ -141,7 +142,7 @@ case $custom
     bash ./ssh-copy/ssh_copy.sh
     echo "Done!!"
     ;;
-  'n')
+  *)
     echo "Skipping..."
     ;;
 esac

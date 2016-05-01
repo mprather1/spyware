@@ -9,3 +9,10 @@ alias die='sl && sudo shutdown -h now'
 alias rest='sl && sudo reboot -h now'
 
 alias star_wars='telnet towel.blinkenlights.nl'
+
+alias cloned='bash /media/Shared/Development/Scripts/git/git_clone.sh'
+alias gitd='bash /media/Shared/Development/Scripts/git/git_commit.sh'
+alias git_new='bash /media/Shared/Development/Scripts/git/git_init.sh'
+alias gitp='bash /media/Shared/Development/Scripts/git/git_commit_push_master.sh'
+alias gitmaster='git push -u origin master'
+alias gits='git status'
