@@ -146,7 +146,7 @@ case $custom in
 
     echo "
     Installing sshcopy..."
-    bash ./ssh-copy/ssh_copy.sh
+    bash ./ssh-copy/install.sh
     echo "Done!!"
     ;;
   *)
