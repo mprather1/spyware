@@ -1,0 +1,11 @@
+
+alias updated='sudo apt-get update'
+alias upgraded='sudo apt-get upgrade -y'
+
+alias rando='cat /dev/urandom | hexdump -C | grep "ca fe"'
+alias crando='cat /dev/urandom | hexdump -C | grep "ca fe" | lolcat'
+
+alias die='sl && sudo shutdown -h now'
+alias rest='sl && sudo reboot -h now'
+
+alias star_wars='telnet towel.blinkenlights.nl'
