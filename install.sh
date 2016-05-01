@@ -146,6 +146,11 @@ case $custom in
     Installing sshcopy..."
     bash ./ssh-copy/install.sh
     echo "Done!!"
+
+    echo "
+    Installing installation shortcut..."
+    bash ./installation_shortcut/install.sh
+    echo "Done!!"
     ;;
   *)
     echo "Skipping..."
