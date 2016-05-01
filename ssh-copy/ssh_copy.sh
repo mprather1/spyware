@@ -11,8 +11,8 @@ if [ ! -f ~/.ssh/id_rsa ]
     ssh-add ~/.ssh/id_rsa
     echo "Done!!"
   else
-    echo "id_rsa already exists"
-    echo "skipping..
+    echo "id_rsa already exists!!"
+    echo "skipping...
     "
 fi
 
@@ -30,7 +30,7 @@ if [ ! -f ~/.bash_aliases ]
     echo "Creating .bash_aliases..."
     touch ~/.bash_aliases
   else
-    echo ".bash_aliases already exits"
+    echo ".bash_aliases already exits!!"
     echo "skipping..."
 fi
 

@@ -16,6 +16,6 @@ echo "alias sshcopy='bash ${current_directory}/ssh_copy.sh'" >> ~/.bash_aliases
 
 echo "
 All done!!"
-echo "Type 'sshcopy' into terminal to setup password free connection to a remote computer!!"
+echo "Restart your shell and type 'sshcopy' into terminal to setup password free connection to a remote computer!!"
 echo "
 Go fuck yourself!!"

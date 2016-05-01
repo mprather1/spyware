@@ -8,7 +8,7 @@ if [ ! -f ~/.bash_aliases ]
     echo "Creating .bash_aliases..."
     touch ~/.bash_aliases
   else
-    echo ".bash_aliases already exits"
+    echo ".bash_aliases already exits!!"
     echo "skipping..."
 fi
 
@@ -16,6 +16,6 @@ echo "alias make_shortcut='bash ${current_directory}/make_shortcut.sh'" >> ~/.ba
 
 echo "
 All done!!"
-echo "Type 'make_shortcut' into terminal to create a shortcut!!"
+echo "Restart your shell and type 'make_shortcut' into terminal to create a shortcut!!"
 echo "
 Go fuck yourself!!"
