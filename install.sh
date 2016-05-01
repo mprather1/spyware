@@ -11,7 +11,8 @@ Creating .hushlogin file..."
 touch ~/.hushlogin
 echo "Done!!"
 
-echo "Install Atom? y/n"
+echo "
+Install Atom? y/n"
 read atom
 case $atom in
   'y')
@@ -75,6 +76,7 @@ if [ ! -f ~/.bash_aliases ]
   then
     echo "Creating .bash_aliases..."
     touch ~/.bash_aliases
+    cat aliases.txt > ~/.bash_aliases
     echo "
     Installing Spyware..."
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
