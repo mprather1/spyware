@@ -51,6 +51,7 @@ case $encryption_library in
     ;;
   *)
     echo "Skipping encryption library..."
+esac
 
 echo "
 Run .bashrc configuration? 'y/n'"
