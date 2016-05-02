@@ -6,7 +6,7 @@ read -n 1
 
 current_directory="$(pwd)"
 prompt=">>> "
-echo "Creating .hushlogin file..."
+echo "Creating .hushlogin..."
 touch ~/.hushlogin
 echo "Done!!"
 
@@ -28,12 +28,17 @@ case $atom in
 esac
 
 echo "
-Update and install software? y/n"
+Update and install software..."
+echo "1.)Desktop 2.)Server *.)Skip"
 read -p "${prompt}" update_software
 case $update_software in
-  'y')
+  "1")
     sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev && sudo apt-get upgrade -y
     echo "Done!!"
+    ;;
+  "2")
+    sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev && sudo apt-get upgrade -y
+    echo "Done!!!"
     ;;
   *)
     echo "Skipping update and software installation..."
@@ -75,11 +80,18 @@ if [ ! -f ~/.bash_aliases ]
     cat aliases.txt > ~/.bash_aliases
     echo " "
     echo "Installing Spyware..."
+
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
-    printf "alias cloned='bash ${current_directory}/git/git_clone.sh\n" >> ~/.bash_aliases
-    printf "alias gitd='bash ${current_directory}/git/git_commit.sh\n" >> ~/.bash_aliases
-    printf "alias git_new='bash ${current_directory}/git/git_init.sh\n" >> ~/.bash_aliases
-    printf "alias gitp='bash ${current_directory}/git/git_commit_push_master.sh\n" >> ~/.bash_aliases
+
+    declare -A software
+      software[cloned]=/git/git_clone.sh
+      software[gitd]=/git/git_commit.sh
+      software[git_new]=/git/git_init.sh
+      software[gitp]=/git/git_commit_push_master.sh
+    for c in "${!software[@]}"; do
+      printf "alias %s='%s'\n" "$c" "${software[$c]}" >> ~/.bash_aliases
+    done
+
     echo "Done!!"
   else
     echo ".bash_aliases already exits!!"
@@ -135,7 +147,7 @@ if [ ! -f ~/.ssh/id_rsa ]
 fi
 
 echo "
-Install make_shortcut and sshcopy? y/n"
+Install bonus software? y/n"
 read -p "${prompt}" custom
 case $custom in
   'y')
@@ -172,9 +184,8 @@ if [ ! -z ${var+x} ]
 fi
 
 echo "
+Please restart shell for changes to take effect..."
+echo "
 Go Fuck Yourself!!"
-
-echo "Press any key to restart shell..."
+echo "Press any key to exit..."
 read -n 1
-
-bash ~/.bashrc
