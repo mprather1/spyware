@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
+prompt=">>> "
+
 echo "Enter a word you would like to use for a shortcut: "
-read shortcut
+read -p "${prompt}" shortcut
 
 echo "Enter the command that you would like to run:"
 echo "Be sure to double check your spelling!!"
-read c
+read -e -p "${prompt}" c
 
 echo "Checking for .bash_aliases..."
 if [ ! -f ~/.bash_aliases ]
