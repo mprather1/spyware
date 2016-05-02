@@ -44,3 +44,7 @@ All done!!"
 echo "Restart your shell and access the remote computer by typing '${shortcut}'!!"
 echo "
 Go fuck yourself!!"
+
+echo "
+Press any key to exit..."
+read -n 1

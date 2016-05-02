@@ -6,7 +6,7 @@ touch ~/.bash_aliases
 
 echo "
 Installing sshcopy..."
-echo "alias sshcopy='bash ${current_directory}/ssh_copy.sh'" >> ~/.bash_aliases
+echo "alias sshcopy='bash ${current_directory}/ssh-copy/ssh_copy.sh'" >> ~/.bash_aliases
 
 echo "
 All done!!"

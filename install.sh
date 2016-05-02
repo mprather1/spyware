@@ -6,8 +6,7 @@ read -n 1
 
 current_directory="$(pwd)"
 
-echo "
-Creating .hushlogin file..."
+echo "Creating .hushlogin file..."
 touch ~/.hushlogin
 echo "Done!!"
 
@@ -67,14 +66,15 @@ case $bashrc_configuration in
     ;;
 esac
 
-echo "Checking for .bash_aliases..."
+echo "
+Checking for .bash_aliases..."
 if [ ! -f ~/.bash_aliases ]
   then
     echo "Creating .bash_aliases..."
     touch ~/.bash_aliases
     cat aliases.txt > ~/.bash_aliases
-    echo "
-    Installing Spyware..."
+    echo " "
+    echo "Installing Spyware..."
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
     printf "alias cloned='cd ${current_directory}/git_clone.sh\n" >> ~/.bash_aliases
     printf "alias gitd='cd ${current_directory}/git_commit.sh\n" >> ~/.bash_aliases
@@ -86,7 +86,8 @@ if [ ! -f ~/.bash_aliases ]
     echo "skipping..."
 fi
 
-echo "Checking for vim configuration..."
+echo "
+Checking for vim configuration..."
 if [ ! -f ~/.vimrc ]
   then
     echo "Vim configuration..."

@@ -24,3 +24,7 @@ All done!!"
 echo "Restart your shell and type '${shortcut}' into the terminal to use your shortcut!!"
 echo "
 Go fuck yourself!!"
+
+echo "
+Press any key to exit..."
+read -n 1

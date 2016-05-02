@@ -6,7 +6,7 @@ touch ~/.bash_aliases
 
 echo "
 Installing installation shortcut..."
-echo "alias installnow='bash ${current_directory}/installation_shortcut.sh'" >> ~/.bash_aliases
+echo "alias installnow='bash ${current_directory}/installation_shortcut/installation_shortcut.sh'" >> ~/.bash_aliases
 
 echo "
 All done!!"
