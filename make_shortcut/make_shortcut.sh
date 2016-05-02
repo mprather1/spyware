@@ -3,7 +3,11 @@
 prompt=">>> "
 
 echo "Enter a word you would like to use for a shortcut: "
+<<<<<<< HEAD
 read -p "${prompt}" shortcut
+=======
+read -e -p "${prompt}" shortcut
+>>>>>>> 6eec93d7b9c826cee3473d3be625ade27e0e18c7
 
 echo "Enter the command that you would like to run:"
 echo "Be sure to double check your spelling!!"
