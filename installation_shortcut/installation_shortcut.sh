@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
+prompt=">>> "
+
 echo "Please enter the name of the program you want to install..."
-read app
+read -e -p "${prompt}" app
 
 sudo apt-get update && sudo apt-get install $app
 

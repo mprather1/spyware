@@ -17,10 +17,10 @@ if [ ! -f ~/.ssh/id_rsa ]
 fi
 
 echo "Enter username and press enter:"
-read name
+read -p "${prompt}" name
 
 echo "Enter ip address of computer you want to connect to:"
-read ipadd
+read -p "${prompt}" ipadd
 
 ssh-copy-id ${name}@${ipadd}
 
@@ -35,7 +35,7 @@ if [ ! -f ~/.bash_aliases ]
 fi
 
 echo "Enter shortcut you would like to use to access remote computer:"
-read shortcut
+read -p "${prompt}" shortcut
 
 echo "alias ${shortcut}='ssh ${name}@${ipadd}'" >> ~/.bash_aliases
 

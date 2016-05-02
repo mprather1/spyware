@@ -5,14 +5,14 @@ echo "Press any key to continue..."
 read -n 1
 
 current_directory="$(pwd)"
-
+prompt=">>> "
 echo "Creating .hushlogin file..."
 touch ~/.hushlogin
 echo "Done!!"
 
 echo "
 Install Atom? y/n"
-read atom
+read -p "${prompt}" atom
 case $atom in
   'y')
     echo "
@@ -29,7 +29,7 @@ esac
 
 echo "
 Update and install software? y/n"
-read update_software
+read -p "${prompt}" update_software
 case $update_software in
   'y')
     sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev && sudo apt-get upgrade -y
@@ -42,7 +42,7 @@ esac
 
 echo "
 Install encryption library? y/n"
-read encryption_library
+read -p "${prompt}" encryption_library
 case $encryption_library in
   'y')
     sudo /usr/share/doc/libdvdread4/install-css.sh
@@ -54,7 +54,7 @@ esac
 
 echo "
 Run .bashrc configuration? 'y/n'"
-read bashrc_configuration
+read -p "${prompt}" bashrc_configuration
 case $bashrc_configuration in
   'y')
     echo ".bashrc file configuration..."
@@ -76,10 +76,10 @@ if [ ! -f ~/.bash_aliases ]
     echo " "
     echo "Installing Spyware..."
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
-    printf "alias cloned='cd ${current_directory}/git_clone.sh\n" >> ~/.bash_aliases
-    printf "alias gitd='cd ${current_directory}/git_commit.sh\n" >> ~/.bash_aliases
-    printf "alias git_new='cd ${current_directory}/git_init.sh\n" >> ~/.bash_aliases
-    printf "alias gitp='cd ${current_directory}/git_commit_push_master.sh\n" >> ~/.bash_aliases
+    printf "alias cloned='bash ${current_directory}/git/git_clone.sh\n" >> ~/.bash_aliases
+    printf "alias gitd='bash ${current_directory}/git/git_commit.sh\n" >> ~/.bash_aliases
+    printf "alias git_new='bash ${current_directory}/git/git_init.sh\n" >> ~/.bash_aliases
+    printf "alias gitp='bash ${current_directory}/git/git_commit_push_master.sh\n" >> ~/.bash_aliases
     echo "Done!!"
   else
     echo ".bash_aliases already exits!!"
@@ -102,7 +102,7 @@ fi
 
 echo "
 Do you want to run network configuration? y/n"
-read network_configuration
+read -p "${prompt}" network_configuration
 case $network_configuration in
   'y')
     echo "Enter desired static IP address: "
@@ -117,7 +117,8 @@ case $network_configuration in
     ;;
 esac
 
-echo "Checking for id_rsa..."
+echo "
+Checking for id_rsa..."
 if [ ! -f ~/.ssh/id_rsa ]
   then
     echo "
@@ -135,23 +136,22 @@ fi
 
 echo "
 Install make_shortcut and sshcopy? y/n"
-read custom
+read -p "${prompt}" custom
 case $custom in
   'y')
-    echo "
-    Installing make_shortcut.."
+    var=true
+
     bash ./make_shortcut/install.sh
+    make_shortcut="Type 'make_shortcut' into terminal to create a shortcut!!"
     echo "Done!!"
 
-    echo "
-    Installing sshcopy..."
     bash ./ssh-copy/install.sh
     echo "Done!!"
+    sshcopy="Type 'make_shortcut' into terminal to create a shortcut!!"
 
-    echo "
-    Installing installation shortcut..."
     bash ./installation_shortcut/install.sh
     echo "Done!!"
+    installation_shortcut="Type 'installnow' into terminal to install software with apt-get!!"
     ;;
   *)
     echo "Skipping..."
@@ -160,11 +160,21 @@ esac
 
 echo "
 All done!!"
-echo "You must leave this file in the location where you ran the installer or face the consequences!!
+echo "
+You must leave this file in the location where you ran the installer or face the consequences!!
 Type 'spyware_update' in the terminal to update!!"
+
+if [ ! -z ${var+x} ]
+  then
+    echo $make_shortcut
+    echo $sshcopy
+    echo $installation_shortcut
+fi
+
 echo "
 Go Fuck Yourself!!"
 
 echo "Press any key to restart shell..."
 read -n 1
-. .~/.bashrc
+
+bash ~/.bashrc
