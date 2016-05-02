@@ -157,12 +157,12 @@ case $custom in
     echo "Done!!"
 
     bash ./ssh-copy/install.sh
+    sshcopy="Type 'sshcopy' to setup password free ssh connection!!"
     echo "Done!!"
-    sshcopy="Type 'make_shortcut' into terminal to create a shortcut!!"
 
     bash ./installation_shortcut/install.sh
-    echo "Done!!"
     installation_shortcut="Type 'installnow' into terminal to install software with apt-get!!"
+    echo "Done!!"
     ;;
   *)
     echo "Skipping..."
