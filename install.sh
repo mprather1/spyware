@@ -89,9 +89,8 @@ if [ ! -f ~/.bash_aliases ]
       software[git_new]=/git/git_init.sh
       software[gitp]=/git/git_commit_push_master.sh
     for c in "${!software[@]}"; do
-      printf "alias %s='%s'\n" "$c" "${software[$c]}" >> ~/.bash_aliases
+      printf "alias %s='${current_directory}%s'\n" "$c" "${software[$c]}" >> ~/.bash_aliases
     done
-
     echo "Done!!"
   else
     echo ".bash_aliases already exits!!"
@@ -158,12 +157,12 @@ case $custom in
     echo "Done!!"
 
     bash ./ssh-copy/install.sh
+    sshcopy="Type 'sshcopy' to setup password free ssh connection!!"
     echo "Done!!"
-    sshcopy="Type 'make_shortcut' into terminal to create a shortcut!!"
 
     bash ./installation_shortcut/install.sh
-    echo "Done!!"
     installation_shortcut="Type 'installnow' into terminal to install software with apt-get!!"
+    echo "Done!!"
     ;;
   *)
     echo "Skipping..."
