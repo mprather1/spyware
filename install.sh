@@ -167,4 +167,4 @@ Go Fuck Yourself!!"
 
 echo "Press any key to restart shell..."
 read -n 1
-exec $SHELL
+. .~/.bashrc
