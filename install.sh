@@ -127,10 +127,12 @@ case $network_configuration in
     sudo cat network.txt > /etc/network/interfaces
     sudo echo "  address ${ip_address}" >> /etc/network/interfaces
     sudo /etc/init.d/networking restart
-    echo "Done!!"
+    echo "Done!!
+    "
     ;;
   *)
-    echo "Skipping network configuration..."
+    echo "Skipping network configuration...
+    "
     ;;
 esac
 
