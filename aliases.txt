@@ -11,3 +11,5 @@ alias rest='sl && sudo reboot -h now'
 alias star_wars='telnet towel.blinkenlights.nl'
 
 alias gits='git status'
+alias gay='toilet -f mono12 -F gay'
+alias dicks='yes dicks | espeak'

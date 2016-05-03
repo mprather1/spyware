@@ -17,9 +17,8 @@ case $atom in
   'y')
     echo "
     Adding repository for Atom:"
+    atom_var=true
     sudo add-apt-repository ppa:webupd8team/atom -y
-    sudo apt-get update
-    sudo apt-get install atom
     echo "Done!!!"
     ;;
   *)
@@ -33,11 +32,15 @@ echo "1.)Desktop 2.)Server *.)Skip"
 read -p "${prompt}" update_software
 case $update_software in
   "1")
-    sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev && sudo apt-get upgrade -y
+    sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak && sudo apt-get upgrade -y
+    if [ ! -z ${atom_var+x} ] #check if variable exists, could be if $atom_var = true
+      then
+        sudo apt-get install -y atom
+    fi
     echo "Done!!"
     ;;
   "2")
-    sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev && sudo apt-get upgrade -y
+    sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin && sudo apt-get upgrade -y
     echo "Done!!!"
     ;;
   *)
@@ -89,7 +92,7 @@ if [ ! -f ~/.bash_aliases ]
       software[git_new]=/git/git_init.sh
       software[gitp]=/git/git_commit_push_master.sh
     for c in "${!software[@]}"; do
-      printf "alias %s='${current_directory}%s'\n" "$c" "${software[$c]}" >> ~/.bash_aliases
+      printf "alias %s='bash ${current_directory}%s'\n" "$c" "${software[$c]}" >> ~/.bash_aliases
     done
     echo "Done!!"
   else
@@ -171,6 +174,14 @@ esac
 
 echo "
 All done!!"
+
+if [ -f /usr/bin/pv ]
+  then
+    echo "Spyware has been successfully installed..." | pv -qL 15
+  else
+    echo "Spyware has been successfully installed..."
+fi
+
 echo "
 You must leave this file in the location where you ran the installer or face the consequences!!
 Type 'spyware_update' in the terminal to update!!"
