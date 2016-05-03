@@ -188,7 +188,7 @@ fi
 
 echo "
 You must leave this file in the location where you ran the installer or face the consequences!!
-Type 'spyware_update' in the terminal to update!!"
+Type 'spyware_update' in the terminal to update this script!!"
 
 if [ ! -z ${var+x} ]
   then

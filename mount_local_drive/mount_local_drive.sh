@@ -32,7 +32,7 @@ case $type in
   ;;
 esac
 
-sudo printf "${disk_location} ${mount_point} ${type} rw,auto,user,uid=${user_id},git=${group_id},fmask=0111,dmask=0000 0 0\n" >> /etc/fstab
+printf "${disk_location} ${mount_point} ${type} rw,auto,user,uid=${user_id},git=${group_id},fmask=0111,dmask=0000 0 0\n" | sudo tee -a /etc/fstab
 
 sudo mount -a
 
