@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+curl_rails="Type 'curlrails <argument>' into terminal to access rails server at localhost:3000"
+make_shortcut="Type 'shortcut' into terminal to create a shortcut!!"
+sshcopy="Type 'sshcopy' to setup password free ssh connection!!"
+installation_shortcut="Type 'installnow' into terminal to install software with apt-get!!"
+mount_local_drive="Type 'mountlocal' into terminal to mount a local hard disk!!"
+
 echo "Spyware installer..."
 echo "Press any key to continue..."
 read -n 1
@@ -11,53 +17,24 @@ touch ~/.hushlogin
 echo "Done!!"
 
 echo "
-Install Atom? y/n"
-read -p "${prompt}" atom
-case $atom in
-  'y')
-    echo "
-    Adding repository for Atom:"
-    atom_var=true
-    sudo add-apt-repository ppa:webupd8team/atom -y
-    echo "Done!!!"
-    ;;
-  *)
-    echo "Skipping..."
-    ;;
-esac
-
-echo "
 Update and install software..."
 echo "1.)Desktop 2.)Server *.)Skip"
 read -p "${prompt}" update_software
 case $update_software in
   "1")
-    sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak && sudo apt-get upgrade -y
-    if [ ! -z ${atom_var+x} ] #check if variable exists, could be if $atom_var = true
-      then
-        sudo apt-get install -y atom
-    fi
-    echo "Done!!"
+    sudo add-apt-repository ppa:webupd8team/atom -y
+    sudo add-apt-repository ppa:chris-lea/node.js
+    sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak nodjs && sudo apt-get upgrade -y
+    sudo /usr/share/doc/libdvdread4/install-css.sh
     ;;
   "2")
-    sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin && sudo apt-get upgrade -y
+    sudo add-apt-repository ppa:chris-lea/node.js
+    sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs && sudo apt-get upgrade -y
     echo "Done!!!"
     ;;
   *)
     echo "Skipping update and software installation..."
     ;;
-esac
-
-echo "
-Install encryption library? y/n"
-read -p "${prompt}" encryption_library
-case $encryption_library in
-  'y')
-    sudo /usr/share/doc/libdvdread4/install-css.sh
-    echo "Done!!"
-    ;;
-  *)
-    echo "Skipping encryption library..."
 esac
 
 echo "
@@ -76,6 +53,7 @@ esac
 
 echo "
 Checking for .bash_aliases..."
+sleep 1
 if [ ! -f ~/.bash_aliases ]
   then
     echo "Creating .bash_aliases..."
@@ -86,13 +64,18 @@ if [ ! -f ~/.bash_aliases ]
 
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
 
-    declare -A software
-      software[cloned]=/git/git_clone.sh
-      software[gitd]=/git/git_commit.sh
-      software[git_new]=/git/git_init.sh
-      software[gitp]=/git/git_commit_push_master.sh
-    for c in "${!software[@]}"; do
-      printf "alias %s='bash ${current_directory}%s'\n" "$c" "${software[$c]}" >> ~/.bash_aliases
+    declare -A scripts
+      scripts[cloned]=/git/git_clone.sh
+      scripts[gitd]=/git/git_commit.sh
+      scripts[gitnew]=/git/git_init.sh
+      scripts[gitp]=/git/git_commit_push_master.sh
+      scripts[curlrails]=/curl_rails/curl_rails.sh
+      scripts[shortcut]=/make_shortcut/make_shortcut.sh
+      scripts[sshcopy]=/ssh_copy/ssh_copy.sh
+      scripts[installnow]=/installation_shortcut/installation_shortcut.sh
+      scripts[mountlocal]=/mount_local_drive/mount_local_drive.sh
+    for c in "${!scripts[@]}"; do
+      printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
     done
     echo "Done!!"
   else
@@ -102,6 +85,7 @@ fi
 
 echo "
 Checking for vim configuration..."
+sleep 1
 if [ ! -f ~/.vimrc ]
   then
     echo "Vim configuration..."
@@ -112,6 +96,25 @@ if [ ! -f ~/.vimrc ]
     echo "Done!!"
   else
     echo "Skipping vim configuration..."
+fi
+
+echo "
+Checking for id_rsa..."
+sleep 1
+if [ ! -f ~/.ssh/id_rsa ]
+  then
+    echo "
+    id_rsa does not exist, creating..."
+    echo "Enter email address:"
+    read email
+    echo "Creating rsa key and adding to ssh agent..."
+    ssh-keygen -t rsa -b 4096 -C "${email}"
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+    echo "Done!!"
+  else
+    echo "id_rsa already exists!!"
+    echo "skipping..."
 fi
 
 echo "
@@ -131,54 +134,6 @@ case $network_configuration in
     ;;
 esac
 
-echo "
-Checking for id_rsa..."
-if [ ! -f ~/.ssh/id_rsa ]
-  then
-    echo "
-    Enter email address:"
-    read email
-    echo "Creating rsa key and adding to ssh agent..."
-    ssh-keygen -t rsa -b 4096 -C "${email}"
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_rsa
-    echo "Done!!"
-  else
-    echo "id_rsa already exists!!"
-    echo "skipping..."
-fi
-
-echo "
-Install bonus scripts? y/n"
-read -p "${prompt}" custom
-case $custom in
-  'y')
-    var=true
-
-    bash ./make_shortcut/install.sh
-    make_shortcut="Type 'make_shortcut' into terminal to create a shortcut!!"
-    echo "Done!!"
-
-    bash ./ssh-copy/install.sh
-    sshcopy="Type 'sshcopy' to setup password free ssh connection!!"
-    echo "Done!!"
-
-    bash ./installation_shortcut/install.sh
-    installation_shortcut="Type 'installnow' into terminal to install software with apt-get!!"
-    echo "Done!!"
-
-    bash ./mount_local_drive/install.sh
-    mount_local_drive="Type 'mount_local_drive' into terminal to mount a local hard disk!!"
-    echo "Done!!"
-    ;;
-  *)
-    echo "Skipping..."
-    ;;
-esac
-
-echo "
-All done!!"
-
 if [ -f /usr/bin/pv ]
   then
     echo "Spyware has been successfully installed..." | pv -qL 15
@@ -190,13 +145,11 @@ echo "
 You must leave this file in the location where you ran the installer or face the consequences!!
 Type 'spyware_update' in the terminal to update this script!!"
 
-if [ ! -z ${var+x} ]
-  then
-    echo $make_shortcut
-    echo $sshcopy
-    echo $installation_shortcut
-    echo $mount_local_drive
-fi
+echo $make_shortcut
+echo $sshcopy
+echo $installation_shortcut
+echo $mount_local_drive
+echo $curl_rails
 
 echo "
 Please restart shell for changes to take effect..."

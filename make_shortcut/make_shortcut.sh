@@ -2,10 +2,10 @@
 
 prompt=">>> "
 
-echo "Enter a word you would like to use for a shortcut: "
+echo "Enter a word you would like to use for a shortcut..."
 read -p "${prompt}" shortcut
 
-echo "Enter the command that you would like to run:"
+echo "Enter the command that you would like to run..."
 echo "Be sure to double check your spelling!!"
 read -e -p "${prompt}" c
 

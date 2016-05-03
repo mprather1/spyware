@@ -1,10 +1,7 @@
 #!/bin/bash
 
-echo "Enter message: "
-read message
-
-git add -A && git commit -m "${message}"
+git add -A && git commit -m "${1}"
 
 echo "
 All Done!!!
-" 
+"
