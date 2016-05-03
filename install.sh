@@ -166,6 +166,10 @@ case $custom in
     bash ./installation_shortcut/install.sh
     installation_shortcut="Type 'installnow' into terminal to install software with apt-get!!"
     echo "Done!!"
+
+    bash ./mount_local_drive/install.sh
+    mount_local_drive="Type 'mount_local_drive' into terminal to mount a local hard disk!!"
+    echo "Done!!"
     ;;
   *)
     echo "Skipping..."
@@ -191,6 +195,7 @@ if [ ! -z ${var+x} ]
     echo $make_shortcut
     echo $sshcopy
     echo $installation_shortcut
+    echo $mount_local_drive
 fi
 
 echo "
