@@ -21,7 +21,7 @@ read a
       ;;
   esac
 #done
-git clone git@$choice:mprather1/$1
+git clone git@$choice:$1/$2
 
 echo "
 All Done!!!
