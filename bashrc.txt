@@ -24,10 +24,11 @@ alias kagent="kill -9 $SSH_AGENT_PID"
 
 name=$(whoami)
 host=$(hostname)
+echo "Hello ${name^}" | toilet -f pagga -F gay
 echo "
-Hello ${name^}, Welcome to ${host^}.
-" | lolcat
-echo "Today is $(date "+%A, %B %d, %Y").
+Welcome to ${host^}." | lolcat
+echo "
+Today is $(date "+%A, %B %d, %Y").
 
 $(fortune -s)
 "
@@ -43,7 +44,15 @@ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 
 force_color_prompt=yes
 
+light_purple="01;35m"
+dark_purple="00;35m"
+cyan="00;36m"
+green="01;32m"
+red="00;31m"
+yellow="01;33m"
+white="00;37m"
+
 #Replace PS1 Line
-PS1="${debian_chroot:+($debian_chroot)}\[\033[0;35m\]\u\[\033[0;36m\]@\[\033[01;35m\]\h\n\[\033[0;36m\]\w\[\033[01;32m\]\$(parse_git_branch)\[\033[0;31m\] >\[\033[01;33m\]>\[\033[01;32m\]>\[\033[0;37m\] "
+PS1="${debian_chroot:+($debian_chroot)}\[\033[$dark_purple\]\u\[\033[0;36m\]@\[\033[01;35m\]\h\n\[\033[0;36m\]\w\[\033[01;32m\]\$(parse_git_branch)\[\033[0;31m\] >\[\033[01;33m\]>\[\033[01;32m\]>\[\033[0;37m\] "
 
 #################################################################
