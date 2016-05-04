@@ -12,6 +12,6 @@ sudo mkdir $2 && printf "${1} ${2} ${3} rw,auto,user,uid=${user_id},git=${group_
 sudo mount -a
 
 echo "All done!!"
-echo "If no errors have occured, hard disk is mounted in ${1}!!"
+echo "If no errors have occured, hard disk is mounted in ${2}!!"
 echo "
 Go fuck yourself!!"

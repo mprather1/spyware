@@ -3,8 +3,8 @@
 curl_rails="Type 'curlrails <argument>' into terminal to access rails server at localhost:3000"
 make_shortcut="Type 'shortcut' into terminal to create a shortcut!!"
 sshcopy="Type 'sshcopy' to setup password free ssh connection!!"
-installation_shortcut="Type 'installnow' into terminal to install software with apt-get!!"
-mount_local_drive="Type 'mountlocal' into terminal to mount a local hard disk!!"
+installation_shortcut="Type 'installnow <arguments>' into terminal to install software with apt-get!!"
+mount_local_drive="Type 'mountlocal <mount point> <disk location> <type>' into terminal to mount a local hard disk!!"
 
 echo "Spyware installer..."
 echo "Press any key to continue..."
@@ -16,43 +16,52 @@ echo "Creating .hushlogin..."
 touch ~/.hushlogin
 echo "Done!!"
 
-echo "
-Update and install software..."
-echo "1.)Desktop 2.)Server *.)Skip"
-read -p "${prompt}" update_software
-case $update_software in
-  "1")
-    sudo add-apt-repository ppa:webupd8team/atom -y
-    sudo add-apt-repository ppa:chris-lea/node.js -y
-    sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak nodjs && sudo apt-get upgrade -y
-    sudo /usr/share/doc/libdvdread4/install-css.sh
-    ;;
-  "2")
-    sudo add-apt-repository ppa:chris-lea/node.js -y
-    sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs && sudo apt-get upgrade -y
-    echo "Done!!!"
-    ;;
-  *)
-    echo "Skipping update and software installation..."
+if [ ! -f installed.txt ]
+  then
+    echo " "
+    echo "Update and install software..."
+    echo "1.)Desktop 2.)Server *.)Skip"
+    read -p "${prompt}" update_software
+    case $update_software in
+      "1")
+        touch installed.txt
+        sudo add-apt-repository ppa:webupd8team/atom -y
+        sudo add-apt-repository ppa:chris-lea/node.js -y
+        sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak nodjs && sudo apt-get upgrade -y
+        sudo /usr/share/doc/libdvdread4/install-css.sh
+        ;;
+      "2")
+        touch installed.txt
+        sudo add-apt-repository ppa:chris-lea/node.js -y
+        sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs && sudo apt-get upgrade -y
+        echo "Done!!!"
+        ;;
+      *)
+        echo "Skipping update and software installation..."
+        sleep 1
+        ;;
+    esac
+  else
+    echo " "
+    echo "Software has already been installed..."
+    echo "Skipping..."
     sleep 1
-    ;;
-esac
+fi
 
-echo "
-Run .bashrc configuration? 'y/n'"
-read -p "${prompt}" bashrc_configuration
-case $bashrc_configuration in
-  'y')
+if [ ! -f bashrc_configuration.txt ]
+  then
+    touch bashrc_configuration.txt
     echo ".bashrc file configuration..."
     sleep 1
     cat bashrc.txt >> ~/.bashrc
     echo "Done!!"
-    ;;
-  *)
-    echo "Skipping bashrc configuration..."
+  else
+    echo " "
+    echo ".bashrc configuration has already been run..."
+    echo "skipping..."
     sleep 1
-    ;;
-esac
+fi
+
 
 echo "
 Checking for .bash_aliases..."
@@ -101,7 +110,8 @@ if [ ! -f ~/.vimrc ]
     cat vimrc.txt >> ~/.vimrc
     echo "Done!!"
   else
-    echo "Skipping vim configuration..."
+    echo "Vim is already configured..."
+    echo "Skipping..."
     sleep 1
 fi
 
@@ -126,26 +136,35 @@ if [ ! -f ~/.ssh/id_rsa ]
     sleep 1
 fi
 
-echo "
-Do you want to run network configuration? y/n"
-read -p "${prompt}" network_configuration
-case $network_configuration in
-  'y')
-    echo "Enter desired static IP address: "
-    read ip_address
-    sudo cat network.txt > /etc/network/interfaces
-    sudo echo "  address ${ip_address}" >> /etc/network/interfaces
-    sudo /etc/init.d/networking restart
-    echo "Done!!
-    "
-    ;;
-  *)
-    echo "Skipping network configuration...
-    "
+if [ ! -f network_configuration.txt ]
+  then
+    touch network_configuration.txt
+    echo "
+    Do you want to run network configuration? y/n"
+    read -p "${prompt}" network_configuration
+    case $network_configuration in
+      'y')
+        echo "Enter desired static IP address: "
+        read ip_address
+        sudo cat network.txt > /etc/network/interfaces
+        sudo echo "  address ${ip_address}" >> /etc/network/interfaces
+        sudo /etc/init.d/networking restart
+        echo "Done!!
+        "
+        ;;
+      *)
+        echo "Skipping network configuration...
+        "
+        sleep 1
+        ;;
+    esac
+  else
+    echo " "
+    echo "Network configuration has already been run..."
+    echo "Skipping..."
     sleep 1
-    ;;
-esac
-
+fi
+echo " "
 if [ -f /usr/bin/pv ]
   then
     echo "Spyware has been successfully installed..." | pv -qL 15
