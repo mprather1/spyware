@@ -2,6 +2,7 @@ Installs useful software for either Ubuntu Desktop or Server.
 Configures .bashrc with a greeting and colorful prompt.
 Configures .bash_aliases with useful shortcuts.
 Creates network configuration with gateway 192.168.0.1, netmask 255.255.255.0, and dns-nameservers 8.8.8.8 and allows choice of static ip.
+Creates rsa key with email address appended to the end.
 Configures vim with useful plugins.
 Will only run correctly once.
 To run again "bashrc_configuration.txt", "network_configuration.txt," and "installed.txt" will need to be removed.
