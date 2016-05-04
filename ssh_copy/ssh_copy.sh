@@ -16,13 +16,7 @@ if [ ! -f ~/.ssh/id_rsa ]
     "
 fi
 
-echo "Enter username and press enter:"
-read -p "${prompt}" name
-
-echo "Enter ip address of computer you want to connect to:"
-read -p "${prompt}" ipadd
-
-ssh-copy-id ${name}@${ipadd}
+ssh-copy-id $2@$3
 
 echo "Checking for .bash_aliases..."
 if [ ! -f ~/.bash_aliases ]
@@ -34,14 +28,11 @@ if [ ! -f ~/.bash_aliases ]
     echo "skipping..."
 fi
 
-echo "Enter shortcut you would like to use to access remote computer:"
-read -p "${prompt}" shortcut
-
-echo "alias ${shortcut}='ssh ${name}@${ipadd}'" >> ~/.bash_aliases
+echo "alias ${1}='ssh ${2}@${3}'" >> ~/.bash_aliases
 
 echo "
 All done!!"
-echo "Restart your shell and access the remote computer by typing '${shortcut}'!!"
+echo "Restart your shell and access the remote computer by typing '${1}'!!"
 echo "
 Go fuck yourself!!"
 

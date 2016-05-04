@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 
-prompt=">>> "
-
-echo "Enter a word you would like to use for a shortcut..."
-read -p "${prompt}" shortcut
-
-echo "Enter the command that you would like to run..."
-echo "Be sure to double check your spelling!!"
-read -e -p "${prompt}" c
-
 echo "Checking for .bash_aliases..."
 if [ ! -f ~/.bash_aliases ]
   then
@@ -19,11 +10,11 @@ if [ ! -f ~/.bash_aliases ]
     echo "skipping..."
 fi
 
-echo "alias ${shortcut}='${c}'" >> ~/.bash_aliases
+echo "alias ${1}='${2}'" >> ~/.bash_aliases
 
 echo "
 All done!!"
-echo "Restart your shell and type '${shortcut}' into the terminal to use your shortcut!!"
+echo "Restart your shell and type '${1}' into the terminal to use your shortcut!!"
 echo "
 Go fuck yourself!!"
 
