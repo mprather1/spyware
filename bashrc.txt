@@ -53,6 +53,6 @@ yellow="01;33m"
 white="00;37m"
 
 #Replace PS1 Line
-PS1="${debian_chroot:+($debian_chroot)}\[\033[$dark_purple\]\u\[\033[0;36m\]@\[\033[01;35m\]\h\n\[\033[0;36m\]\w\[\033[01;32m\]\$(parse_git_branch)\[\033[0;31m\] >\[\033[01;33m\]>\[\033[01;32m\]>\[\033[0;37m\] "
+PS1="${debian_chroot:+($debian_chroot)}\[\033[$dark_purple\]\u\[\033[$cyan\]@\[\033[$light_purple\]\h\n\[\033[$cyan\]\w\[\033[$green\]\$(parse_git_branch)\[\033[$red\] >\[\033[$yellow\]>\[\033[$green\]>\[\033[$white\] "
 
 #################################################################
