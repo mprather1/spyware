@@ -44,23 +44,24 @@ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 
 force_color_prompt=yes
 
-black="00;30m"
-grey="01;30m"
-light_blue="01;34m"
-blue="00;34m"
+black="\[\033[00;30m\]"
+grey="\[\033[01;30m\]"
+light_blue="\[\033[01;34m\]"
+blue="\[\033[00;34m\]"
 dark_purple="\[\033[00;35m\]"
-light_purple="01;35m"
-light_cyan="01;36m"
-cyan="00;36m"
-light_green="01;32m"
-green="00;32m"
-light_red="01;31m"
-red="00;31m"
-brown="00;33m"
-yellow="01;33m"
-white="00;37m"
+light_purple="\[\033[01;35m\]"
+light_cyan="\[\033[01;36m\]"
+cyan="\[\033[00;36m\]"
+light_green="\[\033[01;32m\]"
+green="\[\033[00;32m\]"
+light_red="\[\033[01;31m\]"
+red="\[\033[00;31m\]"
+brown="\[\033[00;33m\]"
+yellow="\[\033[01;33m\]"
+white="\[\033[00;37m\]"
 
 #Replace PS1 Line
-PS1="${debian_chroot:+($debian_chroot)}$dark_purple\u\[\033[$cyan\]@\[\033[$light_purple\]\h\n\[\033[$cyan\]\w\[\033[$green\]\$(parse_git_branch)\[\033[$red\] >\[\033[$yellow\]>\[\033[$green\]>\[\033[$white\] "
+PS1="${debian_chroot:+($debian_chroot)}$dark_purple\u$cyan@$light_purple\h\n$cyan\w$green\$(parse_git_branch)$red >$yellow>$green>$white "
+
 
 #################################################################
