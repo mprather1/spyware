@@ -44,11 +44,19 @@ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 
 force_color_prompt=yes
 
+black="00;30m"
+grey="01;30m"
+light_blue="01;34m"
+blue="00;34m"
 light_purple="01;35m"
 dark_purple="00;35m"
+light_cyan="01;36m"
 cyan="00;36m"
-green="01;32m"
+light_green="01;32m"
+green="00;32m"
+light_red="01;31m"
 red="00;31m"
+brown="00;33m"
 yellow="01;33m"
 white="00;37m"
 
