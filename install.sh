@@ -34,6 +34,7 @@ case $update_software in
     ;;
   *)
     echo "Skipping update and software installation..."
+    sleep 1
     ;;
 esac
 
@@ -43,11 +44,13 @@ read -p "${prompt}" bashrc_configuration
 case $bashrc_configuration in
   'y')
     echo ".bashrc file configuration..."
+    sleep 1
     cat bashrc.txt >> ~/.bashrc
     echo "Done!!"
     ;;
   *)
     echo "Skipping bashrc configuration..."
+    sleep 1
     ;;
 esac
 
@@ -57,6 +60,7 @@ sleep 1
 if [ ! -f ~/.bash_aliases ]
   then
     echo "Creating .bash_aliases..."
+    sleep 1
     touch ~/.bash_aliases
     cat aliases.txt > ~/.bash_aliases
     echo " "
@@ -81,6 +85,7 @@ if [ ! -f ~/.bash_aliases ]
   else
     echo ".bash_aliases already exits!!"
     echo "skipping..."
+    sleep 1
 fi
 
 echo "
@@ -89,6 +94,7 @@ sleep 1
 if [ ! -f ~/.vimrc ]
   then
     echo "Vim configuration..."
+    sleep 1
     mkdir ~/.vim
     cp -rv .vim/ ~/
     touch ~/.vimrc
@@ -96,6 +102,7 @@ if [ ! -f ~/.vimrc ]
     echo "Done!!"
   else
     echo "Skipping vim configuration..."
+    sleep 1
 fi
 
 echo "
@@ -105,6 +112,7 @@ if [ ! -f ~/.ssh/id_rsa ]
   then
     echo "
     id_rsa does not exist, creating..."
+    sleep 1
     echo "Enter email address:"
     read email
     echo "Creating rsa key and adding to ssh agent..."
@@ -115,6 +123,7 @@ if [ ! -f ~/.ssh/id_rsa ]
   else
     echo "id_rsa already exists!!"
     echo "skipping..."
+    sleep 1
 fi
 
 echo "
@@ -133,6 +142,7 @@ case $network_configuration in
   *)
     echo "Skipping network configuration...
     "
+    sleep 1
     ;;
 esac
 
