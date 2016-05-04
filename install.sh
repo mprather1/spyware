@@ -48,6 +48,9 @@ if [ ! -f installed.txt ]
     sleep 1
 fi
 
+echo "
+Checking for .bashrc configuration..."
+sleep 1
 if [ ! -f bashrc_configuration.txt ]
   then
     touch bashrc_configuration.txt
@@ -56,9 +59,8 @@ if [ ! -f bashrc_configuration.txt ]
     cat bashrc.txt >> ~/.bashrc
     echo "Done!!"
   else
-    echo " "
     echo ".bashrc configuration has already been run..."
-    echo "skipping..."
+    echo "Skipping..."
     sleep 1
 fi
 
@@ -138,9 +140,8 @@ fi
 
 if [ ! -f network_configuration.txt ]
   then
-    touch network_configuration.txt
-    echo "
-    Do you want to run network configuration? y/n"
+    echo " "
+    echo "Do you want to run network configuration? y/n"
     read -p "${prompt}" network_configuration
     case $network_configuration in
       'y')
@@ -149,6 +150,7 @@ if [ ! -f network_configuration.txt ]
         sudo cat network.txt > /etc/network/interfaces
         sudo echo "  address ${ip_address}" >> /etc/network/interfaces
         sudo /etc/init.d/networking restart
+        touch network_configuration.txt
         echo "Done!!
         "
         ;;
@@ -164,6 +166,7 @@ if [ ! -f network_configuration.txt ]
     echo "Skipping..."
     sleep 1
 fi
+
 echo " "
 if [ -f /usr/bin/pv ]
   then
