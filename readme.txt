@@ -17,4 +17,4 @@ Type 'sshcopy <alias> <username> <hostname>' to setup password free ssh connecti
 Type 'installnow <arguments>' into terminal to install software with apt-get!!
 Type 'mountlocal <mount point> <disk location> <file system type>' into terminal to mount a local hard disk!!
 Type 'mountautofs <name for mount point> <username> <remote hostname>' to automount a disk with sshfs!!!
-Type 'donkeyboner' or 'dicks' if you are 14 years old and like to laugh!!
+Type 'boner' or 'dicks' if you are 14 years old and like to laugh!!
