@@ -16,4 +16,5 @@ Type 'shortcut <alias> <command>' into terminal to create a shortcut!!
 Type 'sshcopy <alias> <username> <hostname>' to setup password free ssh connection!!
 Type 'installnow <arguments>' into terminal to install software with apt-get!!
 Type 'mountlocal <mount point> <disk location> <file system type>' into terminal to mount a local hard disk!!
-Type 'boner' or 'dicks' if you are 14 years old and like to laugh!!
+Type 'mountautofs <name for mount point> <username> <remote hostname>' to automount a disk with sshfs!!!
+Type 'donkeyboner' or 'dicks' if you are 14 years old and like to laugh!!

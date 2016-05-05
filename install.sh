@@ -5,13 +5,18 @@ make_shortcut="Type 'shortcut' into terminal to create a shortcut!!"
 sshcopy="Type 'sshcopy' to setup password free ssh connection!!"
 installation_shortcut="Type 'installnow <arguments>' into terminal to install software with apt-get!!"
 mount_local_drive="Type 'mountlocal <mount point> <disk location> <type>' into terminal to mount a local hard disk!!"
+autosshfs="Type mountautofs <mount point name> <username> <remote hostname> to automount a disk with sshfs"
 
 echo "Spyware installer..."
 echo "Press any key to continue..."
 read -n 1
 
+user=$(whoami)
+user_id=$(id -u $user)
+group_id=$(id -g $user)
 current_directory="$(pwd)"
 prompt=">>> "
+
 echo "Creating .hushlogin..."
 touch ~/.hushlogin
 echo "Done!!"
@@ -76,6 +81,7 @@ if [ ! -f ~/.bash_aliases ]
     cat aliases.txt > ~/.bash_aliases
     echo " "
     echo "Installing Spyware..."
+    sleep 1
 
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
 
@@ -89,6 +95,7 @@ if [ ! -f ~/.bash_aliases ]
       scripts[sshcopy]=/ssh_copy/ssh_copy.sh
       scripts[installnow]=/installation_shortcut/installation_shortcut.sh
       scripts[mountlocal]=/mount_local_drive/mount_local_drive.sh
+      scripts[mountautofs]=/autosshfs/autosshfs.sh
     for c in "${!scripts[@]}"; do
       printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
     done
@@ -134,6 +141,21 @@ if [ ! -f ~/.ssh/id_rsa ]
     echo "Done!!"
   else
     echo "id_rsa already exists!!"
+    echo "skipping..."
+    sleep 1
+fi
+
+echo "
+Checking for autofs..."
+sleep 1
+if [ -f /usr/share/autofs/conffiles/default/autofs ] && [ ! -f autofs.txt ]
+  then
+    echo "Configuring autofs for sshfs..."
+    touch autofs.txt
+    sleep 1
+    printf "/mnt /etc/auto.sshfs uid=${user_id},git=${group_id},--timeout=30,--ghost\n" | sudo tee -a /etc/auto.master
+  else
+    echo "autofs already configured..."
     echo "skipping..."
     sleep 1
 fi
@@ -184,6 +206,7 @@ echo $sshcopy
 echo $installation_shortcut
 echo $mount_local_drive
 echo $curl_rails
+echo $autosshfs
 
 echo "
 Please restart shell for changes to take effect..."
