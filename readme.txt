@@ -5,7 +5,7 @@ Creates network configuration with gateway 192.168.0.1, netmask 255.255.255.0, a
 Creates rsa key with email address appended to the end.
 Configures vim with useful plugins.
 Will only run correctly once.
-To run again "bashrc_configuration.txt", "network_configuration.txt," and "installed.txt" will need to be removed.
+To run again "bashrc_configuration.txt", "network_configuration.txt," "autofs_configuration," and "installed.txt" will need to be removed.
 
 Type 'gitnew <username> <repository> <message>' to create and push a new git repository!!
 Type 'cloned <username> <repository>' to clone a git repository!!

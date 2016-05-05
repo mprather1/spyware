@@ -148,10 +148,10 @@ fi
 echo "
 Checking for autofs..."
 sleep 1
-if [ -f /usr/share/autofs/conffiles/default/autofs ] && [ ! -f autofs.txt ]
+if [ -f /usr/share/autofs/conffiles/default/autofs ] && [ ! -f autofs_configuration.txt ]
   then
     echo "Configuring autofs for sshfs..."
-    touch autofs.txt
+    touch autofs_configuration.txt
     sleep 1
     printf "/mnt /etc/auto.sshfs uid=${user_id},git=${group_id},--timeout=30,--ghost\n" | sudo tee -a /etc/auto.master
   else
@@ -173,12 +173,10 @@ if [ ! -f network_configuration.txt ]
         sudo echo "  address ${ip_address}" >> /etc/network/interfaces
         sudo /etc/init.d/networking restart
         touch network_configuration.txt
-        echo "Done!!
-        "
+        echo "Done!!"
         ;;
       *)
-        echo "Skipping network configuration...
-        "
+        echo "Skipping network configuration..."
         sleep 1
         ;;
     esac
@@ -198,7 +196,8 @@ if [ -f /usr/bin/pv ]
 fi
 
 echo "
-You must leave this file in the location where you ran the installer or face the consequences!!
+You must leave this file in the location where you ran the installer or face the consequences!!"
+echo"
 Type 'spyware_update' in the terminal to update this script!!"
 
 echo $make_shortcut
