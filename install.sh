@@ -21,36 +21,25 @@ echo "Creating .hushlogin..."
 touch ~/.hushlogin
 echo "Done!!"
 
-if [ ! -f installed.txt ]
+if [ ! -f installed.txt ] && [ -f /usr/lib/xorg ]
   then
-    echo " "
-    echo "Update and install software..."
-    echo "1.)Desktop 2.)Server *.)Skip"
-    read -p "${prompt}" update_software
-    case $update_software in
-      "1")
-        touch installed.txt
-        sudo add-apt-repository ppa:webupd8team/atom -y
-        sudo add-apt-repository ppa:chris-lea/node.js -y
-        sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak nodjs chromium-browser eclipse && sudo apt-get upgrade -y
-        sudo /usr/share/doc/libdvdread4/install-css.sh
-        ;;
-      "2")
-        touch installed.txt
-        sudo add-apt-repository ppa:chris-lea/node.js -y
-        sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs && sudo apt-get upgrade -y
-        echo "Done!!!"
-        ;;
-      *)
-        echo "Skipping update and software installation..."
-        sleep 1
-        ;;
-    esac
-  else
-    echo " "
-    echo "Software has already been installed..."
-    echo "Skipping..."
+    echo "Installing Ubuntu Desktop software..."
     sleep 1
+    touch installed.txt
+    sudo add-apt-repository ppa:webupd8team/atom -y
+    sudo add-apt-repository ppa:chris-lea/node.js -y
+    sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak nodjs chromium-browser eclipse && sudo apt-get upgrade -y
+    sudo /usr/share/doc/libdvdread4/install-css.sh
+    echo "Done"
+fi
+
+if [ -f installed.txt ] && [ ! -f /usr/lib/xorg ]
+  then
+    echo "Installing Ubuntu Server software..."
+    touch installed.txt
+    sudo add-apt-repository ppa:chris-lea/node.js -y
+    sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs && sudo apt-get upgrade -y
+    echo "Done!!!"
 fi
 
 echo "
