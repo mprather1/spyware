@@ -55,7 +55,7 @@ if [ ! -f bashrc_configuration.txt ]
     echo "Done!!"
   else
     echo ".bashrc configuration has already been run..."
-    echo "Skipping..."
+    echo "skipping..."
     sleep 1
 fi
 
@@ -109,8 +109,8 @@ if [ ! -f ~/.vimrc ]
     cat vimrc.txt >> ~/.vimrc
     echo "Done!!"
   else
-    echo "Vim is already configured..."
-    echo "Skipping..."
+    echo "vim is already configured..."
+    echo "skipping..."
     sleep 1
 fi
 
@@ -153,23 +153,22 @@ fi
 echo "
 Checking for network configuration..."
 sleep 1
-if [ ! -f network_configuration.txt ]
+if [ ! -f network_configuration.txt ] && [ -f /usr/lib/xorg ]
   then
+    echo "Configuring network..."
+    touch network_configuration.txt
+    sudo sh -c "cat network.txt > /etc/network/interfaces"
     echo " "
     echo "Enter desired static IP address: "
     read ip_address
-    sudo cat network.txt > /etc/network/interfaces
     printf "  address ${ip_address}" | sudo tee -a /etc/network/interfaces
-    sudo /etc/init.d/networking restart
-    touch network_configuration.txt
-    echo "Done!!"
+    printf "\nDone!!"
   else
-    echo "Network configuration has already been run..."
-    echo "Skipping..."
+    echo "Skipping network configuration..."
     sleep 1
 fi
 
-echo " "
+printf "\n\n"
 if [ -f /usr/bin/pv ]
   then
     echo "Spyware has been successfully installed..." | pv -qL 15
@@ -190,7 +189,7 @@ echo $curl_rails
 echo $autosshfs
 
 echo "
-Please restart shell for changes to take effect..."
+Please restart shell and networking for changes to take effect..."
 echo "
 Go Fuck Yourself!!"
 echo "Press any key to exit..."
