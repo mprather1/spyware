@@ -8,6 +8,7 @@ mount_local_drive="Type 'mountlocal <mount point> <disk location> <type>' into t
 autosshfs="Type mountautofs <mount point name> <username> <remote hostname> to automount a disk with sshfs!!"
 
 echo "Spyware installer..."
+echo "Tested on Xubuntu 15.10 and Ubuntu Server 15.10..."
 echo "Press any key to continue..."
 read -n 1
 
@@ -90,7 +91,7 @@ if [ ! -f ~/.bash_aliases ]
     done
     echo "Done!!"
   else
-    echo ".bash_aliases already exits!!"
+    echo ".bash_aliases already exits..."
     echo "skipping..."
     sleep 1
 fi
@@ -129,7 +130,7 @@ if [ ! -f ~/.ssh/id_rsa ]
     ssh-add ~/.ssh/id_rsa
     echo "Done!!"
   else
-    echo "id_rsa already exists!!"
+    echo "id_rsa already exists..."
     echo "skipping..."
     sleep 1
 fi
@@ -149,28 +150,20 @@ if [ -f /usr/share/autofs/conffiles/default/autofs ] && [ ! -f autofs_configurat
     sleep 1
 fi
 
+echo "
+Checking for network configuration..."
+sleep 1
 if [ ! -f network_configuration.txt ]
   then
     echo " "
-    echo "Do you want to run network configuration? y/n"
-    read -p "${prompt}" network_configuration
-    case $network_configuration in
-      'y')
-        echo "Enter desired static IP address: "
-        read ip_address
-        sudo cat network.txt > /etc/network/interfaces
-        sudo echo "  address ${ip_address}" >> /etc/network/interfaces
-        sudo /etc/init.d/networking restart
-        touch network_configuration.txt
-        echo "Done!!"
-        ;;
-      *)
-        echo "Skipping network configuration..."
-        sleep 1
-        ;;
-    esac
+    echo "Enter desired static IP address: "
+    read ip_address
+    sudo cat network.txt > /etc/network/interfaces
+    printf "  address ${ip_address}" | sudo tee -a /etc/network/interfaces
+    sudo /etc/init.d/networking restart
+    touch network_configuration.txt
+    echo "Done!!"
   else
-    echo " "
     echo "Network configuration has already been run..."
     echo "Skipping..."
     sleep 1
