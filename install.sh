@@ -186,7 +186,7 @@ fi
 
 echo "
 You must leave this file in the location where you ran the installer or face the consequences!!"
-echo"
+echo "
 Type 'spyware_update' in the terminal to update this script!!"
 
 echo $make_shortcut
