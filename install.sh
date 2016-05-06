@@ -33,7 +33,7 @@ if [ ! -f installed.txt ] && [ -f /usr/lib/xorg ]
     echo "Done"
 fi
 
-if [ -f installed.txt ] && [ ! -f /usr/lib/xorg ]
+if [ ! -f installed.txt ] && [ ! -f /usr/lib/xorg ]
   then
     echo "Installing Ubuntu Server software..."
     touch installed.txt
