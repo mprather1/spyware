@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-curl_rails="Type 'curlrails <argument>' into terminal to access rails server at localhost:3000"
+curl_rails="Type 'curlrails <argument>' into terminal to access rails server at localhost:3000!!"
 make_shortcut="Type 'shortcut' into terminal to create a shortcut!!"
 sshcopy="Type 'sshcopy' to setup password free ssh connection!!"
 installation_shortcut="Type 'installnow <arguments>' into terminal to install software with apt-get!!"
 mount_local_drive="Type 'mountlocal <mount point> <disk location> <type>' into terminal to mount a local hard disk!!"
-autosshfs="Type mountautofs <mount point name> <username> <remote hostname> to automount a disk with sshfs"
+autosshfs="Type mountautofs <mount point name> <username> <remote hostname> to automount a disk with sshfs!!"
 
 echo "Spyware installer..."
 echo "Press any key to continue..."
