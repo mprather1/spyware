@@ -141,7 +141,7 @@ if [ -f /usr/share/autofs/conffiles/default/autofs ] && [ ! -f autofs_configurat
   then
     echo "Configuring autofs for sshfs..."
     sleep 1
-    printf "/mnt /etc/auto.sshfs uid=${user_id},git=${group_id},--timeout=30,--ghost\n" | sudo tee -a /etc/auto.master
+    printf "/mnt /etc/auto.sshfs uid=${user_id},gid=${group_id},--timeout=30,--ghost\n" | sudo tee -a /etc/auto.master
     touch autofs_configuration.txt
   else
     echo "autofs already configured..."
