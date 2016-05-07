@@ -156,7 +156,7 @@ sleep 1
 for id in $(xinput --list | \
           sed -n '/Kingsis Peripherals  Evoluent VerticalMouse 3.*pointer/s/.*=\([0-9]\+\).*/\1/p')
 do
-  if [ ! -z ${id+x} ] && [ ! -f mouse_configuration.txt ]
+  if [ ! -z ${id+x} ] && [ ! -f mouse_configuration.txt ] && [ -f /usr/bin/xinput ]
     then
       button_map="xinput set-button-map ${id} 1 2 3 4 5 6 7 9 8"
       echo $button_map > mouse_configuration/mouse_configuration.sh
