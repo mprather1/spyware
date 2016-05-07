@@ -2,10 +2,10 @@
 
 curl_rails="Type 'curlrails <argument>' into terminal to access rails server at localhost:3000!!"
 make_shortcut="Type 'shortcut' into terminal to create a shortcut!!"
-sshcopy="Type 'sshcopy' to setup password free ssh connection!!"
+sshcopy="Type 'sshcopy <alias> <username> <hostname>' to setup password free ssh connection!!"
 installation_shortcut="Type 'installnow <arguments>' into terminal to install software with apt-get!!"
 mount_local_drive="Type 'mountlocal <mount point> <disk location> <type>' into terminal to mount a local hard disk!!"
-autosshfs="Type mountautofs <mount point name> <username> <remote hostname> to automount a disk with sshfs!!"
+autosshfs="Type 'mountautofs <mount point name> <username> <remote hostname>' to automount a disk with sshfs!!"
 
 echo "Spyware installer..."
 echo "Tested on Xubuntu 15.10 and Ubuntu Server 15.10..."
@@ -25,21 +25,20 @@ echo "Done!!"
 if [ ! -f installed.txt ] && [ -f /usr/lib/xorg ]
   then
     echo "Installing Ubuntu Desktop software..."
-    sleep 1
-    touch installed.txt
     sudo add-apt-repository ppa:webupd8team/atom -y
     sudo add-apt-repository ppa:chris-lea/node.js -y
     sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter ubuntu-restricted-extras fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted curl libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak nodjs chromium-browser eclipse tuxguitar && sudo apt-get upgrade -y
     sudo /usr/share/doc/libdvdread4/install-css.sh
+    touch installed.txt
     echo "Done"
 fi
 
 if [ ! -f installed.txt ] && [ ! -f /usr/lib/xorg ]
   then
     echo "Installing Ubuntu Server software..."
-    touch installed.txt
     sudo add-apt-repository ppa:chris-lea/node.js -y
     sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs && sudo apt-get upgrade -y
+    touch installed.txt
     echo "Done!!!"
 fi
 
@@ -48,10 +47,10 @@ Checking for .bashrc configuration..."
 sleep 1
 if [ ! -f bashrc_configuration.txt ]
   then
-    touch bashrc_configuration.txt
     echo ".bashrc file configuration..."
     sleep 1
     cat bashrc.txt >> ~/.bashrc
+    touch bashrc_configuration.txt
     echo "Done!!"
   else
     echo ".bashrc configuration has already been run..."
@@ -123,7 +122,7 @@ if [ ! -f ~/.ssh/id_rsa ]
     id_rsa does not exist, creating..."
     sleep 1
     echo "Enter email address:"
-    read email
+    read -p "${prompt}" email
     echo "Creating rsa key and adding to ssh agent..."
     ssh-keygen -t rsa -b 4096 -C "${email}"
     eval "$(ssh-agent -s)"
@@ -141,9 +140,9 @@ sleep 1
 if [ -f /usr/share/autofs/conffiles/default/autofs ] && [ ! -f autofs_configuration.txt ]
   then
     echo "Configuring autofs for sshfs..."
-    touch autofs_configuration.txt
     sleep 1
     printf "/mnt /etc/auto.sshfs uid=${user_id},git=${group_id},--timeout=30,--ghost\n" | sudo tee -a /etc/auto.master
+    touch autofs_configuration.txt
   else
     echo "autofs already configured..."
     echo "skipping..."
@@ -151,17 +150,39 @@ if [ -f /usr/share/autofs/conffiles/default/autofs ] && [ ! -f autofs_configurat
 fi
 
 echo "
+Mouse configuration..."
+echo "Checking for Kingsis Peripherals Evoluent VerticalMouse 3..."
+sleep 1
+for id in $(xinput --list | \
+          sed -n '/Kingsis Peripherals  Evoluent VerticalMouse 3.*pointer/s/.*=\([0-9]\+\).*/\1/p')
+do
+  if [ ! -z ${id+x} ] && [ ! -f mouse_configuration.txt ]
+    then
+      button_map="xinput set-button-map ${id} 1 2 3 4 5 6 7 9 8"
+      echo $button_map > mouse_configuration/mouse_configuration.sh
+      var=$(sed '$d' /etc/rc.local)
+      printf "${var}" | sudo tee /etc/rc.local
+      printf "\nbash ${current_directory}/mouse_configuration/mouse_configuration.sh\nexit 0" | sudo tee -a /etc/rc.local
+      touch mouse_configuration.txt
+    else
+      echo "Kingsis Peripherals Evoluent VerticalMouse 3 not found..."
+      echo "skipping..."
+      sleep 1
+  fi
+done
+
+echo "
 Checking for network configuration..."
 sleep 1
 if [ ! -f network_configuration.txt ] && [ -f /usr/lib/xorg ]
   then
     echo "Configuring network..."
-    touch network_configuration.txt
     sudo sh -c "cat network.txt > /etc/network/interfaces"
     echo " "
     echo "Enter desired static IP address: "
     read ip_address
     printf "  address ${ip_address}" | sudo tee -a /etc/network/interfaces
+    touch network_configuration.txt
     printf "\nDone!!"
   else
     echo "Skipping network configuration..."
