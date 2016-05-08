@@ -17,10 +17,10 @@ echo "Done!!"
 
 echo "
 Software installation..."
-echo "1.) Desktop 2.) Server"
-read -p "${prompt}" software_installation
-case in $software_installation
-  '1'.)
+echo "1.) Desktop 2.) Server *.) Skip"
+read -p "${prompt}" update_software
+case $update_software in
+  "1")
     echo "Installing Ubuntu Desktop software..."
     sudo add-apt-repository ppa:webupd8team/atom -y
     sudo add-apt-repository ppa:chris-lea/node.js -y
@@ -28,14 +28,14 @@ case in $software_installation
     sudo /usr/share/doc/libdvdread4/install-css.sh
     echo "Done"
     ;;
-  '2'.)
+  "2")
     echo "Installing Ubuntu Server software..."
     sudo add-apt-repository ppa:chris-lea/node.js -y
     sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off curl git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs && sudo apt-get upgrade -y
     touch installed.txt
     echo "Done!!!"
     ;;
-  *.)
+  *)
     echo "skipping..."
     ;;
 esac
@@ -175,10 +175,10 @@ else
 fi
 
 echo "
-Do you want to run network configuration?"
+Do you want to run network configuration? y/n"
 read -p "${prompt}" network_configuration
-case in $network_configuration
-  'y'.)
+case $network_configuration in
+  "y")
     echo "Configuring network..."
     sleep 1
     sudo sh -c "cat network.txt > /etc/network/interfaces"
@@ -189,10 +189,11 @@ case in $network_configuration
     touch network_configuration.txt
     printf "\nDone!!"
     ;;
-  *.)
+  *)
     echo "Skipping network configuration..."
     sleep 1
     ;;
+esac
 
 printf "\n\n"
 if [ -f /usr/bin/pv ]
