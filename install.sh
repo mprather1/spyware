@@ -56,6 +56,10 @@ if [ ! -f bashrc_configuration.txt ]
     sleep 1
 fi
 
+echo "
+Desktop configuration..."
+sudo cp -rv wallpaper/* /usr/share/xfce4/backdrops
+echo "Done!!"
 
 echo "
 Checking for .bash_aliases..."
@@ -195,7 +199,7 @@ case $network_configuration in
     ;;
 esac
 
-printf "\n\n"
+printf "\n"
 if [ -f /usr/bin/pv ]
   then
     echo "Spyware has been successfully installed..." | pv -qL 15
