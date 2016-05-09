@@ -1,0 +1,20 @@
+git clone git://github.com/sstephenson/rbenv.git .rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> /home/mike/.bashrc
+echo 'eval "$(rbenv init -)"' >> /home/mike/.bashrc
+exec $SHELL
+git clone git://github.com/sstephenson/ruby-build.git .rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> /home/mike/.bashrc
+exec $SHELL
+git clone git://github.com/sstephenson/rbenv-gem-rehash.git .rbenv/plugins/rbenv-gem-rehash
+
+rbenv install ruby_version
+rbenv global ruby_version
+rbenv shell ruby_version
+
+// no documentation for gems
+echo "gem: --no-document" > ~/.gemrc
+
+gem install bundler
+
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get install nodejs
