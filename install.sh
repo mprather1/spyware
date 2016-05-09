@@ -83,6 +83,7 @@ if [ ! -f ~/.bash_aliases ]
       scripts[installnow]=/installation_shortcut/installation_shortcut.sh
       scripts[mountlocal]=/mount_local_drive/mount_local_drive.sh
       scripts[mountautofs]=/autosshfs/autosshfs.sh
+      scripts[timer]=/timer/timer.sh
     for c in "${!scripts[@]}"; do
       printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
     done
@@ -164,8 +165,7 @@ if [ -f /usr/bin/xinput ]; then
         printf "\nbash ${current_directory}/mouse_configuration/mouse_configuration.sh\nexit 0" | sudo tee -a /etc/rc.local
         touch mouse_configuration.txt
       else
-        echo "Kingsis Peripherals Evoluent VerticalMouse 3 not found..."
-        echo "skipping..."
+        echo "skipping mouse configuration..."
         sleep 1
     fi
   done
