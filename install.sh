@@ -90,6 +90,7 @@ if [ ! -f ~/.bash_aliases ]
       scripts[timer]=/timer/timer.sh
       scripts[timed]=/timer/timed.sh
       scripts[alarm]=/timer/alarm.sh
+      scripts[createpsqluser]=/postgresql/createpsql.sh
     for c in "${!scripts[@]}"; do
       printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
     done
