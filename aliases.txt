@@ -8,7 +8,7 @@ alias crando='cat /dev/urandom | hexdump -C | grep "ca fe" | lolcat'
 
 alias die='sl -ale && sudo shutdown -h now'
 alias rest='sl -ale && sudo reboot -h now'
-
+alias killswitch='rake db:migrate VERSION=0 && rake db:migrate && rake db:seed'
 alias star_wars='telnet towel.blinkenlights.nl'
 
 alias gits='ls && echo " " && git status'
