@@ -9,6 +9,7 @@ user=$(whoami)
 user_id=$(id -u $user)
 group_id=$(id -g $user)
 current_directory="$(pwd)"
+
 prompt=">>> "
 
 echo "Creating .hushlogin..."
@@ -74,6 +75,9 @@ if [ ! -f ~/.bash_aliases ]
     echo "Installing Spyware..."
     sleep 1
 
+    echo "current_directory=${current_directory}" | cat - die/die.sh > temp && mv temp die/die.sh
+    echo "current_directory=${current_directory}" | cat - die/rest.sh > temp && mv temp die/rest.sh
+
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
 
     declare -A scripts
@@ -91,6 +95,8 @@ if [ ! -f ~/.bash_aliases ]
       scripts[timed]=/timer/timed.sh
       scripts[alarm]=/timer/alarm.sh
       scripts[createpsqluser]=/postgresql/createpsql.sh
+      scripts[die]=/die/die.sh
+      scripts[rest]=die/rest.sh
     for c in "${!scripts[@]}"; do
       printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
     done
@@ -193,7 +199,6 @@ case $network_configuration in
     echo "Enter desired static IP address: "
     read ip_address
     printf "  address ${ip_address}" | sudo tee -a /etc/network/interfaces
-    touch network_configuration.txt
     printf "\nDone!!"
     ;;
   *)
