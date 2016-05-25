@@ -188,6 +188,11 @@ sudo cp -r wallpaper/* /usr/share/xfce4/backdrops
 touch ~/.gtkrc-2.0
 cat gtkrc.txt > ~/.gtkrc-2.0
 
+touch ~/.config/menus/xfce-applications.menu
+cat menu/xfce-applications.txt > ~/.config/menus/xfce-applications.menu
+
+echo "Done"
+
 echo "
 Do you want to run network configuration? y/n"
 read -p "${prompt}" network_configuration
