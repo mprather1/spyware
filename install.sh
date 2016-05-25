@@ -172,10 +172,9 @@ if [ -f /usr/bin/xinput ]; then
         echo "Configuring Kingsis Peripherals Evoluent VerticalMouse 3..."
         sleep 1
         button_map="xinput set-button-map ${id} 1 2 3 4 5 6 7 9 8"
-        echo $button_map > mouse_configuration/mouse_configuration.sh
-        var=$(sed '$d' /etc/rc.local)
-        printf "${var}" | sudo tee /etc/rc.local
-        printf "\nbash ${current_directory}/mouse_configuration/mouse_configuration.sh\nexit 0" | sudo tee -a /etc/rc.local
+        touch ~/.xsession.rc
+        echo "#!/usr/bin/env bash" > ~/.xsessionrc
+        echo $button_map >> ~/.xsessionrc
         touch mouse_configuration.txt
       else
         echo "skipping mouse configuration..."
