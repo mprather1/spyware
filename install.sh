@@ -58,11 +58,6 @@ if [ ! -f bashrc_configuration.txt ]
 fi
 
 echo "
-Desktop configuration..."
-sudo cp -rv wallpaper/* /usr/share/xfce4/backdrops
-echo "Done!!"
-
-echo "
 Checking for .bash_aliases..."
 sleep 1
 if [ ! -f ~/.bash_aliases ]
@@ -71,9 +66,6 @@ if [ ! -f ~/.bash_aliases ]
     sleep 1
     touch ~/.bash_aliases
     cat aliases.txt > ~/.bash_aliases
-    echo " "
-    echo "Installing Spyware..."
-    sleep 1
 
     echo "current_directory=${current_directory}" | cat - die/die.sh > temp && mv temp die/die.sh
     echo "current_directory=${current_directory}" | cat - die/rest.sh > temp && mv temp die/rest.sh
@@ -172,7 +164,7 @@ if [ -f /usr/bin/xinput ]; then
         echo "Configuring Kingsis Peripherals Evoluent VerticalMouse 3..."
         sleep 1
         button_map="xinput set-button-map ${id} 1 2 3 4 5 6 7 9 8"
-        touch ~/.xsession.rc
+        touch ~/.xsessionrc
         echo "#!/usr/bin/env bash" > ~/.xsessionrc
         echo $button_map >> ~/.xsessionrc
         touch mouse_configuration.txt
@@ -185,6 +177,16 @@ else
   echo "xinput not found skipping..."
   sleep 1
 fi
+
+echo "
+Installing Spyware..."
+sleep 1
+
+sudo cp -r themes/* /usr/share/themes
+sudo cp -r wallpaper/* /usr/share/xfce4/backdrops
+
+touch ~/.gtkrc-2.0
+cat gtkrc.txt > ~/.gtkrc-2.0
 
 echo "
 Do you want to run network configuration? y/n"
