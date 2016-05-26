@@ -160,16 +160,14 @@ if [ -f /usr/bin/xinput ]; then
   for id in $(xinput --list | \
             sed -n '/Kingsis Peripherals  Evoluent VerticalMouse 3.*pointer/s/.*=\([0-9]\+\).*/\1/p')
   do
-    if [ ! -z ${id+x} ] && [ ! -f mouse_configuration.txt ]; then
+    if [ ! -z ${id+x}; then
         echo "Configuring Kingsis Peripherals Evoluent VerticalMouse 3..."
         sleep 1
         button_map="xinput set-button-map ${id} 1 2 3 4 5 6 7 9 8"
         touch ~/.xsessionrc
-        echo "#!/usr/bin/env bash" > ~/.xsessionrc
-        echo $button_map >> ~/.xsessionrc
-        touch mouse_configuration.txt
+        echo "#!/usr/bin/env bash\n\n${button_map}" > ~/.xsessionrc
       else
-        echo "skipping mouse configuration..."
+        echo "Evoluent VerticalMouse not found, skipping mouse configuration..."
         sleep 1
     fi
   done
