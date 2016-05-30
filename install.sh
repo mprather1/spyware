@@ -94,6 +94,7 @@ if [ ! -f ~/.bash_aliases ]
     for c in "${!scripts[@]}"; do
       printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
     done
+    printf "alias death='perl ${current_directory}/die/death.pl'"
     echo "Done!!"
   else
     echo ".bash_aliases already exits..."
