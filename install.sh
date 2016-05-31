@@ -71,8 +71,8 @@ if [ ! -f ~/.bash_aliases ]
 
     echo "current_directory=${current_directory}" | cat - die/die.sh > temp && mv temp die/die.sh
     echo "current_directory=${current_directory}" | cat - die/rest.sh > temp && mv temp die/rest.sh
-    echo "current_directory=${current_directory}" >> die/death.txt
-    echo "my \$current_directory = ${current_directory};" | cat - die/death.txt > temp && mv temp die/death.pl
+    printf "\nmy \$current_directory = ${current_directory};\n" >> die/death.pl
+    cat die/death.txt >> die/death.pl
 
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
 
@@ -96,7 +96,7 @@ if [ ! -f ~/.bash_aliases ]
     for c in "${!scripts[@]}"; do
       printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
     done
-    printf "alias death='perl ${current_directory}/die/death.pl'"
+    printf "alias death='perl ${current_directory}/die/death.pl'" >> ~/.bash_aliases
     echo "Done!!"
   else
     echo ".bash_aliases already exits..."
