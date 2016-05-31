@@ -71,7 +71,7 @@ if [ ! -f ~/.bash_aliases ]
 
     echo "current_directory=${current_directory}" | cat - die/die.sh > temp && mv temp die/die.sh
     echo "current_directory=${current_directory}" | cat - die/rest.sh > temp && mv temp die/rest.sh
-    # echo "current_directory=${current_directory}" | cat - die/death.pl > temp && mv temp die/death.pl
+    echo "current_directory=${current_directory}" | cat - die/shutdown.sh > temp && mv temp die/shutdown.sh
 
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
 
