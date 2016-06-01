@@ -9,7 +9,8 @@ user=$(whoami)
 user_id=$(id -u $user)
 group_id=$(id -g $user)
 current_directory="$(pwd)"
-
+printf "echo '${current_directory}'\n}" >> current_directory.sh
+. current_directory.sh
 prompt=">>> "
 
 echo "Creating .hushlogin..."
