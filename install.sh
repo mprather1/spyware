@@ -72,7 +72,7 @@ if [ ! -f ~/.bash_aliases ]
 
     echo "current_directory=${current_directory}" | cat - die/die.sh > temp && mv temp die/die.sh
     echo "current_directory=${current_directory}" | cat - die/rest.sh > temp && mv temp die/rest.sh
-    printf "\nmy \$current_directory = ${current_directory};\n" >> die/death.pl
+    printf "\nmy \$current_directory = '${current_directory}';\n" >> die/death.pl
     cat die/death.txt >> die/death.pl
 
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
@@ -94,6 +94,7 @@ if [ ! -f ~/.bash_aliases ]
       scripts[createpsqluser]=/postgresql/createpsql.sh
       scripts[die]=/die/die.sh
       scripts[rest]=/die/rest.sh
+      scripts[spyware]=/info.sh
     for c in "${!scripts[@]}"; do
       printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
     done
@@ -224,16 +225,6 @@ fi
 
 echo "
 You must leave this file in the location where you ran the installer or face the consequences!!"
-echo "
-Type 'spyware_update' in the terminal to update this script!!"
-
-echo "Type 'curlrails <argument>' into terminal to access rails server at localhost:3000!!"
-echo "Type 'shortcut' into terminal to create a shortcut!!"
-echo "Type 'sshcopy <alias> <username> <hostname>' to setup password free ssh connection!!"
-echo "Type 'installnow <arguments>' into terminal to install software with apt-get!!"
-echo "Type 'mountlocal <mount point> <disk location> <type>' into terminal to mount a local hard disk!!"
-echo "Type 'mountautofs <mount point name> <username> <remote hostname>' to automount a disk with sshfs!!"
-
 echo "
 Please restart shell and networking for changes to take effect..."
 echo "
