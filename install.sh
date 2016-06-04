@@ -85,7 +85,6 @@ if [ ! -f ~/.bash_aliases ]
       scripts[curlrails]=/curl_rails/curl_rails.sh
       scripts[shortcut]=/make_shortcut/make_shortcut.sh
       scripts[sshcopy]=/ssh_copy/ssh_copy.sh
-      scripts[installnow]=/installation_shortcut/installation_shortcut.sh
       scripts[mountlocal]=/mount_local_drive/mount_local_drive.sh
       scripts[mountautofs]=/autosshfs/autosshfs.sh
       scripts[timer]=/timer/timer.sh
