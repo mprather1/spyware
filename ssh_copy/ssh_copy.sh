@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 ssh-copy-id $2@$3
 
 echo "alias ${1}='ssh ${2}@${3}'" >> ~/.bash_aliases

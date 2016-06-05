@@ -71,11 +71,6 @@ if [ ! -f ~/.bash_aliases ]
     touch ~/.bash_aliases
     cat aliases.txt > ~/.bash_aliases
 
-    printf "${shebang}\ncurrent_directory=${current_directory}\n" | cat - die/die.sh > temp && mv temp die/die.sh
-    printf "${shebang}\ncurrent_directory=${current_directory}\n" | cat - die/rest.sh > temp && mv temp die/rest.sh
-    printf "\nmy \$current_directory = '${current_directory}';\n" >> die/death.pl
-    cat die/death.txt >> die/death.pl
-
     printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
 
     declare -A scripts
@@ -96,7 +91,9 @@ if [ ! -f ~/.bash_aliases ]
       scripts[rest]=/die/rest.sh
       scripts[spyware]=/info.sh
     for c in "${!scripts[@]}"; do
+      directory=$(printf "%s" "${scripts[$c]}")
       printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
+      printf "${shebang}\ncurrent_directory=${current_directory}\n\n" | cat - "${current_directory}/${directory}" > temp && mv temp "${current_directory}/${directory}"
     done
     printf "alias death='perl ${current_directory}/die/death.pl'" >> ~/.bash_aliases
     echo "Done!!"
@@ -192,6 +189,9 @@ sudo cp -r wallpaper/* /usr/share/xfce4/backdrops
 
 touch ~/.gtkrc-2.0
 cat gtkrc.txt > ~/.gtkrc-2.0
+
+printf "\nmy \$current_directory = '${current_directory}';\n" >> die/death.pl
+cat die/death.txt >> die/death.pl
 
 echo "Done"
 

@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 #timer without counter
 
 minutes=$1

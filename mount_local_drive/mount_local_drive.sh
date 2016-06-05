@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 prompt=">>> "
 user=$(whoami)
 user_id=$(id -u $user)

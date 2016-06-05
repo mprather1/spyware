@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 minutes=$1
 
 seconds=$(($minutes * 60)); date1=$((`date +%s` + $seconds));
