@@ -17,7 +17,3 @@ All done!!"
 echo "Restart your shell and type '${1}' into the terminal to use your shortcut!!"
 echo "
 Go fuck yourself!!"
-
-echo "
-Press any key to exit..."
-read -n 1

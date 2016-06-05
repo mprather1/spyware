@@ -9,6 +9,7 @@ user=$(whoami)
 user_id=$(id -u $user)
 group_id=$(id -g $user)
 current_directory="$(pwd)"
+shebang="#!/usr/bin/env bash"
 printf "echo '${current_directory}'\n}" >> current_directory.sh
 . current_directory.sh
 prompt=">>> "
@@ -70,8 +71,8 @@ if [ ! -f ~/.bash_aliases ]
     touch ~/.bash_aliases
     cat aliases.txt > ~/.bash_aliases
 
-    echo "current_directory=${current_directory}" | cat - die/die.sh > temp && mv temp die/die.sh
-    echo "current_directory=${current_directory}" | cat - die/rest.sh > temp && mv temp die/rest.sh
+    printf "${shebang}\ncurrent_directory=${current_directory}" | cat - die/die.sh > temp && mv temp die/die.sh
+    printf "${shebang}\ncurrent_directory=${current_directory}" | cat - die/rest.sh > temp && mv temp die/rest.sh
     printf "\nmy \$current_directory = '${current_directory}';\n" >> die/death.pl
     cat die/death.txt >> die/death.pl
 
