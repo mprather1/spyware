@@ -2,7 +2,6 @@
 
 printf "${1} -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536 :sshfs\#${2}@${3}\:/\n" | sudo tee -a /etc/auto.sshfs
 
-sudo ssh-copy-id $2@$3
 sudo service autofs restart
 
 echo "
