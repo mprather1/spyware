@@ -95,7 +95,7 @@ if [ ! -f ~/.bash_aliases ]
       printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
       printf "${shebang}\ncurrent_directory=${current_directory}\n\n" | cat - "${current_directory}${directory}" > temp && mv temp "${current_directory}${directory}"
     done
-    printf "alias death='perl ${current_directory}/die/death.pl'" >> ~/.bash_aliases
+    printf "alias death='perl ${current_directory}/die/death.pl'\n" >> ~/.bash_aliases
     echo "Done!!"
   else
     echo ".bash_aliases already exits..."

@@ -10,7 +10,6 @@ group_id=$(id -g $user)
 sudo mkdir $2 && printf "${1} ${2} ${3} rw,auto,user,uid=${user_id},gid=${group_id},fmask=0111,dmask=0000 0 0\n" | sudo tee -a /etc/fstab
 
 sudo mount -a
-mplayer $current_directory/sounds/ding.wav > /dev/null 2>&1
 echo "All done!!"
 echo "If no errors have occured, hard disk is mounted in ${2}!!"
 echo "
