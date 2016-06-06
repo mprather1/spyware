@@ -7,7 +7,7 @@ group_id=$(id -g $user)
 #argument 2 mount point
 #argument 3 type
 
-sudo mkdir $2 && printf "${1} ${2} ${3} rw,auto,user,uid=${user_id},git=${group_id},fmask=0111,dmask=0000 0 0\n" | sudo tee -a /etc/fstab
+sudo mkdir $2 && printf "${1} ${2} ${3} rw,auto,user,uid=${user_id},gid=${group_id},fmask=0111,dmask=0000 0 0\n" | sudo tee -a /etc/fstab
 
 sudo mount -a
 mplayer $current_directory/sounds/ding.wav > /dev/null 2>&1
