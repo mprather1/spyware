@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+source $(dirname $0)/../current_directory.sh
+
 # 1. alias
 # 2. name@hostname
 # 3. directory

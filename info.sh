@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+source $(dirname $0)/../current_directory.sh
+
 echo "Type 'gitnew <username> <repository> <message>' to create and push a new git repository!!"
 echo "Type 'cloned <username> <repository>' to clone a git repository!!"
 echo "Type 'gitd <message>' to commit to a local git repository!!"

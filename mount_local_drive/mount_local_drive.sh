@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+source $(dirname $0)/../current_directory.sh
+
 prompt=">>> "
 user=$(whoami)
 user_id=$(id -u $user)

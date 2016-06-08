@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+source $(dirname $0)/../current_directory.sh
+
 printf "${1} -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536 :sshfs\#${2}@${3}\:/\n" | sudo tee -a /etc/auto.sshfs
 
 sudo service autofs restart

@@ -10,8 +10,8 @@ user_id=$(id -u $user)
 group_id=$(id -g $user)
 current_directory="$(pwd)"
 shebang="#!/usr/bin/env bash"
-printf "echo '${current_directory}'\n}" >> current_directory.sh
-. current_directory.sh
+printf "printf \"${current_directory}\"\n}" >> current_directory.sh
+source $(dirname $0)/current_directory.sh
 prompt=">>> "
 
 echo "Creating .hushlogin..."
@@ -71,7 +71,7 @@ if [ ! -f ~/.bash_aliases ]
     touch ~/.bash_aliases
     cat aliases.txt > ~/.bash_aliases
 
-    printf "alias spyware_update='cd ${current_directory} && git pull origin master'\n" >> ~/.bash_aliases
+    printf "alias spyware_update='cd $(directory) && git pull origin master'\n" >> ~/.bash_aliases
 
     declare -A scripts
       scripts[cloned]=/git/git_clone.sh
@@ -92,11 +92,9 @@ if [ ! -f ~/.bash_aliases ]
       scripts[spyware]=/info.sh
       scripts[specific_directory]=/specific_directory/specific_directory.sh
     for c in "${!scripts[@]}"; do
-      directory=$(printf "%s" "${scripts[$c]}")
-      printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
-      printf "${shebang}\ncurrent_directory=${current_directory}\n\n" | cat - "${current_directory}${directory}" > temp && mv temp "${current_directory}${directory}"
+      printf "alias %s='bash $(directory)%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
     done
-    printf "alias death='perl ${current_directory}/die/death.pl'\n" >> ~/.bash_aliases
+    printf "alias death='perl $(directory)/die/death.pl'\n" >> ~/.bash_aliases
     echo "Done!!"
   else
     echo ".bash_aliases already exits..."
@@ -191,7 +189,7 @@ sudo cp -r wallpaper/* /usr/share/xfce4/backdrops
 touch ~/.gtkrc-2.0
 cat gtkrc.txt > ~/.gtkrc-2.0
 
-printf "\nmy \$current_directory = '${current_directory}';\n" >> die/death.pl
+printf "\nmy \$current_directory = '$(directory)';\n" >> die/death.pl
 cat die/death.txt >> die/death.pl
 
 echo "Done"
