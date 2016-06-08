@@ -1,6 +1,6 @@
 ssh-copy-id $2@$3
 
-echo "alias ${1}='ssh ${2}@${3}'" >> ~/.bash_aliases
+printf "alias ${1}='ssh ${2}@${3}'\n" >> ~/.bash_aliases
 
 echo "
 All done!!"

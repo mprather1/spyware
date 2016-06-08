@@ -8,4 +8,5 @@ echo "Type 'sshcopy <alias> <username> <hostname>' to setup password free ssh co
 echo "Type 'mountlocal <mount point> <disk location> <file system type>' into terminal to mount a local hard disk!!"
 echo "Type 'mountautofs <name for mount point> <username> <remote hostname>' to automount a disk with sshfs!!!"
 echo "Type 'createpsqluser <username>' to create a postgresql user!!!"
+echo "Type 'specific_directory <alias> <user@hostname> <directory> for alias to ssh to specific directory'"
 echo "Type 'boner' or 'dicks' if you are 14 years old and like to laugh!!"

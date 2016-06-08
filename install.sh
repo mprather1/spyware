@@ -90,6 +90,7 @@ if [ ! -f ~/.bash_aliases ]
       scripts[die]=/die/die.sh
       scripts[rest]=/die/rest.sh
       scripts[spyware]=/info.sh
+      scripts[specific_directory]=/specific_directory/specific_directory.sh
     for c in "${!scripts[@]}"; do
       directory=$(printf "%s" "${scripts[$c]}")
       printf "alias %s='bash ${current_directory}%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
