@@ -45,6 +45,18 @@ case $update_software in
     ;;
 esac
 
+echo "Install synergy and xscreensaver? y/n"
+read synergy
+case $synergy in
+  "y")
+    echo "Installing..."
+    sudo dpkg -i misc/synergy.deb misc/xscreensaver.deb
+    ;;
+  *)
+    echo "skipping..."
+    ;;
+esac
+
 echo "
 Checking for .bashrc configuration..."
 sleep 1
