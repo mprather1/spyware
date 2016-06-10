@@ -4,7 +4,7 @@ source $(dirname $0)/../current_directory.sh
 
 create_bash_aliases(){
   touch ~/.bash_aliases
-  cat aliases.txt > ~/.bash_aliases
+  cat $(directory)/aliases.txt > ~/.bash_aliases
 
   printf "alias spyware_update='cd $(directory) && git pull origin master'\n" >> ~/.bash_aliases
 
