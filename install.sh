@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
 
-echo "Spyware installer..."
-echo "Tested on Xubuntu 15.10 and Ubuntu Server 15.10..."
-echo "Press any key to continue..."
-read -n 1
-
 user=$(whoami)
 user_id=$(id -u $user)
 group_id=$(id -g $user)
 current_directory="$(pwd)"
-shebang="#!/usr/bin/env bash"
 printf "printf \"${current_directory}\"\n}" >> current_directory.sh
 source $(dirname $0)/current_directory.sh
 for f in $(dirname $0)/run/*.sh; do source $f; done;
 prompt=">>> "
+
+echo "Spyware installer..."
+echo "Tested on Xubuntu 15.10 and Ubuntu Server 15.10..."
+echo "Press any key to continue..."
+read -n 1
 
 echo "Creating .hushlogin..."
 touch ~/.hushlogin
@@ -26,19 +25,12 @@ read -p "${prompt}" update_software
 case $update_software in
   "1")
     echo "Installing Ubuntu Desktop software..."
-    sudo apt-get update && sudo apt-get install -y curl
-    sudo add-apt-repository -y ppa:webupd8team/atom
-    curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-    sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox calibre gparted libdvdread4 libsqlite3-dev git vim postgresql git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak chromium-browser eclipse tuxguitar handbrake dosbox putty putty-tools unzip python-pip nmap atom mplayer nodejs make midori && sudo apt-get upgrade -y
-    sudo /usr/share/doc/libdvdread4/install-css.sh
+      install_desktop_software
     echo "Done"
     ;;
   "2")
     echo "Installing Ubuntu Server software..."
-    sudo apt-get update && sudo apt-get install -y curl
-    curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-    sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs unzip python-pip nmap nodejs make && sudo apt-get upgrade -y
-    touch installed.txt
+      install_server_software
     echo "Done!!!"
     ;;
   *)
