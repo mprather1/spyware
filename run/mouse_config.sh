@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+source $(dirname $0)/../current_directory.sh
+
+mouse_config(){
+  for id in $(xinput --list | \
+            sed -n '/Kingsis Peripherals  Evoluent VerticalMouse 3.*pointer/s/.*=\([0-9]\+\).*/\1/p')
+  do
+    if [ ! -z ${id+x} ]; then
+      echo "Configuring Kingsis Peripherals Evoluent VerticalMouse 3..."
+      button_map="xinput set-button-map ${id} 1 2 3 4 5 6 7 9 8"
+      touch ~/.xsessionrc
+      printf "#!/usr/bin/env bash\n\n${button_map}" > ~/.xsessionrc
+    else
+      echo "Evoluent VerticalMouse not found, skipping mouse configuration..."
+    fi
+  done
+}

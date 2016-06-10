@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 source $(dirname $0)/../current_directory.sh
 
 create_bash_aliases(){
@@ -14,6 +16,6 @@ create_bash_aliases(){
     file_path=$(printf "$(directory)/${filename}" | sed 's/\..\///g')
     printf "alias ${fwe}='bash $file_path'\n" >> ~/.bash_aliases
   done
-  
+
   printf "alias death='perl $(directory)/die/death.pl'\n" >> ~/.bash_aliases
 }

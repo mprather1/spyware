@@ -8,5 +8,3 @@ sudo service autofs restart
 echo "
 All done!!"
 echo "Your mount point can be found at /mnt/${1}"
-echo "
-Go fuck yourself!!"
