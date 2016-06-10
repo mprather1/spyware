@@ -12,6 +12,7 @@ current_directory="$(pwd)"
 shebang="#!/usr/bin/env bash"
 printf "printf \"${current_directory}\"\n}" >> current_directory.sh
 source $(dirname $0)/current_directory.sh
+for f in $(dirname $0)/run/*.sh; do source $f; done;
 prompt=">>> "
 
 echo "Creating .hushlogin..."
@@ -80,38 +81,10 @@ if [ ! -f ~/.bash_aliases ]
   then
     echo "Creating .bash_aliases..."
     sleep 1
-    touch ~/.bash_aliases
-    cat aliases.txt > ~/.bash_aliases
-
-    printf "alias spyware_update='cd $(directory) && git pull origin master'\n" >> ~/.bash_aliases
-
-    declare -A scripts
-      scripts[cloned]=/git/git_clone.sh
-      scripts[gitd]=/git/git_commit.sh
-      scripts[gitnew]=/git/git_init.sh
-      scripts[gitp]=/git/git_commit_push_master.sh
-      scripts[curlrails]=/curl_rails/curl_rails.sh
-      scripts[shortcut]=/make_shortcut/make_shortcut.sh
-      scripts[sshcopy]=/ssh_copy/ssh_copy.sh
-      scripts[mountlocal]=/mount_local_drive/mount_local_drive.sh
-      scripts[mountautofs]=/autosshfs/autosshfs.sh
-      scripts[timer]=/timer/timer.sh
-      scripts[timed]=/timer/timed.sh
-      scripts[alarm]=/timer/alarm.sh
-      scripts[createpsqluser]=/postgresql/createpsql.sh
-      scripts[die]=/die/die.sh
-      scripts[rest]=/die/rest.sh
-      scripts[spyware]=/info.sh
-      scripts[specific_directory]=/specific_directory/specific_directory.sh
-    for c in "${!scripts[@]}"; do
-      printf "alias %s='bash $(directory)%s'\n" "$c" "${scripts[$c]}" >> ~/.bash_aliases
-    done
-    printf "alias death='perl $(directory)/die/death.pl'\n" >> ~/.bash_aliases
-    echo "Done!!"
+    create_bash_aliases
   else
     echo ".bash_aliases already exits..."
     echo "skipping..."
-    sleep 1
 fi
 
 echo "
