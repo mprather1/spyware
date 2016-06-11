@@ -39,7 +39,7 @@ esac
 echo "
 Checking for .bashrc configuration..."
 sleep 1
-if [ ! -f bashrc_config.txt ]
+if [ ! -f bashrc_config ]
   then
     echo ".bashrc file configuration..."
     bashrc_config
@@ -91,7 +91,7 @@ fi
 echo "
 Checking for autofs..."
 sleep 1
-if [ -f /etc/auto.master ] && [ ! -f autofs_config.txt ]
+if [ -f /etc/auto.master ] && [ ! -f autofs_config ]
   then
     echo "Configuring autofs for sshfs..."
     autofs_config
