@@ -36,18 +36,6 @@ case $update_software in
     ;;
 esac
 
-echo "Install synergy and xscreensaver? y/n"
-read synergy
-case $synergy in
-  "y")
-    echo "Installing..."
-    sudo dpkg -i misc/synergy.deb misc/xscreensaver.deb
-    ;;
-  *)
-    echo "skipping..."
-    ;;
-esac
-
 echo "
 Checking for .bashrc configuration..."
 sleep 1
@@ -126,20 +114,6 @@ Installing Spyware..."
 sleep 1
 install_spyware
 echo "Done"
-
-echo "
-Do you want to run network configuration? y/n"
-read -p "${prompt}" network_configuration
-case $network_configuration in
-  "y")
-    echo "Configuring network..."
-    network_config
-    printf "\nDone!!"
-    ;;
-  *)
-    echo "Skipping network configuration..."
-    ;;
-esac
 
 printf "\n"
 if [ -f /usr/bin/pv ]
