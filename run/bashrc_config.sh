@@ -2,5 +2,5 @@
 
 bashrc_config(){
   cat bashrc.txt >> ~/.bashrc
-  touch $(directory)/../bashrc_config
+  touch $(directory)/../bashrc.config
 }
