@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source $(dirname $0)/../current_directory.sh
-
 install_spyware(){
   sudo cp -r $(directory)/themes/* /usr/share/themes
   sudo cp -r $(directory)/wallpaper/* /usr/share/xfce4/backdrops

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source $(dirname $0)/../current_directory.sh
-
 install_desktop_software(){
   sudo apt-get update && sudo apt-get install -y curl
   sudo add-apt-repository -y ppa:webupd8team/atom

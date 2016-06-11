@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source $(dirname $0)/../current_directory.sh
-
 mouse_config(){
   for id in $(xinput --list | \
             sed -n '/Kingsis Peripherals  Evoluent VerticalMouse 3.*pointer/s/.*=\([0-9]\+\).*/\1/p')

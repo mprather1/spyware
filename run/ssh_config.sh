@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source $(dirname $0)/../current_directory.sh
-
 ssh_config(){
   echo "Enter email address:"
   read -p "${prompt}" email

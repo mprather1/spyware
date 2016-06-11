@@ -4,8 +4,8 @@ user=$(whoami)
 user_id=$(id -u $user)
 group_id=$(id -g $user)
 current_directory="$(pwd)"
-printf "printf \"${current_directory}\"\n}" >> current_directory.sh
-source $(dirname $0)/current_directory.sh
+printf "directory(){\n  printf \"${current_directory}\"\n}" > current_directory.sh
+source $(dirname $0)/current_directory.sh;
 for f in $(dirname $0)/run/*.sh; do source $f; done;
 prompt=">>> "
 
@@ -111,14 +111,12 @@ fi
 
 echo "
 Installing Spyware..."
-sleep 1
 install_spyware
-echo "Done"
-
 printf "\n"
 if [ -f /usr/bin/pv ]
   then
-    echo "Spyware has been successfully installed..." | pv -qL 15
+    echo "..........................." | pv -qL 15
+    printf "\nSpyware has been successfully installed..."
   else
     echo "Spyware has been successfully installed..."
 fi
