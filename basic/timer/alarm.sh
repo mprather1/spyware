@@ -2,4 +2,4 @@
 source $(dirname $0)/../../current_directory.sh
 for f in $(directory)/bin/*/*.sh; do source $f; done;
 
-alarm_clock
+alarm_clock $1
