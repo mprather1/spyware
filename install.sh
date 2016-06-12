@@ -16,9 +16,26 @@ read -n 1
 
 touch ~/.hushlogin
 
+echo "Advanced or basic installation..."
+echo "1.) Basic"
+echo "2.) Advanced"
+read -p $prompt basic
+case $basic in
+  "1")
+    echo "You have chosen basic installation chosen..."
+    basic=true
+    ;;
+  "2")
+    echo "You have chosen advanced installation..."
+    basic=false
+    ;;
+esac
+
 echo "
 Software installation..."
-echo "1.) Desktop 2.) Server *.) Skip"
+echo "1.) Desktop"
+echo "2.) Server"
+echo "*.) Skip"
 read -p "${prompt}" update_software
 case $update_software in
   "1")
@@ -54,8 +71,14 @@ Checking for .bash_aliases..."
 sleep 1
 if [ ! -f ~/.bash_aliases ]
   then
-    echo "Creating .bash_aliases..."
-    create_bash_aliases
+    if $basic == false
+      then
+        echo "Creating .bash_aliases..."
+        create_bash_aliases
+      else
+        echo "Creating .bash_aliases..."
+        create_basic_aliases
+    fi
   else
     echo ".bash_aliases already exits..."
     echo "skipping..."
