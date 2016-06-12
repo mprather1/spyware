@@ -71,13 +71,13 @@ Checking for .bash_aliases..."
 sleep 1
 if [ ! -f ~/.bash_aliases ]
   then
-    if $basic == false
+    if $basic == true
       then
         echo "Creating .bash_aliases..."
-        create_bash_aliases
+        create_basic_aliases
       else
         echo "Creating .bash_aliases..."
-        create_basic_aliases
+        create_bash_aliases
     fi
   else
     echo ".bash_aliases already exits..."
