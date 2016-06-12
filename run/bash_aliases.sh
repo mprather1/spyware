@@ -33,5 +33,5 @@ create_basic_aliases(){
     printf "alias ${fwe}='bash $file_path'\n" >> ~/.bash_aliases
   done
 
-  printf "alias death='perl $(directory)bin/die/death.pl'\n" >> ~/.bash_aliases
+  printf "alias death='perl $(directory/)bin/die/death.pl'\n" >> ~/.bash_aliases
 }
