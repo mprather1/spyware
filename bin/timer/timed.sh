@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source $(dirname $0)/../../current_directory.sh
 
-time_r(){
+time_d(){
 #timer without counter
 
 minutes=$1

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source $(dirname $0)/../../current_directory.sh
 
-time_d(){
+time_r(){
 minutes=$1
 
 seconds=$(($minutes * 60)); date1=$((`date +%s` + $seconds));
