@@ -22,7 +22,7 @@ echo "2.) Advanced"
 read -p $prompt basic
 case $basic in
   "1")
-    echo "You have chosen basic installation chosen..."
+    echo "You have chosen basic installation..."
     basic=true
     ;;
   "2")
