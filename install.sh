@@ -6,7 +6,7 @@ group_id=$(id -g $user)
 current_directory="$(pwd)"
 printf "directory(){\n  printf \"${current_directory}\"\n}" > current_directory.sh
 source $(dirname $0)/current_directory.sh;
-for f in $(dirname $0)/run/*.sh; do source $f; done;
+for f in $(directory)/run/*.sh; do source $f; done;
 prompt=">>> "
 
 echo "Hello ${user^}!!"
@@ -146,6 +146,7 @@ fi
 
 echo "
 You must leave this file in the location where you ran the installer or face the consequences!!"
+echo "Type 'spyware' for a list of commands!!"
 echo "
 Please restart shell and networking for changes to take effect..."
 echo "

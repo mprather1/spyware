@@ -14,8 +14,6 @@ create_bash_aliases(){
     file_path=$(printf "${filename}" | sed 's/\..\///g')
     printf "alias ${fwe}='bash $file_path'\n" >> ~/.bash_aliases
   done
-
-  printf "alias death='perl $(directory)/bin/die/death.pl'\n" >> ~/.bash_aliases
 }
 
 create_basic_aliases(){
@@ -32,6 +30,4 @@ create_basic_aliases(){
     file_path=$(printf "${filename}" | sed 's/\..\///g')
     printf "alias ${fwe}='bash $file_path'\n" >> ~/.bash_aliases
   done
-
-  printf "alias death='perl $(directory/)bin/die/death.pl'\n" >> ~/.bash_aliases
 }
