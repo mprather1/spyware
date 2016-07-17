@@ -35,19 +35,24 @@ echo "
 Software installation..."
 echo "1.) Desktop"
 echo "2.) Server"
+echo "3.) Raspberry Pi"
 echo "*.) Skip"
 read -p "${prompt}" update_software
 case $update_software in
   "1")
     echo "Installing Ubuntu Desktop software..."
       install_desktop_software
-    echo "Done"
+    echo "Done!!"
     ;;
   "2")
     echo "Installing Ubuntu Server software..."
       install_server_software
-    echo "Done!!!"
+    echo "Done!!"
     ;;
+  "3")
+    echo "Installing Raspberry Pi software..."
+      install_rpi_software
+    echo "Done!!"
   *)
     echo "skipping..."
     ;;
