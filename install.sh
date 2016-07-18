@@ -53,6 +53,7 @@ case $update_software in
     echo "Installing Raspberry Pi software..."
       install_rpi_software
     echo "Done!!"
+    ;;
   *)
     echo "skipping..."
     ;;
