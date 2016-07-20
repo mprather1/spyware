@@ -18,8 +18,7 @@ install_server_software(){
 }
 
 install_rpi_software(){
-  sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon ftp ftpd autofs sshfs lolcat cmatrix sl deluge keepass2 vlc samba fortunes fortunes-off libdvdread4 libsqlite3-dev git vim git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak unzip python-pip nmap make
-  sudo dpkg -i $(directory)/misc/synergy.deb $(directory)/misc/xscreensaver.deb
+  sudo apt-get update && sudo apt-get install -y openssh-server avahi-daemon ftp ftpd autofs sshfs lolcat cmatrix sl deluge keepass2 vlc samba fortunes fortunes-off libdvdread4 libsqlite3-dev git vim git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak unzip python-pip nmap make mpd mpc synergy
   sudo apt-get upgrade -y
 
 }
