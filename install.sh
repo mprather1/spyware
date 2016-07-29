@@ -23,11 +23,11 @@ read -p $prompt basic
 case $basic in
   "1")
     echo "You have chosen basic installation..."
-    basic=true
+    installation_type=basic
     ;;
   "2")
     echo "You have chosen advanced installation..."
-    basic=false
+    installation_type=advanced
     ;;
 esac
 
@@ -77,14 +77,7 @@ Checking for .bash_aliases..."
 sleep 1
 if [ ! -f ~/.bash_aliases ]
   then
-    if $basic == true
-      then
-        echo "Creating .bash_aliases..."
-        create_basic_aliases
-      else
-        echo "Creating .bash_aliases..."
-        create_bash_aliases
-    fi
+    create_bash_aliases
   else
     echo ".bash_aliases already exits..."
     echo "skipping..."

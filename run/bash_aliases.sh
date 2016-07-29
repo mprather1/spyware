@@ -2,13 +2,6 @@
 
 create_bash_aliases(){
 
-  if $basic = true
-    then
-      installation_type="basic"
-    else
-      installation_type="advanced"
-  fi
-
   touch ~/.bash_aliases
   cat $(directory)/aliases.txt > ~/.bash_aliases
 
