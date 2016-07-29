@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $(dirname $0)/../../current_directory.sh
+source $(dirname $0)/../../data.sh
 
 echo "Type 'autosshfs' to mount a network drive with sftp!!"
 echo "Type 'networkconfig' to set a static ip address!!"

@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
-source $(dirname $0)/../../current_directory.sh
+source $(dirname $0)/../../data.sh
 
 specific_directory(){
-printf "alias $1=\'ssh -t $2 \"cd ${3} ; bash\"\'\n" >> ~/.bash_aliases
-echo "All done!!"
+  if chkarg $3; then
+    printf "alias $1=\'ssh -t $2 \"cd ${3} ; bash\"\'\n" >> ~/.bash_aliases
+    echo "All done!!"
+  else
+    printf "Input Error...\n\"specific <alias> <user@hostname> <directory>\""
+  fi
 }

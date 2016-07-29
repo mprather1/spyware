@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $(dirname $0)/../../current_directory.sh
+source $(dirname $0)/../../data.sh
 
 curl_rails(){
 #simple script to access rails localhost
