@@ -4,7 +4,7 @@ user=$(whoami)
 user_id=$(id -u $user)
 group_id=$(id -g $user)
 current_directory="$(pwd)"
-printf "directory(){\n  printf \"${current_directory}\"\n}" >> data.sh
+printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> data.sh
 source $(dirname $0)/data.sh;
 for f in $(directory)/run/*.sh; do source $f; done;
 prompt=">>> "
