@@ -77,6 +77,7 @@ Checking for .bash_aliases..."
 sleep 1
 if [ ! -f ~/.bash_aliases ]
   then
+    echo "Creating .bash_aliases..."
     create_bash_aliases
   else
     echo ".bash_aliases already exits..."

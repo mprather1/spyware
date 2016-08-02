@@ -8,4 +8,4 @@ read -p $prompt shortcut
 echo "Enter username and hostname, (username@hostname)..."
 read -p $prompt sshcopyname
 
-sshcopy $shortcut $sshcopyname
+ssh_copy $shortcut $sshcopyname

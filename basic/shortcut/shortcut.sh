@@ -7,4 +7,4 @@ read -p $prompt shortcut
 echo "Enter command..."
 read -p $prompt commnd
 
-shortcut $shortcut $commnd
+create_shortcut $shortcut $commnd
