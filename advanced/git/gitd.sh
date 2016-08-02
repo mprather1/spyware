@@ -2,4 +2,4 @@
 source $(dirname $0)/../../data.sh
 for f in $(directory)/bin/*/*.sh; do source $f; done;
 
-git_commit $1
+git_commit "${1}"
