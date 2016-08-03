@@ -13,7 +13,7 @@ install_desktop_software(){
 install_server_software(){
   sudo apt-get update && sudo apt-get install -y curl
   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-  sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs unzip python-pip nmap nodejs make && sudo apt-get upgrade -y
+  sudo apt-get update && sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off git openssh-server avahi-daemon autofs sshfs vim postgresql git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs unzip python-pip nmap nodejs make ftp ftpd && sudo apt-get upgrade -y
   touch installed.txt
 }
 
