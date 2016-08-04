@@ -2,3 +2,5 @@
 :set shiftwidth=2
 :set expandtab
 :set number
+map #3 :q!
+map #2 :wq!
