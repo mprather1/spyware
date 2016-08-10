@@ -1,0 +1,4 @@
+Create Vagrant box:
+  vagrant pagkage --base <vm_name>
+Starts Vagrant:
+  vagrant up
