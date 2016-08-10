@@ -7,6 +7,7 @@ alias rando='cat /dev/urandom | hexdump -C | grep "ca fe"'
 alias crando='cat /dev/urandom | hexdump -C | grep "ca fe" | lolcat'
 
 alias killswitch='rake db:migrate VERSION=0 && rake db:migrate && rake db:seed'
+alias killswitchd='bundle exec rake db:migrate VERSION=0 && bundle exec rake db:migrate && bundle exec rake db:seed'
 alias star_wars='telnet towel.blinkenlights.nl'
 
 alias gits='ls && echo " " && git status'
