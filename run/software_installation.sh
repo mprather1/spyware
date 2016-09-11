@@ -10,6 +10,10 @@ install_desktop_software(){
   sudo /usr/share/doc/libdvdread4/install-css.sh
 }
 
+audio_software(){
+  sudo apt-get install ardour rosegarden qtractor hydrogen hydrogen-drumkits yoshimi fluidsynth jack mixxx muse musescore xwax zynaddsubfx gladish 
+}
+
 install_server_software(){
   sudo apt-get update && sudo apt-get install -y curl
   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
