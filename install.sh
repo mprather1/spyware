@@ -30,6 +30,10 @@ case $basic in
     echo "You have chosen advanced installation..."
     installation_type=advanced
     ;;
+  "*")
+    printf "Error no installation type selected...\nChoosing default: Advanced..."
+    installation_type=advanced
+    ;;
 esac
 
 echo "
