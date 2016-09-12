@@ -10,6 +10,6 @@ alarm_clock(){
     done
     mplayer /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga > /dev/null 2>&1
   else
-    printf "Input Error...\n\"alarm <minutes>\""
+    printf "Input Error...\n\"alarm <minutes>\"\n"
   fi
 }

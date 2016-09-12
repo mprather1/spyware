@@ -3,6 +3,5 @@ source $(dirname $0)/../../data.sh
 
 git_clone(){
 git clone git@github.com:$1/$2
-echo "
-All Done!!!"
+printf "\nAll Done!!\n"
 }

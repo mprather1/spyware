@@ -10,6 +10,6 @@ time_r(){
     done
     mplayer /usr/share/sounds/freedesktop/stereo/complete.oga > /dev/null 2>&1
   else
-    printf "Input Error...\n\"timed <minutes>\""
+    printf "Input Error...\n\"timed <minutes>\"\n"
   fi
 }

@@ -10,6 +10,6 @@ new_user(){
       sudo adduser $1 $group
     done
   else
-    printf "Input Error...\n\"newuser <username>\""
+    printf "Input Error...\n\"newuser <username>\"\n"
   fi
 }
