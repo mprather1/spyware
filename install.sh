@@ -149,7 +149,5 @@ You must leave this file in the location where you ran the installer or face the
 echo "Type 'spyware' for a list of commands!!"
 echo "
 Please restart shell and networking for changes to take effect..."
-echo "
-Go Fuck Yourself!!"
-echo "Press any key to exit..."
+echo "Press any key to exit...\n"
 read -n 1
