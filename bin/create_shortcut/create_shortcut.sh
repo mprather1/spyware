@@ -7,6 +7,6 @@ create_shortcut(){
     printf "\nAll done!!\n"
     printf "Restart your shell and type '${1}' into the terminal to use your shortcut!!\n"
   else
-    printf "Input Error...\n\"shortcut <alias> <command>\"\n"
+    printf "Input Error...\n\"shortcut <alias> '<command>'\"\n"
   fi
 }
