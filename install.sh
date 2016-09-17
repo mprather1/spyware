@@ -4,6 +4,7 @@ user=$(whoami)
 user_id=$(id -u $user)
 group_id=$(id -g $user)
 current_directory="$(pwd)"
+dist=$(head -n1 /etc/issue | sed -e 's/\\n //;s/\\l//;s/ $//g')
 cat data.txt > data.sh
 printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> data.sh
 source $(dirname $0)/data.sh;
@@ -12,6 +13,7 @@ prompt=">>> "
 
 echo "Hello ${user^}!!"
 echo "Welcome to Spyware Installer..."
+echo "${dist}..."
 echo "Press any key to continue..."
 read -n 1
 
