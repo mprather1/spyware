@@ -3,6 +3,7 @@ alias httpserver='python -m SimpleHTTPServer'
 alias updated='sudo apt-get update'
 alias upgraded='sudo apt-get upgrade -y'
 alias undtgradt='sudo apt-get update && sudo apt-get upgrade -y'
+alias check_open_ports='netstat -ntlp | grep LISTEN'
 
 alias rando='cat /dev/urandom | hexdump -C | grep "ca fe"'
 alias crando='cat /dev/urandom | hexdump -C | grep "ca fe" | lolcat'
