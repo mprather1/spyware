@@ -1,1 +1,1 @@
-sudo npm install -g browserify forever
+sudo npm install -g browserify forever http-server
