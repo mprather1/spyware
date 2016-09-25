@@ -1,1 +1,1 @@
-gem install rails rspec rubyzip redis  
+gem install rails rspec rubyzip redis faker 
