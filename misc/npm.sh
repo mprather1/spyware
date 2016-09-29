@@ -1,1 +1,1 @@
-sudo npm install -g browserify forever http-server bower mocha coffee-script faker
+sudo npm install -g browserify forever http-server bower mocha faker webpack webpack-dev-server
