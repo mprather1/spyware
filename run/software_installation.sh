@@ -26,5 +26,4 @@ install_rpi_software(){
   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
   sudo apt-get install -y openssh-server avahi-daemon ftp ftpd autofs sshfs lolcat cmatrix sl samba fortunes fortunes-off libsqlite3-dev git vim git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak unzip python-pip nmap whois make libmysqlclient-dev nodejs redis-server netdiscover
   sudo apt-get upgrade -y
-
 }
