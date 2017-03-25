@@ -1,1 +1,1 @@
-gem install rails rspec rubyzip redis faker 
+gem install rails rspec rubyzip redis faker lolcat

@@ -26,7 +26,7 @@ name=$(whoami)
 host=$(hostname)
 echo "Hello ${name^}" | toilet -f pagga -F gay
 echo "
-Welcome to ${host^}." | lolcat
+Welcome to ${host^}." | lolcat -p 0.1 -F 0.1
 echo "
 Today is $(date "+%A, %B %d, %Y").
 
