@@ -1,1 +1,1 @@
-gem install rails rspec rubyzip redis faker lolcat
+sudo gem install bundler nokogiri rails rspec rubyzip redis faker lolcat
