@@ -29,9 +29,7 @@ install_server_software(){
 install_rpi_software(){
   sudo apt-get install -y curl
   curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-  sudo apt-get install -y openssh-server avahi-daemon ftp ftpd autofs sshfs lolcat cmatrix sl samba fortunes fortunes-off libsqlite3-dev git vim git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak unzip python-pip nmap whois make libmysqlclient-dev nodejs redis-server netdiscover htop moreutils ruby2.3 ruby2.3-dev dstat slurm iftop iptraf calcurse vifm ranger cloc
-  echo "gem: --no-document" >> ~/.gemrc
-  bash $(directory)/misc/npm.sh && \
-  bash $(directory)/misc/ruby_gems.sh  
+  sudo apt-get install -y openssh-server avahi-daemon ftp ftpd autofs sshfs lolcat cmatrix sl samba fortunes fortunes-off libsqlite3-dev git vim git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak unzip python-pip nmap whois make libmysqlclient-dev nodejs redis-server netdiscover htop moreutils dstat slurm iftop iptraf calcurse vifm ranger cloc
+  bash $(directory)/misc/npm.sh
   sudo apt-get upgrade -y
 }
