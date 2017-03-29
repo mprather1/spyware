@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 user=$(whoami)
 user_id=$(id -u $user)
 group_id=$(id -g $user)
@@ -51,16 +50,19 @@ read -p "${prompt}" update_software
 case $update_software in
   "1")
     echo "Installing Ubuntu Desktop software..."
+      software_type=desktop
       install_desktop_software
     echo "Done!!"
     ;;
   "2")
     echo "Installing Ubuntu Server software..."
+      software_type=server
       install_server_software
     echo "Done!!"
     ;;
   "3")
     echo "Installing Raspberry Pi software..."
+      software_type=rpi
       install_rpi_software
     echo "Done!!"
     ;;

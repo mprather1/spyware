@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 create_bash_aliases(){
-
   touch ~/.bash_aliases
   cat $(directory)/aliases.txt > ~/.bash_aliases
 

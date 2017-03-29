@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 install_desktop_software(){
+  software=$(directory)/run/software_lists/${software_type}.txt
+  readarray software_list < $software
+    for software in "${software_list[@]}"; do
+      new_software+="${software}"
+    done
   sudo apt-get install -y curl
   sudo add-apt-repository -y ppa:webupd8team/atom
   sudo apt-add-repository -y ppa:numix/ppa
@@ -8,7 +13,7 @@ install_desktop_software(){
   sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'    
   curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
   sudo apt-get update && \
-  sudo apt-get install -y openssh-server avahi-daemon clementine ftp ftpd autofs sshfs libreoffice lolcat cmatrix sl puddletag deluge keepass2 geany vlc samba soundconverter fortunes fortunes-off gimp agave steam thunderbird remmina virtualbox virtualbox-guest-additions-iso calibre gparted libsqlite3-dev git vim postgresql git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak chromium-browser eclipse tuxguitar handbrake dosbox putty putty-tools unzip python-pip nmap whois atom mplayer nodejs make midori tuxguitar-alsa tuxguitar-jsa tuxguitar-oss lmms xscreensaver-screensaver-bsod clonezilla netdiscover vagrant libmysqlclient-dev libfprint0 libfprint-dev fprintd fprint-demo libxrandr-dev libfox-1.6-dev redis-server htop moreutils ruby2.3 ruby2.3-dev dstat slurm iftop iptraf calcurse vifm ranger cloc numix-icon-theme numix-icon-theme-circle docker-engine docker-compose
+  sudo apt-get install $software_list -y
   sudo dpkg -i $(directory)/misc/synergy.deb $(directory)/misc/xscreensaver.deb
   echo "gem: --no-document" >> ~/.gemrc
   bash $(directory)/misc/npm.sh && \
@@ -21,13 +26,18 @@ audio_software(){
 }
 
 install_server_software(){
+  software=$(directory)/run/software_lists/${software_type}.txt
+  readarray software_list < $software
+    for software in "${software_list[@]}"; do
+      new_software+="${software}"
+    done
   sudo apt-get update
   sudo apt-get install -y curl
   sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
   sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'    
   curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
   sudo apt-get update && \
-  sudo apt-get install -y cmatrix sl lolcat fortunes fortunes-off git openssh-server avahi-daemon autofs sshfs vim postgresql git-core zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev build-essential libpq-dev pv toilet rig libaa-bin nodejs unzip python-pip nmap whois nodejs make ftp ftpd netdiscover libmysqlclient-dev redis-server htop moreutils ruby2.3 ruby2.3-dev dstat slurm iftop iptraf calcurse vifm ranger cloc docker-engine docker-compose
+  sudo apt-get install $new_software -y 
   echo "gem: --no-document" >> ~/.gemrc
   bash $(directory)/misc/npm.sh && \
   bash $(directory)/misc/ruby_gems.sh  
@@ -35,11 +45,16 @@ install_server_software(){
 }
 
 install_rpi_software(){
+  software=$(directory)/run/software_lists/${software_type}.txt
+  readarray software_list < $software
+    for software in "${software_list[@]}"; do
+      new_software+="${software}"
+    done
   sudo apt-get install -y curl
   curl -sSL https://get.docker.com | sh ## not tested yet
   curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
   sudo apt-get update && \
-  sudo apt-get install -y openssh-server avahi-daemon ftp ftpd autofs sshfs lolcat cmatrix sl samba fortunes fortunes-off libsqlite3-dev git vim git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libpq-dev libffi-dev libpq-dev pv toilet rig libaa-bin espeak unzip python-pip nmap whois make libmysqlclient-dev nodejs redis-server netdiscover htop moreutils dstat slurm iftop iptraf calcurse vifm ranger cloc docker-engine docker-compose
+  sudo apt-get install $new_software -y 
   bash $(directory)/misc/npm.sh
   sudo apt-get upgrade -y
 }
