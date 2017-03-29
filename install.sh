@@ -51,18 +51,21 @@ case $update_software in
   "1")
     echo "Installing Ubuntu Desktop software..."
       software_type=desktop
+      get_software_list
       install_desktop_software
     echo "Done!!"
     ;;
   "2")
     echo "Installing Ubuntu Server software..."
       software_type=server
+      get_software_list
       install_server_software
     echo "Done!!"
     ;;
   "3")
     echo "Installing Raspberry Pi software..."
       software_type=rpi
+      get_software_list
       install_rpi_software
     echo "Done!!"
     ;;

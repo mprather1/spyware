@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-install_desktop_software(){
+get_software_list(){
   software=$(directory)/run/software_lists/${software_type}.txt
   readarray software_list < $software
     for software in "${software_list[@]}"; do
       new_software+="${software}"
     done
+}
+
+install_desktop_software(){
   sudo apt-get install -y curl
   sudo add-apt-repository -y ppa:webupd8team/atom
   sudo apt-add-repository -y ppa:numix/ppa
@@ -26,11 +29,6 @@ audio_software(){
 }
 
 install_server_software(){
-  software=$(directory)/run/software_lists/${software_type}.txt
-  readarray software_list < $software
-    for software in "${software_list[@]}"; do
-      new_software+="${software}"
-    done
   sudo apt-get update
   sudo apt-get install -y curl
   sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
@@ -45,11 +43,6 @@ install_server_software(){
 }
 
 install_rpi_software(){
-  software=$(directory)/run/software_lists/${software_type}.txt
-  readarray software_list < $software
-    for software in "${software_list[@]}"; do
-      new_software+="${software}"
-    done
   sudo apt-get install -y curl
   curl -sSL https://get.docker.com | sh ## not tested yet
   curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
