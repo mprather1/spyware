@@ -52,5 +52,4 @@ calcurse
 vifm 
 ranger 
 cloc 
-docker-engine 
-docker-compose
+docker-engine
