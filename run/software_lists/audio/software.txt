@@ -1,0 +1,14 @@
+ardour
+rosegarden 
+qtractor 
+hydrogen 
+hydrogen-drumkits 
+yoshimi 
+fluidsynth 
+jack 
+mixxx 
+muse 
+musescore 
+xwax 
+zynaddsubfx 
+gladish

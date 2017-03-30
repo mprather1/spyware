@@ -34,8 +34,8 @@ case $basic in
     echo "You have chosen advanced installation..."
     installation_type=advanced
     ;;
-  "*")
-    printf "Error no installation type selected...\nChoosing default: Advanced..."
+  *)
+    printf "Error: no installation type selected...\nChoosing default: Advanced...\n"
     installation_type=advanced
     ;;
 esac
@@ -51,28 +51,25 @@ case $update_software in
   "1")
     echo "Installing Ubuntu Desktop software..."
       software_type=desktop
-      get_software_list
-      install_desktop_software
-    echo "Done!!"
     ;;
   "2")
     echo "Installing Ubuntu Server software..."
       software_type=server
-      get_software_list
-      install_server_software
-    echo "Done!!"
     ;;
   "3")
     echo "Installing Raspberry Pi software..."
       software_type=rpi
-      get_software_list
-      install_rpi_software
-    echo "Done!!"
     ;;
   *)
     echo "skipping..."
     ;;
 esac
+
+if chkarg $software_type; then
+  get_software_list
+  install_software
+  echo "Done!!"
+fi
 
 echo "
 Checking for .bashrc configuration..."
