@@ -1,4 +1,4 @@
-ardour
+ardour 
 rosegarden 
 qtractor 
 hydrogen 
@@ -11,4 +11,4 @@ muse
 musescore 
 xwax 
 zynaddsubfx 
-gladish
+gladish 

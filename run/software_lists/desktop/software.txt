@@ -1,5 +1,5 @@
-openssh-server
-avahi-daemon
+openssh-server 
+avahi-daemon 
 clementine 
 ftp 
 ftpd 
@@ -97,4 +97,4 @@ ranger
 cloc 
 numix-icon-theme 
 numix-icon-theme-circle 
-docker-engine
+docker-engine 
