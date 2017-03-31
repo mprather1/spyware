@@ -2,56 +2,87 @@
 
 install_software(){
   pre_install
+  printf "\nInstalling...\n"
   sudo apt-get update && \
   sudo apt-get install $new_software -y
   misc_software
 }
 
 pre_install(){
-  sudo apt-get update
-  sudo apt-get install -y curl
-  misc_repos
+  printf "\nPre-install...\n"
+  if not_installed curl; then
+    sudo apt-get update && \
+    sudo apt-get install curl -y
+  fi
   install_repositories
+  misc_repos
   get_software_list
 }
 
 misc_software(){
-  sudo dpkg -i $(directory)/misc/synergy.deb $(directory)/misc/xscreensaver.deb
-  bash $(directory)/misc/npm.sh
+  printf "\nInstalling miscellaneous software...\n"
+  install_npm_packages
+  
   case $software_type in 
-    "rpi")
-      printf "No raspi ruby yet...\n"
+    "desktop")
+      install_local_packages
+      install_ruby_gems
     ;;
-    *)
-      echo "gem: --no-document" >> ~/.gemrc
-      bash $(directory)/misc/ruby_gems.sh
+    "rpi")
+      printf "\nNo raspi ruby yet...\n"
+    ;;
+    "server")
+      install_ruby_gems
     ;;
   esac
+  
   sudo apt-get upgrade -y  
 }
 
 misc_repos(){
+  printf "\nInstalling miscellaneous repositories...\n"
   curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  
+  if not_installed yarn; then
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -  
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list      
+  fi
+  
   case $software_type in
     "rpi")
-      curl -sSL https://get.docker.com | sh
+      if not_installed docker-engine; then
+        curl -sSL https://get.docker.com | sh
+      fi
     ;;
     *)
-    # Key for docker
-      sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-      sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+      if not_installed docker-engine; then
+        sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+        sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+      fi
     ;;
   esac
-  
+}
+
+install_ruby_gems(){
+  echo "gem: --no-document" >> ~/.gemrc
+  bash $(directory)/misc/ruby_gems.sh  
+}
+
+install_npm_packages(){
+  bash $(directory)/misc/npm.sh
+}
+
+install_local_packages(){
+  sudo dpkg -i $(directory)/misc/synergy.deb $(directory)/misc/xscreensaver.deb
 }
 
 install_repositories(){
+  printf "\nInstalling repositories...\n"
   repositories=$(directory)/run/software_lists/${software_type}/repos.txt
   readarray repos < $repositories
     for repo in "${repos[@]}"; do
-      if chkarg $repo; then
+      if chkarg $repo && repo_not_installed $repo; then
         sudo apt-add-repository $repo -y
-        sleep 1
       fi
     done    
 }

@@ -5,3 +5,31 @@ chkarg(){
     return 1
   fi
 }
+
+not_installed(){
+  package=$(dpkg -s $1 | grep 'Status')
+  if [ -z "${package}"  ]
+    then
+      printf "${1} is not installed...\ninstalling...\n\n"
+      sleep 1
+      return 0
+    else
+      printf "${1} is installed...\nskipping...\n\n" 
+      sleep 1
+      return 1 
+  fi
+}
+
+repo_not_installed(){
+  IFS=":" read -a repo_name <<< "$1"
+  if ! grep -q "${repo_name[1]}" /etc/apt/sources.list /etc/apt/sources.list.d/*
+    then
+      printf "${1} is not installed...\ninstalling...\n\n"  
+      sleep 1
+      return 0
+    else 
+      printf "${1} is installed...\nskipping...\n\n"
+      sleep 1
+      return 1
+  fi
+}
