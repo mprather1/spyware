@@ -63,19 +63,6 @@ misc_repos(){
   esac
 }
 
-install_ruby_gems(){
-  echo "gem: --no-document" >> ~/.gemrc
-  bash $(directory)/misc/ruby_gems.sh  
-}
-
-install_npm_packages(){
-  bash $(directory)/misc/npm.sh
-}
-
-install_local_packages(){
-  sudo dpkg -i $(directory)/misc/synergy.deb $(directory)/misc/xscreensaver.deb
-}
-
 install_repositories(){
   printf "\nInstalling repositories...\n"
   repositories=$(directory)/run/software_lists/${software_type}/repos.txt
@@ -93,4 +80,17 @@ get_software_list(){
     for software in "${software_list[@]}"; do
       new_software+="${software}"
     done    
+}
+
+install_local_packages(){
+  sudo dpkg -i $(directory)/misc/synergy.deb $(directory)/misc/xscreensaver.deb
+}
+
+install_ruby_gems(){
+  echo "gem: --no-document" >> ~/.gemrc
+  bash $(directory)/misc/ruby_gems.sh  
+}
+
+install_npm_packages(){
+  bash $(directory)/misc/npm.sh
 }

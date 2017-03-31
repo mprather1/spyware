@@ -42,9 +42,9 @@ esac
 
 echo "
 Software installation..."
-echo "1.) Desktop"
-echo "2.) Server"
-echo "3.) Raspberry Pi"
+echo "1.) XUbuntu 16.04"
+echo "2.) Ubuntu Server 16.04"
+echo "3.) Raspbian"
 echo "*.) Skip"
 read -p "${prompt}" update_software
 case $update_software in
@@ -66,7 +66,6 @@ case $update_software in
 esac
 
 if chkarg $software_type; then
-  get_software_list
   install_software
   echo "Done!!"
 fi
