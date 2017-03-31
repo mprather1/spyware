@@ -19,6 +19,25 @@ pre_install(){
   get_software_list
 }
 
+install_repositories(){
+  printf "\nInstalling repositories...\n"
+  repositories=$(directory)/run/software_lists/${software_type}/repos.txt
+  readarray repos < $repositories
+    for repo in "${repos[@]}"; do
+      if chkarg $repo && repo_not_installed $repo; then
+        sudo apt-add-repository $repo -y
+      fi
+    done    
+}
+
+get_software_list(){
+  software=$(directory)/run/software_lists/${software_type}/software.txt
+  readarray software_list < $software
+    for software in "${software_list[@]}"; do
+      new_software+="${software}"
+    done    
+}
+
 misc_software(){
   printf "\nInstalling miscellaneous software...\n"
   install_npm_packages
@@ -41,6 +60,7 @@ misc_software(){
 
 misc_repos(){
   printf "\nInstalling miscellaneous repositories...\n"
+  # Node
   curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
   
   if not_installed yarn; then
@@ -55,31 +75,24 @@ misc_repos(){
       fi
     ;;
     *)
-      if not_installed docker-engine; then
-        sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-        sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
-      fi
+      install_docker
     ;;
   esac
 }
 
-install_repositories(){
-  printf "\nInstalling repositories...\n"
-  repositories=$(directory)/run/software_lists/${software_type}/repos.txt
-  readarray repos < $repositories
-    for repo in "${repos[@]}"; do
-      if chkarg $repo && repo_not_installed $repo; then
-        sudo apt-add-repository $repo -y
-      fi
-    done    
-}
-
-get_software_list(){
-  software=$(directory)/run/software_lists/${software_type}/software.txt
-  readarray software_list < $software
-    for software in "${software_list[@]}"; do
-      new_software+="${software}"
-    done    
+install_docker(){
+  if not_installed docker-engine; then
+    sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+    sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+  fi
+  
+  if [ -d /usr/local/bin ] && [ ! -f /usr/local/bin/docker-compose ]; then
+    mkdir tmp
+     curl -L https://github.com/docker/compose/releases/download/1.12.0-rc2/docker-compose-`uname -s`-`uname -m` > tmp/docker-compose
+    sudo cp tmp/* /usr/local/bin/ && \
+    sudo  chmod +x /usr/local/bin/docker-compose && \
+    rm -rv tmp
+  fi
 }
 
 install_local_packages(){
