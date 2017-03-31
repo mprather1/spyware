@@ -14,4 +14,11 @@ chmod +x /usr/local/bin/docker-compose
 # user docker without sudo 
 sudo usermod -aG docker $(whoami)
 
-# start docker daemon
+# check if docker is running
+sudo systemctl status docker
+
+# start docker if necessary
+sudo systemctl start docker 
+
+# restart 
+sudo systemctl restart docker
