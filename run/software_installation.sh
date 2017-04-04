@@ -40,7 +40,9 @@ get_software_list(){
 
 misc_software(){
   printf "\nInstalling miscellaneous software...\n"
+
   install_npm_packages
+  git clone https://github.com/mprather1/ssh_tool.git bin/ssh_tool
   
   case $software_type in 
     "desktop")
