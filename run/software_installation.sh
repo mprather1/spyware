@@ -89,6 +89,8 @@ install_docker(){
   fi
   
   if [ -d /usr/local/bin ] && [ ! -f /usr/local/bin/docker-compose ]; then
+    printf "Installing Docker Compose..."
+    sleep 1
     mkdir tmp
      curl -L https://github.com/docker/compose/releases/download/1.12.0-rc2/docker-compose-`uname -s`-`uname -m` > tmp/docker-compose
     sudo cp tmp/* /usr/local/bin/ && \
