@@ -1,8 +1,8 @@
-cmatrix
+cmatrix 
 sl 
 lolcat 
 fortunes 
-fortunes-off
+fortunes-off 
 git 
 openssh-server 
 avahi-daemon 
