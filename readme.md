@@ -2,18 +2,18 @@
 
 ## Synopsis
 
-Installs useful software for either XUbuntu 15.10 or Ubuntu Server.
-Configures .bashrc with a greeting and colorful prompt.
-Configures .bash_aliases with useful shortcuts.
-Creates rsa key with email address appended to the end.
-Configures vim with useful plugins.
-Does not really install spyware.
+* Installs useful software for either XUbuntu 15.10 or Ubuntu Server.
+* Configures .bashrc with a greeting and colorful prompt.
+* Configures .bash_aliases with useful shortcuts.
+* Creates rsa key with email address appended to the end.
+* Configures vim with useful plugins.
+* Does not really install spyware.
 
 ## Installation
 
 Put spyware folder in desired location and open a terminal in the folder. 
 
-  bash install.sh
+    bash install.sh
   
 Leave the folder in the location where the installer was ran or it will break some of the aliases.
 If the folder needs to be moved then the installer can be ran again in the new location.
