@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
-case $software_type in 
-  "rpi")
-    node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.xz'
-  ;;
-  *)
-    node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-x64.tar.xz'
-  ;;
-esac
-
 install_software(){
+  
+  case $software_type in 
+    "rpi")
+      node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.xz'
+    ;;
+    *)
+      node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-x64.tar.xz'
+    ;;
+  esac
+  
   pre_install
   printf "\nInstalling...\n"
   sudo apt-get update && \
