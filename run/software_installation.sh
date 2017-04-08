@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+case $software_type in 
+  "rpi")
+    node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.xz'
+  ;;
+  *)
+    node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-x64.tar.xz'
+  ;;
+esac
+
 install_software(){
   pre_install
   printf "\nInstalling...\n"
@@ -14,6 +23,7 @@ pre_install(){
     sudo apt-get update && \
     sudo apt-get install curl -y
   fi
+  install_node
   install_repositories
   misc_repos
   get_software_list
@@ -41,8 +51,8 @@ get_software_list(){
 misc_software(){
   printf "\nInstalling miscellaneous software...\n"
 
-  install_npm_packages
   git clone https://github.com/mprather1/ssh_tool.git bin/ssh_tool
+  install_npm_packages
   
   case $software_type in 
     "desktop")
@@ -62,9 +72,7 @@ misc_software(){
 
 misc_repos(){
   printf "\nInstalling miscellaneous repositories...\n"
-  # Node
-  curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-  
+
   if not_installed yarn; then
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -  
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list      
@@ -110,4 +118,18 @@ install_ruby_gems(){
 
 install_npm_packages(){
   bash $(directory)/misc/npm.sh
+}
+
+install_node(){
+  if [ ! -f /usr/local/bin/node ]; then
+    strip_url="${node_version##*/}"
+    node_directory=${strip_url%.*.*}
+    mkdir temp
+    wget $node_version -O temp/node.tar.xz
+    tar -xvf temp/node.tar.xz -C temp/
+    sudo cp -R temp/$node_directory/* /usr/local/bin
+    rm -rvf temp
+  else
+    printf "\nnode is already installed\nskipping..."
+  fi
 }
