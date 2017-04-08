@@ -21,15 +21,15 @@ The installer can safely be ran anytime if autofs.config and bashrc.config exist
 
 ## Usage
 
-  gitnew <username> <repository> <message> # create and push a new git repository!!
-  cloned <username> <repository> # clone a git repository!!
-  gitp <message> # commit and tag to a git repository!!
-  gpush # to push git repository and tags!!
-  curlrails <argument> # access rails server at localhost:3000!!
-  shortcut <alias> '<command>' # create a shortcut!!
-  sshcopy <alias> <username> <hostname> # copy ssh keys and create shortcut!!
-  mountlocal <disk location> <mount point> <file system type> # mount a local hard disk!!
-  mountautofs <name for mount point> <username> <remote hostname> # automount a disk with sshfs!!!
-  createpsqluser <username>\ # create a postgresql user!!!
-  specific_directory <alias> <user@hostname> <directory> # create alias to ssh to specific directory!!
-  network_config <device> <ip address>\ # configure network device!!
+    gitnew <username> <repository> <message> # create and push a new git repository!!
+    cloned <username> <repository> # clone a git repository!!
+    gitp <message> # commit and tag to a git repository!!
+    gpush # to push git repository and tags!!
+    curlrails <argument> # access rails server at localhost:3000!!
+    shortcut <alias> '<command>' # create a shortcut!!
+    sshcopy <alias> <username> <hostname> # copy ssh keys and create shortcut!!
+    mountlocal <disk location> <mount point> <file system type> # mount a local hard disk!!
+    mountautofs <name for mount point> <username> <remote hostname> # automount a disk with sshfs!!!
+    createpsqluser <username>\ # create a postgresql user!!!
+    specific_directory <alias> <user@hostname> <directory> # create alias to ssh to specific directory!!
+    network_config <device> <ip address>\ # configure network device!!
