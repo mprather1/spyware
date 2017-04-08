@@ -128,7 +128,7 @@ install_node(){
     mkdir temp
     wget $node_version -O temp/node.tar.xz
     tar -xvf temp/node.tar.xz -C temp/
-    sudo cp -R temp/$node_directory/* /usr/local/bin
+    sudo cp -R temp/$node_directory/* /usr/local/
     rm -rvf temp
   else
     printf "\nnode is already installed\nskipping..."
