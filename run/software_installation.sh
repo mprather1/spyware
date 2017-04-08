@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
 install_software(){
-  
+  initialize
+  pre_install
+  printf "\nInstalling...\n"
+  sudo apt-get update && \
+  sudo apt-get install $new_software -y
+  misc_software
+}
+
+initialize(){
   case $software_type in 
     "rpi")
       node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.xz'
@@ -9,13 +17,7 @@ install_software(){
     *)
       node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-x64.tar.xz'
     ;;
-  esac
-  
-  pre_install
-  printf "\nInstalling...\n"
-  sudo apt-get update && \
-  sudo apt-get install $new_software -y
-  misc_software
+  esac  
 }
 
 pre_install(){
