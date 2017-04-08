@@ -28,7 +28,6 @@ pv
 toilet 
 rig 
 libaa-bin 
-nodejs 
 unzip 
 python-pip 
 nmap 

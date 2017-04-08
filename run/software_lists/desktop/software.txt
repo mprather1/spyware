@@ -64,7 +64,6 @@ nmap
 whois 
 atom 
 mplayer 
-nodejs 
 make 
 midori 
 tuxguitar-alsa 

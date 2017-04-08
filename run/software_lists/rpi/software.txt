@@ -39,7 +39,6 @@ nmap
 whois 
 make 
 libmysqlclient-dev 
-nodejs 
 redis-server 
 netdiscover 
 htop 
