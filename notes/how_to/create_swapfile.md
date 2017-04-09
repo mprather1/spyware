@@ -9,8 +9,14 @@
     free -m 
 
 ### Create swap file
+  
+* using fallocate
 
     sudo fallocate -l 4G /swapfile
+    
+* or using dd
+
+    sudo dd if=/dev/zero of=/swapfile bs=1G count=4    
 
 ### Enable swap file
 
@@ -22,3 +28,5 @@
 ### Edit /etc/fstab
 
     /swapfile   none    swap    sw    0   0
+    
+    
