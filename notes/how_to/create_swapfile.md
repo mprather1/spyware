@@ -1,22 +1,22 @@
 ### Check if swap is configured
 
-  sudo swapon -s 
+    sudo swapon -s 
 
 ### Check for memory
 
-  free -m 
+    free -m 
 
 ### Create swap file
 
-  sudo fallocate -l 4G /swapfile
+    sudo fallocate -l 4G /swapfile
 
 ### Enable swap file
 
-  sudo chmod 600 /swapfile
-  sudo mkswap /swapfile
-  sudo swapon /swapfile
-  
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
+    
   
 ### Edit /etc/fstab
 
-  /swapfile   none    swap    sw    0   0
+    /swapfile   none    swap    sw    0   0
