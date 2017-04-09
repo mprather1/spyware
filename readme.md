@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-* Installs useful software for either XUbuntu 15.10 or Ubuntu Server.
+* Installs useful software
 * Configures .bashrc with a greeting and colorful prompt.
 * Configures .bash_aliases with useful shortcuts.
 * Creates rsa key with email address appended to the end.
@@ -10,6 +10,10 @@
 * Does not really install spyware.
 
 ## Installation
+
+* XUbuntu 16.04
+* Ubuntu Server 16.04
+* Raspbian Jessie Lite
 
 Put spyware folder in desired location and open a terminal in the folder. 
 
