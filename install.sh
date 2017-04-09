@@ -65,6 +65,18 @@ case $update_software in
     ;;
 esac
 
+echo "
+Checking for .bash_aliases..."
+sleep 1
+if [ ! -f ~/.bash_aliases ]
+  then
+    echo "Creating .bash_aliases..."
+    create_bash_aliases
+  else
+    echo ".bash_aliases already exits..."
+    echo "skipping..."
+fi
+
 if chkarg $software_type; then
   install_software
   echo "Done!!"
@@ -80,18 +92,6 @@ if [ ! -f bashrc.config ]
     echo "Done!!"
   else
     echo ".bashrc configuration has already been run..."
-    echo "skipping..."
-fi
-
-echo "
-Checking for .bash_aliases..."
-sleep 1
-if [ ! -f ~/.bash_aliases ]
-  then
-    echo "Creating .bash_aliases..."
-    create_bash_aliases
-  else
-    echo ".bash_aliases already exits..."
     echo "skipping..."
 fi
 
