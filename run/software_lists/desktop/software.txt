@@ -99,3 +99,4 @@ numix-icon-theme-circle
 docker-engine 
 yarn 
 httpie 
+python3-pip 

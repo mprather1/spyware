@@ -54,3 +54,4 @@ cloc
 docker-engine 
 yarn 
 httpie 
+python3-pip 
