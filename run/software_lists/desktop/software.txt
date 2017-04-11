@@ -98,3 +98,4 @@ numix-icon-theme
 numix-icon-theme-circle 
 docker-engine 
 yarn 
+httpie 
