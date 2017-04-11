@@ -19,7 +19,7 @@ printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> data.sh
 source $(dirname $0)/data.sh;
 for f in $(directory)/run/*.sh; do source $f; done;
 
-touch ~/.hushlogin
+touch /home/$user/.hushlogin
 
 echo "Advanced or basic installation..."
 echo "1.) Basic"
@@ -68,7 +68,7 @@ esac
 echo "
 Checking for .bash_aliases..."
 sleep 1
-if [ ! -f ~/.bash_aliases ]
+if [ ! -f /home/$user/.bash_aliases ]
   then
     echo "Creating .bash_aliases..."
     create_bash_aliases
@@ -98,7 +98,7 @@ fi
 echo "
 Checking for vim configuration..."
 sleep 1
-if [ ! -f ~/.vimrc ]
+if [ ! -f /home/$user/.vimrc ]
   then
     echo "Vim configuration..."
     vim_config
@@ -111,7 +111,7 @@ fi
 echo "
 Checking for id_rsa..."
 sleep 1
-if [ ! -f ~/.ssh/id_rsa ]
+if [ ! -f /home/$user/.ssh/id_rsa ]
   then
     echo "
     id_rsa does not exist, creating..."

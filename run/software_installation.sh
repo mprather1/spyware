@@ -116,7 +116,7 @@ install_local_packages(){
 }
 
 install_ruby_gems(){
-  echo "gem: --no-document" >> ~/.gemrc
+  echo "gem: --no-document" >> /home/$user/.gemrc
   bash $(directory)/misc/ruby_gems.sh  
 }
 

@@ -6,5 +6,5 @@ ssh_config(){
   echo "Creating rsa key and adding to ssh agent..."
   ssh-keygen -t rsa -b 4096 -C "${email}"
   eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/id_rsa
+  ssh-add /home/$user/.ssh/id_rsa
 }

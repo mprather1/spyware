@@ -9,5 +9,5 @@ install_cloud9(){
   
   git clone git://github.com/c9/core.git /home/$user/c9sdk
   /home/$user/c9sdk/scripts/install-sdk.sh
-  printf "alias cloud9='pm2 start /home/$user/c9sdk/server.js -x -- -p 8080 -a : --listen 0.0.0.0 -w /home/$user/Development'\n" >> ~/.bash_aliases
+  printf "alias cloud9='pm2 start /home/$user/c9sdk/server.js -x -- -p 8080 -a : --listen 0.0.0.0 -w /home/$user/Development'\n" >> /home/$user/.bash_aliases
 }
