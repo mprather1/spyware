@@ -2,9 +2,9 @@
 
 #### List number of files in directory
 
-  ls | wc -l
-  ls *.xml | wc -l
+    ls | wc -l
+    ls *.xml | wc -l
   
 #### Find 
 
-  find . -type f -name filename
+    find . -type f -name filename
