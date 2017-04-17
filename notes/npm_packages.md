@@ -1,6 +1,6 @@
 ## Useful npm packages
 
-rebirth, retry, got, ms, msgpack-lite, cron, pify, promise-limit
+rebirth, retry, got, ms, msgpack-lite, cron, pify, promise-limit, recaller
 
 #### Cheerio
 
