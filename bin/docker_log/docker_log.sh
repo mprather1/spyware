@@ -11,6 +11,6 @@ docker_log(){
       sleep 5
     done
   else
-    printf "Input Error...\n\"docker_log <container>"
+    printf "Input Error...\n\"docker_log <container>\"\n"
   fi
 }
