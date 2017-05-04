@@ -2,7 +2,7 @@
 source $(dirname $0)/../../data.sh
 
 docker_log(){
-  if chkarg $2; then
+  if chkarg $1; then
     while true; do
       docker logs --tail=50 -f $1
       echo --------
