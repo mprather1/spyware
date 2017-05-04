@@ -57,6 +57,7 @@ misc_software(){
   git clone https://github.com/mprather1/ssh_tool.git bin/ssh_tool
   install_npm_packages
   install_cloud9
+  sudo usermod -aG docker $(whoami)
   
   case $software_type in 
     "desktop")
