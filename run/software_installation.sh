@@ -7,9 +7,11 @@ install_software(){
   sudo apt-get update && \
   sudo apt-get install $new_software -y
   misc_software
+  cleanup
 }
 
 initialize(){
+  mkdir tmp
   case $software_type in 
     "rpi")
       node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.xz'
@@ -63,6 +65,7 @@ misc_software(){
     "desktop")
       install_local_packages
       install_ruby_gems
+      install_postman
     ;;
     "rpi")
       printf "\nNo raspi ruby yet...\n"
@@ -104,11 +107,9 @@ install_docker(){
   if [ -d /usr/local/bin ] && [ ! -f /usr/local/bin/docker-compose ]; then
     printf "Installing Docker Compose..."
     sleep 1
-    mkdir tmp
      curl -L https://github.com/docker/compose/releases/download/1.12.0-rc2/docker-compose-`uname -s`-`uname -m` > tmp/docker-compose
     sudo cp tmp/* /usr/local/bin/ && \
-    sudo  chmod +x /usr/local/bin/docker-compose && \
-    rm -rv tmp
+    sudo  chmod +x /usr/local/bin/docker-compose
   fi
 }
 
@@ -125,6 +126,14 @@ install_npm_packages(){
   bash $(directory)/misc/npm.sh
 }
 
+install_postman(){
+  wget -O tmp/postman.tar.gz https://dl.pstmn.io/download/latest/linux64 && \
+  tar -xvf tmp/postman.tar.gz -C $HOME && \
+  
+  chmod +x $(directory)/misc/postman && \
+  sudo cp $(directory)/misc/postman /usr/local/bin
+}
+
 install_node(){
   if [ ! -f /usr/local/bin/node ]; then
     strip_url="${node_version##*/}"
@@ -137,4 +146,9 @@ install_node(){
   else
     printf "\nnode is already installed\nskipping..."
   fi
+}
+
+cleanup(){
+  printf "finished installing ->\ncleaning up..."
+  rm -rv tmp
 }
