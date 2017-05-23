@@ -8,3 +8,7 @@
 #### Find 
 
     find . -type f -name filename
+    
+#### rbind
+
+    sudo mount --rbind /media/ /home/mike/storage
