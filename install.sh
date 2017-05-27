@@ -21,25 +21,6 @@ for f in $(directory)/run/*.sh; do source $f; done;
 
 touch /home/$user/.hushlogin
 
-echo "Advanced or basic installation..."
-echo "1.) Basic"
-echo "2.) Advanced"
-read -p $prompt basic
-case $basic in
-  "1")
-    echo "You have chosen basic installation..."
-    installation_type=basic
-    ;;
-  "2")
-    echo "You have chosen advanced installation..."
-    installation_type=advanced
-    ;;
-  *)
-    printf "Error: no installation type selected...\nChoosing default: Advanced...\n"
-    installation_type=advanced
-    ;;
-esac
-
 echo "
 Software installation..."
 echo "1.) XUbuntu 16.04"
