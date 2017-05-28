@@ -15,4 +15,13 @@ install_spyware(){
     touch /home/$user/.gtkrc-2.0
     cat $(directory)/gtkrc.txt > /home/$user/.gtkrc-2.0
   fi
+  
+  printf "\n"
+  if [ -f /usr/bin/pv ]
+    then
+      echo "..........................." | pv -qL 15
+      printf "\nSpyware has been successfully installed..."
+    else
+      echo "Spyware has been successfully installed..."
+  fi  
 }

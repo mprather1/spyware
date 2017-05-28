@@ -48,26 +48,12 @@ esac
 
 ssh_config
 create_bash_aliases
-
-if chkarg $software_type; then
-  install_software
-  echo "Done!!"
-fi
-
+install_software
 bashrc_config
 vim_config
 autofs_config
 mouse_config
 install_spyware
-
-printf "\n"
-if [ -f /usr/bin/pv ]
-  then
-    echo "..........................." | pv -qL 15
-    printf "\nSpyware has been successfully installed..."
-  else
-    echo "Spyware has been successfully installed..."
-fi
 
 echo "
 You must leave this file in the location where you ran the installer or face the consequences!!"

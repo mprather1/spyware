@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
 install_software(){
-  initialize
-  pre_install
-  printf "\nInstalling...\n"
-  sudo apt-get update && \
-  sudo apt-get install $new_software -y
-  misc_software
-  cleanup
+  if chkarg $software_type; then
+    initialize
+    pre_install
+    printf "\nInstalling...\n"
+    sudo apt-get update && \
+    sudo apt-get install $new_software -y
+    misc_software
+    cleanup
+    echo "All Done!!"
+  fi
 }
 
 initialize(){
