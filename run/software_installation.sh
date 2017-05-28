@@ -55,8 +55,8 @@ get_software_list(){
 
 misc_software(){
   printf "\nInstalling miscellaneous software...\n"
-
-  git clone https://github.com/mprather1/ssh_tool.git bin/ssh_tool
+  
+  git_repositories
   install_npm_packages
   install_cloud9
   sudo usermod -aG docker $(whoami)
@@ -146,6 +146,10 @@ install_node(){
   else
     printf "\nnode is already installed\nskipping..."
   fi
+}
+
+git_repositories(){
+  git clone https://github.com/mprather1/ssh_tool.git bin/ssh_tool
 }
 
 cleanup(){
