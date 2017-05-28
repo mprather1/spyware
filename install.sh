@@ -46,87 +46,20 @@ case $update_software in
     ;;
 esac
 
-echo "
-Checking for .bash_aliases..."
-sleep 1
-if [ ! -f /home/$user/.bash_aliases ]
-  then
-    echo "Creating .bash_aliases..."
-    create_bash_aliases
-  else
-    echo ".bash_aliases already exits..."
-    echo "skipping..."
-fi
+ssh_config
+create_bash_aliases
 
 if chkarg $software_type; then
   install_software
   echo "Done!!"
 fi
 
-echo "
-Checking for .bashrc configuration..."
-sleep 1
-if [ ! -f bashrc.config ]
-  then
-    echo ".bashrc file configuration..."
-    bashrc_config
-    echo "Done!!"
-  else
-    echo ".bashrc configuration has already been run..."
-    echo "skipping..."
-fi
-
-echo "
-Checking for vim configuration..."
-sleep 1
-if [ ! -f /home/$user/.vimrc ]
-  then
-    echo "Vim configuration..."
-    vim_config
-    echo "Done!!"
-  else
-    echo "vim is already configured..."
-    echo "skipping..."
-fi
-
-echo "
-Checking for id_rsa..."
-sleep 1
-if [ ! -f /home/$user/.ssh/id_rsa ]
-  then
-    echo "
-    id_rsa does not exist, creating..."
-    ssh_config
-    echo "Done!!"
-  else
-    echo "id_rsa already exists..."
-    echo "skipping..."
-fi
-
-echo "
-Checking for autofs..."
-sleep 1
-if [ -f /etc/auto.master ] && [ ! -f autofs.config ]
-  then
-    echo "Configuring autofs for sshfs..."
-    autofs_config
-  else
-    echo "skipping..."
-fi
-
-echo "
-Mouse configuration..."
-echo "Checking for xinput..."
-sleep 1
-if [ -f /usr/bin/xinput ]; then
-    mouse_config
-else
-  echo "xinput not found skipping..."
-fi
-
-echo "
-Installing Spyware..."
+bashrc_config
+vim_config
+autofs_config
+mouse_config
 install_spyware
+
 printf "\n"
 if [ -f /usr/bin/pv ]
   then
