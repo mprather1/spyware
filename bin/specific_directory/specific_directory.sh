@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $(dirname $0)/../../data.sh
+source $(dirname $0)/../../utilities.sh
 
 specific_directory(){
   if chkarg $3; then

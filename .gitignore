@@ -1,6 +1,6 @@
 /autofs.config
 /bashrc.config
-/data.sh
+/utilities.sh
 /test.sh
 /bin/ssh_tool
 /temp

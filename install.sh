@@ -13,10 +13,10 @@ echo "${dist}..."
 echo "Press any key to continue..."
 read -n 1
 
-touch data.sh
-cat data.txt > data.sh
-printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> data.sh
-source $(dirname $0)/data.sh;
+touch utilities.sh
+cat utilities.txt > utilities.sh
+printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> utilities.sh
+source $(dirname $0)/utilities.sh;
 for f in $(directory)/run/*.sh; do source $f; done;
 
 touch /home/$user/.hushlogin

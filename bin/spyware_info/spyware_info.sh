@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $(dirname $0)/../../data.sh
+source $(dirname $0)/../../utilities.sh
 
 spyware_info(){
   echo "Type \"gitnew <username> <repository> <message>\" to create and push a new git repository!!"

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $(dirname $0)/../../data.sh
-for f in $(directory)/bin/*/*.sh; do source $f; done;
+source $(dirname $0)/../../utilities.sh
+source $(directory)/bin/new_user/new_user.sh
 
 new_user $1
