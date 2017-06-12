@@ -46,6 +46,12 @@ case $update_software in
     ;;
 esac
 
+printf "\nUsername and password for cloud9...\n"
+echo "Enter new username..."
+read -p "${prompt}" c9Username
+echo "Enter new password..."
+read -p "${prompt}" c9Password
+
 ssh_config
 create_bash_aliases
 install_software
