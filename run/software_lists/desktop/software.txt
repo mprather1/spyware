@@ -101,3 +101,4 @@ yarn
 httpie 
 python3-pip 
 gpick 
+ansible 
