@@ -102,3 +102,4 @@ httpie
 python3-pip 
 gpick 
 ansible 
+nginx-full 

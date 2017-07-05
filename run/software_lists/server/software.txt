@@ -56,3 +56,4 @@ yarn
 httpie 
 python3-pip 
 ansible 
+nginx-full 
