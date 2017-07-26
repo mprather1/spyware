@@ -10,8 +10,6 @@ create_bash_aliases(){
       touch /home/$user/.bash_aliases
       cat $(directory)/aliases.txt > /home/$user/.bash_aliases
     
-      printf "alias spyware_update='cd $(directory) && git pull origin master'\n" >> /home/$user/.bash_aliases
-    
       scripts=($(directory)/scripts/*/*.sh)
       for script in "${scripts[@]}"; do
         filename="/${script#*/}"
