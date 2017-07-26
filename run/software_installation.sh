@@ -152,8 +152,14 @@ install_node(){
 }
 
 git_repositories(){
-  git clone https://github.com/mprather1/ssh_tool.git bin/ssh_tool
-  git clone https://github.com/mprather1/random-ps1.git run/random-ps1
+  printf "\nInstalling system repositories from git...\n"
+  repositories=$(directory)/run/git/repos.txt
+  readarray repos < $repositories
+    for repo in "${repos[@]}"; do
+      if chkarg $repo; then
+        git clone $repo 
+      fi
+    done    
 }
 
 cleanup(){
