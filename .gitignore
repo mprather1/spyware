@@ -3,5 +3,6 @@
 /utilities.sh
 /test.sh
 /bin/ssh_tool
+/run/random-ps1
 /temp
-/test.sh
+/test*

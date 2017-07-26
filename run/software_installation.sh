@@ -153,6 +153,7 @@ install_node(){
 
 git_repositories(){
   git clone https://github.com/mprather1/ssh_tool.git bin/ssh_tool
+  git clone https://github.com/mprather1/random-ps1.git run/random-ps1
 }
 
 cleanup(){

@@ -60,8 +60,4 @@ brown="\[\033[00;33m\]"
 yellow="\[\033[01;33m\]"
 white="\[\033[00;37m\]"
 
-#Replace PS1 Line
-PS1="${debian_chroot:+($debian_chroot)}$dark_purple\u$cyan@$light_purple\h\n$cyan\w$green\$(parse_git_branch)$red >$yellow>$green>$white "
-
-
 #################################################################
