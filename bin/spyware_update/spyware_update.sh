@@ -10,7 +10,17 @@ spyware_update(){
     echo 'updating misc git repos....'
     for repo in "${repos[@]}"; do
       if chkarg $repo; then
-        git -C $(directory)/$(echo $repo | cut -d' ' -f2-) pull origin master
+        dir=$(directory)/$(echo $repo | cut -d' ' -f2-)
+        if [ ! -d $dir ]
+          then
+            echo "cloning repo: ${repo%.*}"
+            git -C  $(dirname $dir) clone "${repo%.*}"
+            echo "Done!!"
+          else
+            echo "updating repo: ${repo%.*}"
+            git -C $dir pull origin master
+            echo "Done!!"
+        fi
       fi
     done
 }

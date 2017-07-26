@@ -4,7 +4,7 @@ bashrc_config(){
   echo "
   Checking for .bashrc configuration..."
   sleep 1
-  if [  -f bashrc.config ]
+  if [ ! -f bashrc.config ]
     then
       echo ".bashrc file configuration..."
       ROOT_DIR=$(directory) HOME_DIR=$HOME node $(directory)/run/random-ps1/index.js && \
