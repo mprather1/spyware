@@ -13,16 +13,25 @@ echo "${dist}..."
 echo "Press any key to continue..."
 read -n 1
 
+touch /home/$user/.hushlogin
 touch utilities.sh
 cat utilities.txt > utilities.sh
 printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> utilities.sh
 source $(dirname $0)/utilities.sh;
+source $(directory)/bin/git/git_update.sh
+
+printf "Updating spyware...\n"
+git_update
+
 for f in $(directory)/run/*.sh; do source $f; done;
 
-touch /home/$user/.hushlogin
+printf "\nEnter new username and password...\n"
+echo "Enter username..."
+read -p "${prompt}" c9Username
+echo "Enter password..."
+read -s -p "${prompt}" c9Password
 
-echo "
-Software installation..."
+printf "\n\nSoftware installation...\nChoose one:\n"
 echo "1.) XUbuntu 16.04"
 echo "2.) Ubuntu Server 16.04"
 echo "3.) Raspbian"
@@ -46,12 +55,6 @@ case $update_software in
     ;;
 esac
 
-printf "\nUsername and password for cloud9...\n"
-echo "Enter new username..."
-read -p "${prompt}" c9Username
-echo "Enter new password..."
-read -p "${prompt}" c9Password
-
 ssh_config
 create_bash_aliases
 install_software
@@ -61,8 +64,7 @@ autofs_config
 mouse_config
 install_spyware
 
-echo "
-You must leave this file in the location where you ran the installer or face the consequences!!"
+printf "\nYou must leave this file in the location where you ran the installer or face the consequences!!"
 echo "Type 'spyware' for a list of commands!!"
 echo "
 Please restart shell and networking for changes to take effect..."

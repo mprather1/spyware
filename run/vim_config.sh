@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 vim_config(){
-  echo "
-  Checking for vim configuration..."
+  printf "\nChecking for vim configuration...\n"
   sleep 1
   if [ ! -f /home/$user/.vimrc ]
     then

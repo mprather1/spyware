@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 install_cloud9(){
+  printf "\nInstalling cloud9...\n"
   user=$(whoami)
   
   if [ ! -d /home/$user/Development ]; then

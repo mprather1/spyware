@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 bashrc_config(){
-  echo "
-  Checking for .bashrc configuration..."
+  printf "\nChecking for .bashrc configuration...\n"
   sleep 1
   if [ ! -f bashrc.config ]
     then

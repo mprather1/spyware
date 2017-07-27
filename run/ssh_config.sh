@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 ssh_config(){
-  echo "
-  Checking for id_rsa..."
+  printf "\nChecking for id_rsa...\n"
   sleep 1
   if [ ! -f /home/$user/.ssh/id_rsa ]
     then

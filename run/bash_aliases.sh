@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 create_bash_aliases(){
-  echo "
-  Checking for .bash_aliases..."
+  printf "\nChecking for .bash_aliases...\n"
   sleep 1
   if [ ! -f /home/$user/.bash_aliases ]
     then

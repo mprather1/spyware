@@ -151,17 +151,6 @@ install_node(){
   fi
 }
 
-git_repositories(){
-  printf "\nInstalling system repositories from git...\n"
-  repositories=$(directory)/run/git/repos.txt
-  readarray repos < $repositories
-    for repo in "${repos[@]}"; do
-      if chkarg $repo; then
-        git clone $repo 
-      fi
-    done    
-}
-
 cleanup(){
   printf "finished installing ->\ncleaning up..."
   rm -rv tmp

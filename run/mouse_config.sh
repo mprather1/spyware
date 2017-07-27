@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 mouse_config(){
-  echo "
-  Mouse configuration..."
+  printf "\nMouse configuration...\n"
   echo "Checking for xinput..."
   sleep 1
   if [ -f /usr/bin/xinput ]; then
