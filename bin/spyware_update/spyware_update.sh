@@ -4,7 +4,7 @@ source $(directory)/bin/git/git_update.sh
 
 spyware_update(){
   printf 'updating master git repo...\n'
-  git -C $(directory) pull --quiet origin master && \
+  git -C $(directory) pull origin master && \
 
   git_update
 }
