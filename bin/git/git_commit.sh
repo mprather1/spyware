@@ -8,7 +8,7 @@ git_commit(){
     then 
       standard && git add -A && git commit -m "${1}" && git tag $2
     else 
-      git add -A && update-version $2 && git commit -m "${1}" && git tag $2
+      update-version $2 && git add -A && git commit -m "${1}" && git tag $2
   fi
   
   printf "\nAll Done!!!\n"
