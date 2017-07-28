@@ -14,6 +14,7 @@ echo "Press any key to continue..."
 read -n 1
 
 touch /home/$user/.hushlogin
+mkdir config
 touch utilities.sh
 cat utilities.txt > utilities.sh
 printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> utilities.sh
@@ -25,11 +26,7 @@ git_update
 
 for f in $(directory)/run/*.sh; do source $f; done;
 
-printf "\nEnter new username and password...\n"
-echo "Enter username..."
-read -p "${prompt}" c9Username
-echo "Enter password..."
-read -s -p "${prompt}" c9Password
+create_user
 
 printf "\n\nSoftware installation...\nChoose one:\n"
 echo "1.) XUbuntu 16.04"
