@@ -4,6 +4,7 @@
 /test.sh
 /bin/ssh_tool
 /run/random-ps1
+/run/bcrypt
 /temp
 /test*
-/config/*
+/data/*

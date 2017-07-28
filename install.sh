@@ -14,11 +14,19 @@ echo "Press any key to continue..."
 read -n 1
 
 touch /home/$user/.hushlogin
-mkdir config
+
+if [ ! -d data ]; then
+  mkdir data
+fi
+
+if [ ! $(stat data/users.json) ]; then
+  cp default_user.json data/users.json
+fi
+
 touch utilities.sh
 cat utilities.txt > utilities.sh
 printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> utilities.sh
-source $(dirname $0)/utilities.sh;
+source $(dirname $0)/utilities.sh
 source $(directory)/bin/git/git_update.sh
 
 printf "Updating spyware...\n"

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+source $(directory)/run/bcrypt/script.sh
 
 create_user(){
   printf "\nCreate user...\n"
@@ -22,11 +23,14 @@ create_user(){
     printf "\nEnter password again...\n"
     read -s -p "${prompt}" password2  
     
-    echo "${password} ${password2}"
     if [ -n "$password" ] && [ -n "$password2" ]; then
       if [ $password = $password2 ]; then
+        encrypted_password=$(get_encrypted_password $password)
         c9Password=$password
-        printf "[{\"username\": \"${c9Username}\", \"password\": \"${c9Password}\"}]" > $(directory)/config/$c9Username.json
+        touch $(directory)/data/users.json
+        sed -i '$ d' $(directory)/data/users.json && \
+        sed -i '${s/$/,/}' $(directory)/data/users.json && \
+        printf "  {\"username\": \"${c9Username}\", \"password\": \"${encrypted_password}\"}\n]" >> $(directory)/data/users.json
         i=0
       else
         printf "\nError...\nPasswords do not match...\n"
