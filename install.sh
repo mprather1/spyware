@@ -19,7 +19,7 @@ if [ ! -d data ]; then
   mkdir data
 fi
 
-if [ ! $(stat data/users.json) ]; then
+if [ ! -f data/users.json ]; then
   cp default_user.json data/users.json
 fi
 
@@ -69,7 +69,7 @@ autofs_config
 mouse_config
 install_spyware
 
-printf "\nYou must leave this file in the location where you ran the installer or face the consequences!!"
+printf "\nYou must leave this file in the location where you ran the installer or face the consequences!!\n"
 echo "Type 'spyware' for a list of commands!!"
 echo "
 Please restart shell and networking for changes to take effect..."
