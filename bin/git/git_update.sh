@@ -26,8 +26,8 @@ git_update(){
 }
 
 add_to_path(){
-  bash $(pwd)${directory}/bin/update-version/create.sh
+  /usr/bin/env bash $(directory)/bin/update-version/create.sh
   cp $(directory)/bin/update-version/update-version.default $(directory)/bin/update-version/update-version
-  printf "\n/usr/bin/env bash $(pwd)${directory}/bin/update-version/script.sh \$(pwd) \$1" >> $(directory)/bin/update-version/update-version
+  printf "\n/usr/bin/env bash $(directory)/bin/update-version/script.sh \$(pwd) \$1" >> $(directory)/bin/update-version/update-version
   sudo cp $(directory)/bin/update-version/update-version /usr/local/bin/update-version
 }
