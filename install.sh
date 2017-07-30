@@ -28,11 +28,13 @@ cat utilities.txt > utilities.sh
 printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> utilities.sh
 source $(dirname $0)/utilities.sh
 source $(directory)/bin/git/git_update.sh
-
-printf "Updating spyware...\n"
-git_update
-
 for f in $(directory)/run/*.sh; do source $f; done;
+
+printf "Downloading installer...\n"
+get_installer
+
+printf "\nUpdating spyware...\n"
+git_update
 
 create_user
 
@@ -59,7 +61,6 @@ case $update_software in
     echo "skipping..."
     ;;
 esac
-
 ssh_config
 create_bash_aliases
 install_software

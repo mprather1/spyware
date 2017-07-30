@@ -9,3 +9,4 @@
 /test*
 /data/*
 /bin/update-version
+/bin/installer
