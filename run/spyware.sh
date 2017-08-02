@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 install_spyware(){
-  printf "\n$(random_color)Installing Spyware...${NC}\n"
+  printf "\n$(random_color)Installing Spyware${NC}...\n"
 
   if [ ! -f $(directory)/.tmux.conf ]; then
     cat $(directory)/tmux.conf.txt > /home/$user/.tmux.conf
