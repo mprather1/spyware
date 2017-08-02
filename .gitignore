@@ -14,3 +14,4 @@
 /home
 /lib
 .npmrc
+*bcrypt-script

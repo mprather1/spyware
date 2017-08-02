@@ -75,10 +75,5 @@ autofs_config
 mouse_config
 install_spyware
 
-printf "\nYou must leave this file in the location where you ran the installer or face the consequences!!\n"
-echo "Type 'spyware' for a list of commands!!"
-echo "
-Please restart shell and networking for changes to take effect..."
-printf "Press any key to exit...\n"
 printf "\n$(random_color)........................................................................................${NC}\n"
 read -n 1
