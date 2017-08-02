@@ -4,7 +4,7 @@ source $(directory)/bin/git/git_update.sh
 source $(directory)/run/get_installer.sh
 
 spyware_update(){
-  printf "$(random_color)updating master git repo...\n"
+  printf "$(random_color)updating master git repo${NC}...\n"
   git -C $(directory) pull origin master && \
 
   git_update
