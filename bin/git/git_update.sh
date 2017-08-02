@@ -12,6 +12,7 @@ git_update(){
           then
             printf "cloning ${repo##*/}\n"
             git -C $(dirname $dir) clone --quiet ${repo%.*}
+            npm --prefix ./$dir install $dir
           else
             printf "updating ${repo##*/}\n"
             git -C $dir pull --quiet origin master

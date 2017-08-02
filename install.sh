@@ -30,9 +30,6 @@ source $(dirname $0)/utilities.sh
 source $(directory)/bin/git/git_update.sh
 for f in $(directory)/run/*.sh; do source $f; done;
 
-printf "Downloading installer...\n"
-get_installer
-
 printf "\nUpdating spyware...\n"
 git_update
 
@@ -61,9 +58,12 @@ case $update_software in
     echo "skipping..."
     ;;
 esac
+
 ssh_config
 create_bash_aliases
 install_software
+get_installer  
+install_scripts
 bashrc_config
 vim_config
 autofs_config

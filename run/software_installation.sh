@@ -58,8 +58,6 @@ get_software_list(){
 
 misc_software(){
   printf "\nInstalling miscellaneous software...\n"
-  
-  git_repositories
   install_npm_packages
   install_cloud9
   sudo usermod -aG docker $(whoami)

@@ -9,4 +9,5 @@
 /test*
 /data/*
 /bin/update-version
-/bin/installer
+/run/installer
+/node_modules

@@ -13,7 +13,6 @@ alias killswitch='rake db:migrate VERSION=0 && rake db:migrate && rake db:seed'
 alias killswitchd='bundle exec rake db:migrate VERSION=0 && bundle exec rake db:migrate && bundle exec rake db:seed'
 alias star_wars='telnet towel.blinkenlights.nl'
 
-alias gits='ls && git status'
 alias pulld='git pull origin master'
 alias gay='toilet -f mono12 -F gay'
 alias dicks='yes dicks | espeak'
