@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $(directory)/run/bcrypt-script/script.sh
+# source $(directory)/run/bcrypt-script/script.sh
 
 create_user(){
   printf "\nCreate user...\n"
@@ -26,7 +26,7 @@ create_user(){
     if [ -n "$password" ] && [ -n "$password2" ]; then
       if [ $password = $password2 ]; then
         c9Password=$password
-        get_encrypted_password $c9Username $password $(directory)/data/users.json
+        # get_encrypted_password $c9Username $password $(directory)/data/users.json
         i=0
       else
         printf "\nError...\nPasswords do not match...\n"

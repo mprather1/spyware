@@ -40,7 +40,7 @@ install_js(){
         then
           printf "cloning ${repo##*/}\n"
           git -C $(dirname $dir) clone --quiet ${repo%.*}
-          npm --prefix ./$dir install $dir
+          npm --prefix $(directory)/lib/${repo##*/} install $(directory)/lib/${repo##*/}
           installer $dir/package.json
         else
           printf "updating ${repo##*/}\n"
