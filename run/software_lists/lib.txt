@@ -1,0 +1,2 @@
+https://github.com/shintech/git-status.git /lib/git-status
+https://github.com/shintech/npm-updater.git /lib/npm-updater

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 get_installer(){
+  printf "\nGetting installer...\n"
+  
   dir=$(directory)/run/installer
   if [ ! -d $HOME/opt/bin ]; then
     mkdir -p $HOME/opt/bin
@@ -15,8 +17,34 @@ get_installer(){
 }
 
 install_scripts(){
+  printf "Installing scripts...\n"
+  
   scripts=($(directory)/scripts/*/*.sh)
   for script in "${scripts[@]}"; do
     installer $script
   done  
+}
+
+install_js(){
+  printf "\nInstalling js...\n"
+
+  if [ ! -d $(directory)/lib ]; then
+    mkdir -p $(directory)/lib
+  fi
+  
+  repositories=$(directory)/run/software_lists/lib.txt
+  readarray repos < $repositories
+    for repo in "${repos[@]}"; do
+      dir=$(directory)$(echo $repo | cut -d' ' -f2-)
+      if [ ! -d $dir ] 
+        then
+          printf "cloning ${repo##*/}\n"
+          git -C $(dirname $dir) clone --quiet ${repo%.*}
+          npm --prefix ./$dir install $dir
+          installer $dir/package.json
+        else
+          printf "updating ${repo##*/}\n"
+          git -C $dir pull --quiet origin master
+      fi
+    done  
 }

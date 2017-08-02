@@ -11,3 +11,6 @@
 /bin/update-version
 /run/installer
 /node_modules
+/home
+/lib
+.npmrc

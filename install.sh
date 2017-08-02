@@ -64,6 +64,7 @@ create_bash_aliases
 install_software
 get_installer  
 install_scripts
+install_js
 bashrc_config
 vim_config
 autofs_config
