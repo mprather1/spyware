@@ -3,10 +3,10 @@
 bashrc_config(){
   printf "\nChecking for .bashrc configuration...\n"
   sleep 1
-  if [ ! -f bashrc.config ]
+  if [ ! -f $(directory)/bashrc.config ]
     then
       echo ".bashrc file configuration..."
-      ROOT_DIR=$(directory) HOME_DIR=$HOME node $(directory)/run/random-ps1/index.js && \
+      HOME=$HOME node $(directory)/run/random-ps1/index.js $(pwd) $1 && \
       touch $(directory)/bashrc.config && \
       echo "Done!!"
     else
