@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 install_cloud9(){
-  printf "\nInstalling cloud9...\n"
+  printf "\n$(random_color)Installing cloud9${NC}...\n"
   user=$(whoami)
   
   if [ ! -d /home/$user/Development ]; then

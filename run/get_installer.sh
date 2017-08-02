@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 get_installer(){
-  printf "\nGetting installer...\n"
+  printf "\n\n$(random_color)Getting installer${NC}...\n"
   
   dir=$(directory)/run/installer
   if [ ! -d $HOME/opt/bin ]; then
@@ -17,7 +17,7 @@ get_installer(){
 }
 
 install_scripts(){
-  printf "Installing scripts...\n"
+  printf "installing scripts...\n\n"
   
   scripts=($(directory)/scripts/*/*.sh)
   for script in "${scripts[@]}"; do
@@ -26,7 +26,7 @@ install_scripts(){
 }
 
 install_js(){
-  printf "\nInstalling js...\n"
+  printf "\n$(random_color)Installing js${NC}...\n"
 
   if [ ! -d $(directory)/lib ]; then
     mkdir -p $(directory)/lib
@@ -38,12 +38,12 @@ install_js(){
       dir=$(directory)$(echo $repo | cut -d' ' -f2-)
       if [ ! -d $dir ] 
         then
-          printf "cloning ${repo##*/}\n"
+          printf "cloning $(random_color)${repo##*/}${NC}...\n"
           git -C $(dirname $dir) clone --quiet ${repo%.*}
           npm --prefix $(directory)/lib/${repo##*/} install $(directory)/lib/${repo##*/}
           installer $dir/package.json
         else
-          printf "updating ${repo##*/}\n"
+          printf "updating $(random_color)${repo##*/}${NC}...\n"
           git -C $dir pull --quiet origin master
       fi
     done  

@@ -4,7 +4,7 @@ install_software(){
   if chkarg $software_type; then
     initialize
     pre_install
-    printf "\nInstalling...\n"
+    printf "\n$(random_color)Installing software${NC}...\n\n"
     sudo apt-get update && \
     sudo apt-get install $new_software -y
     misc_software
@@ -26,7 +26,7 @@ initialize(){
 }
 
 pre_install(){
-  printf "\nPre-install...\n"
+  printf "\n$(random_color)Pre-install${NC}...\n"
   if not_installed curl; then
     sudo apt-get update && \
     sudo apt-get install curl -y
@@ -38,7 +38,7 @@ pre_install(){
 }
 
 install_repositories(){
-  printf "\nInstalling repositories...\n"
+  printf "\n$(random_color)Installing repositories${NC}...\n"
   repositories=$(directory)/run/software_lists/${software_type}/repos.txt
   readarray repos < $repositories
     for repo in "${repos[@]}"; do
@@ -57,7 +57,7 @@ get_software_list(){
 }
 
 misc_software(){
-  printf "\nInstalling miscellaneous software...\n"
+  printf "\n$(random_color)Installing miscellaneous software${NC}...\n"
   install_npm_packages
   install_cloud9
   sudo usermod -aG docker $(whoami)
@@ -80,7 +80,7 @@ misc_software(){
 }
 
 misc_repos(){
-  printf "\nInstalling miscellaneous repositories...\n"
+  printf "\n$(random_color)Installing miscellaneous repositories${NC}...\n"
 
   if not_installed yarn; then
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -  
@@ -106,7 +106,7 @@ install_docker(){
   fi
   
   if [ -d /usr/local/bin ] && [ ! -f /usr/local/bin/docker-compose ]; then
-    printf "Installing Docker Compose..."
+    printf "$(random_color)Installing Docker Compose${NC}..."
     sleep 1
      curl -L https://github.com/docker/compose/releases/download/1.12.0-rc2/docker-compose-`uname -s`-`uname -m` > tmp/docker-compose
     sudo cp tmp/* /usr/local/bin/ && \
@@ -137,6 +137,7 @@ install_postman(){
 
 install_node(){
   if [ ! -f /usr/local/bin/node ]; then
+    printf "$(random_color)Installing Node.JS${NC}..."
     strip_url="${node_version##*/}"
     node_directory=${strip_url%.*.*}
     mkdir temp

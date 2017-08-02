@@ -7,10 +7,17 @@ current_directory="$(pwd)"
 dist=$(head -n1 /etc/issue | sed -e 's/\\n //;s/\\l//;s/ $//g')
 prompt=">>> "
 
-echo "Hello ${user^}!!"
-echo "Welcome to Spyware Installer..."
+touch utilities.sh
+cat utilities.txt > utilities.sh
+printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> utilities.sh
+source $(dirname $0)/utilities.sh
+
+printf "\nHello $(random_color)${user^}${NC}!!\n"
+printf "Welcome to $(random_color)Spyware Installer${NC}...\n"
 echo "${dist}..."
-echo "Press any key to continue..."
+printf "$(random_color)........................................................................................${NC}\n\n"
+printf "Press any key to continue..."
+
 read -n 1
 
 touch /home/$user/.hushlogin
@@ -23,39 +30,36 @@ if [ ! -f data/users.json ]; then
   cp default_user.json data/users.json
 fi
 
-touch utilities.sh
-cat utilities.txt > utilities.sh
-printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> utilities.sh
-source $(dirname $0)/utilities.sh
 source $(directory)/bin/git/git_update.sh
 for f in $(directory)/run/*.sh; do source $f; done;
 
-printf "\nUpdating spyware...\n"
+printf "\n$(random_color)Updating spyware${NC}...\n"
 git_update
 
 create_user
 
-printf "\n\nSoftware installation...\nChoose one:\n"
-echo "1.) XUbuntu 16.04"
-echo "2.) Ubuntu Server 16.04"
-echo "3.) Raspbian"
-echo "*.) Skip"
+printf "\n\n$(random_color)Software installation${NC}..."
+printf "\nChoose one:\n"
+printf "1.) XUbuntu 16.04\n"
+printf "2.) Ubuntu Server 16.04\n"
+printf "3.) Raspbian\n"
+printf "*.) Skip\n"
 read -p "${prompt}" update_software
 case $update_software in
   "1")
-    echo "Installing Ubuntu Desktop software..."
+    printf "Installing Ubuntu Desktop software..."
       software_type=desktop
     ;;
   "2")
-    echo "Installing Ubuntu Server software..."
+    printf "Installing Ubuntu Server software..."
       software_type=server
     ;;
   "3")
-    echo "Installing Raspberry Pi software..."
+    printf "Installing Raspberry Pi software..."
       software_type=rpi
     ;;
   *)
-    echo "skipping..."
+    printf "skipping..."
     ;;
 esac
 
@@ -76,4 +80,5 @@ echo "Type 'spyware' for a list of commands!!"
 echo "
 Please restart shell and networking for changes to take effect..."
 printf "Press any key to exit...\n"
+printf "\n$(random_color)........................................................................................${NC}\n"
 read -n 1

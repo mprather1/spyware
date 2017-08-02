@@ -2,7 +2,7 @@
 # source $(directory)/run/bcrypt-script/script.sh
 
 create_user(){
-  printf "\nCreate user...\n"
+  printf "\n\n$(random_color)Create user...${NC}\n"
   printf "\nEnter new username and password...\n"
 
   i=1

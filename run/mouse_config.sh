@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 mouse_config(){
-  printf "\nMouse configuration...\n"
-  echo "Checking for xinput..."
+  printf "\n$(random_color)Mouse configuration${NC}...\n"
+  printf "$(random_color)checking for xinput${NC}...\n"
   sleep 1
   if [ -f /usr/bin/xinput ]; then
     for id in $(xinput --list | \

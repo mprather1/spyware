@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 install_spyware(){
-  printf "\nInstalling Spyware...\n"
+  printf "\n$(random_color)Installing Spyware...${NC}\n"
 
   if [ ! -f $(directory)/.tmux.conf ]; then
     cat $(directory)/tmux.conf.txt > /home/$user/.tmux.conf
   fi
   
-  if [ -z $software_type ] && [ $software_type = "desktop" ]; then
+  if [ -z $software_type ] && [ "${software_type}" == "desktop" ]; then
     sudo cp -rv $(directory)/themes/* /usr/share/themes
     sudo cp -rv $(directory)/wallpaper/* /usr/share/xfce4/backdrops    
    
@@ -15,12 +15,12 @@ install_spyware(){
     cat $(directory)/gtkrc.txt > /home/$user/.gtkrc-2.0
   fi
   
-  printf "\n"
   if [ -f /usr/bin/pv ]
     then
-      echo "..........................." | pv -qL 15
-      printf "\nSpyware has been successfully installed..."
+      printf "$(random_color)........................................................................................${NC}\n" | pv -qL 20
+      printf "\n$(random_color)Spyware has been successfully installed${NC}...\n"
     else
-      echo "Spyware has been successfully installed..."
+      printf "$(random_color)........................................................................................${NC}\n"    
+      printf "\n$(random_color)Spyware has been successfully installed...${NC}\n"
   fi  
 }

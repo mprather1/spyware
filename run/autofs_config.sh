@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 autofs_config(){
-  printf "\nChecking for autofs...\n"
+  printf "\n$(random_color)Checking for autofs${NC}...\n"
   sleep 1
   if [ -f /etc/auto.master ] && [ ! -f autofs.config ]
     then

@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 
 ssh_config(){
-  printf "\nChecking for id_rsa...\n"
+  printf "$(random_color)\n\nChecking for id_rsa...${NC}\n"
   sleep 1
   if [ ! -f /home/$user/.ssh/id_rsa ]
     then
-      echo "
-      id_rsa does not exist, creating..."
+      printf "
+      id_rsa does not exist, creating...\n"
       
-      echo "Enter email address:"
+      printf "Enter email address:\n"
       read -p "${prompt}" email
       
-      echo "Creating rsa key and adding to ssh agent..."
+      printf "Creating rsa key and adding to ssh agent...\n"
       ssh-keygen -t rsa -b 4096 -C "${email}"
       eval "$(ssh-agent -s)"
       
       ssh-add /home/$user/.ssh/id_rsa
-      echo "Done!!"
+      printf "Done!!\n"
     else
-      echo "id_rsa already exists..."
-      echo "skipping..."
+      printf "id_rsa already exists...\n"
+      printf "skipping...\n"
   fi  
 }

@@ -6,7 +6,7 @@ autofs_config(){
     printf "${1} -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536 :sshfs\#${2}\:/\n" | sudo tee -a /etc/auto.sshfs
     sudo service autofs restart
     printf "\nAll done!!\n"
-    printf "Your mount point can be found at /mnt/${1}\n"
+    printf "Your mount point can be found at $(random_color)/mnt/${1}${NC}\n"
   else
     printf "Input Error...\n\"autosshfs <share name> <user@hostname>\"\n"
   fi

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 vim_config(){
-  printf "\nChecking for vim configuration...\n"
+  printf "\n$(random_color)Checking for vim configuration...${NC}\n"
   sleep 1
   if [ ! -f /home/$user/.vimrc ]
     then
