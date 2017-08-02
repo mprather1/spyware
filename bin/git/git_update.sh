@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 git_update(){
-  printf "\n$(random_color)Installing system repositories from git...${NC}\n\n"
+  printf "\n$(random_color)Installing system repositories from git...${NC}\n"
   repositories=$(directory)/bin/git/repos/repos.txt
   readarray repos < $repositories
     for repo in "${repos[@]}"; do
