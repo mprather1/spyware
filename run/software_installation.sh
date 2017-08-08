@@ -31,7 +31,7 @@ pre_install(){
     sudo apt-get update && \
     sudo apt-get install curl -y
   fi
-  install_node
+  # install_node
   install_repositories
   misc_repos
   get_software_list
