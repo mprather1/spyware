@@ -34,6 +34,7 @@ source $(directory)/bin/git/git_update.sh
 for f in $(directory)/run/*.sh; do source $f; done;
 
 printf "\n$(random_color)Updating spyware${NC}...\n"
+initialize
 install_node
 git_update
 

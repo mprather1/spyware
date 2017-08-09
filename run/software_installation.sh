@@ -2,7 +2,7 @@
 
 install_software(){
   if chkarg $software_type; then
-    initialize
+    # initialize
     pre_install
     printf "\n$(random_color)Installing software${NC}...\n\n"
     sudo apt-get update && \
@@ -31,6 +31,12 @@ pre_install(){
     sudo apt-get update && \
     sudo apt-get install curl -y
   fi
+
+  if not_installed apt-transport-https; then
+    sudo apt-get update && \
+    sudo apt-get install apt-transport-https -y
+  fi
+
   # install_node
   install_repositories
   misc_repos

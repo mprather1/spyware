@@ -51,7 +51,7 @@ calcurse
 vifm 
 ranger 
 cloc 
-docker-engine 
+docker 
 yarn 
 httpie 
 python3-pip 
