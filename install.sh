@@ -37,7 +37,7 @@ printf "\n$(random_color)Updating spyware${NC}...\n"
 install_node
 git_update
 
-create_user
+# create_user
 
 printf "\n\n$(random_color)Software installation${NC}..."
 printf "\nChoose one:\n"
