@@ -39,7 +39,7 @@ pre_install(){
   
   if not_installed software-properties-common; then
     sudo apt-get update && \
-    sudo apt-get install software-properties-common
+    sudo apt-get install software-properties-common -y
   fi
 
   # install_node
