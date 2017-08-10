@@ -36,6 +36,11 @@ pre_install(){
     sudo apt-get update && \
     sudo apt-get install apt-transport-https -y
   fi
+  
+  if not_installed software-properties-common; then
+    sudo apt-get update && \
+    sudo apt-get install software-properties-common
+  fi
 
   # install_node
   install_repositories
