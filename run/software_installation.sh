@@ -15,8 +15,8 @@ install_software(){
 
 initialize(){
   mkdir tmp
-  case $software_type in 
-    "rpi")
+  case $dist in 
+    "Raspbian GNU/Linux 8")
       node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.xz'
     ;;
     *)
