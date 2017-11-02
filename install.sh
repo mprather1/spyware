@@ -33,11 +33,6 @@ fi
 source $(directory)/bin/git/git_update.sh
 for f in $(directory)/run/*.sh; do source $f; done;
 
-printf "\n$(random_color)Updating spyware${NC}...\n"
-initialize
-install_node
-git_update
-
 # create_user
 
 printf "\n\n$(random_color)Software installation${NC}..."
@@ -49,21 +44,26 @@ printf "*.) Skip\n"
 read -p "${prompt}" update_software
 case $update_software in
   "1")
-    printf "Installing Ubuntu Desktop software..."
+    printf "Preparing to install Ubuntu Desktop software...\n"
       software_type=desktop
     ;;
   "2")
-    printf "Installing Ubuntu Server software..."
+    printf "Preparing to install Ubuntu Server software...\n"
       software_type=server
     ;;
   "3")
-    printf "Installing Raspberry Pi software..."
+    printf "Preparing to install Raspberry Pi software...\n"
       software_type=rpi
     ;;
   *)
     printf "skipping..."
     ;;
 esac
+
+printf "\n$(random_color)Updating spyware${NC}...\n"
+initialize
+install_node
+git_update
 
 ssh_config
 create_bash_aliases
@@ -77,5 +77,5 @@ autofs_config
 mouse_config
 install_spyware
 
-printf "\n$(random_color)........................................................................................${NC}\n"
+printf "\n$(random_color)........................................................................................${NC}\n\nPress any key to continue...\n"
 read -n 1
