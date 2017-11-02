@@ -34,6 +34,9 @@ for f in $(directory)/run/*.sh; do source $f; done;
 
 # create_user
 
+printf "\nEnter email address:\n"
+read -p "${prompt}" email
+
 printf "\n\n$(random_color)Software installation${NC}..."
 printf "\nChoose one:\n"
 printf "1.) XUbuntu 16.04\n"
