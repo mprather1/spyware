@@ -30,7 +30,6 @@ if [ ! -f data/users.json ]; then
   cp default_user.json data/users.json
 fi
 
-source $(directory)/bin/git/git_update.sh
 for f in $(directory)/run/*.sh; do source $f; done;
 
 # create_user
@@ -56,7 +55,7 @@ case $update_software in
       software_type=rpi
     ;;
   *)
-    printf "skipping..."
+    printf "skipping...\n"
     ;;
 esac
 
@@ -76,6 +75,7 @@ vim_config
 autofs_config
 mouse_config
 install_spyware
+cleanup
 
 printf "\n$(random_color)........................................................................................${NC}\n\nPress any key to continue...\n"
 read -n 1

@@ -157,11 +157,6 @@ install_node(){
     sudo cp -R temp/$node_directory/* /usr/local/
     rm -rvf temp
   else
-    printf "\nnode is already installed\nskipping..."
+    printf "\nnode is already installed\nskipping...\n"
   fi
-}
-
-cleanup(){
-  printf "finished installing ->\ncleaning up..."
-  rm -rv tmp
 }
