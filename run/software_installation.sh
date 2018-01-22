@@ -2,19 +2,17 @@
 
 install_software(){
   if chkarg $software_type; then
-    # initialize
     pre_install
     printf "\n$(random_color)Installing software${NC}...\n\n"
     sudo apt-get update && \
     sudo apt-get install $new_software -y
     misc_software
-    cleanup
     echo "All Done!!"
   fi
 }
 
 initialize(){
-  mkdir tmp
+  mkdir temp
   case $dist in 
     "Raspbian GNU/Linux 8")
       node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.xz'
@@ -42,7 +40,6 @@ pre_install(){
     sudo apt-get install software-properties-common -y
   fi
 
-  # install_node
   install_repositories
   misc_repos
   get_software_list
@@ -70,7 +67,6 @@ get_software_list(){
 misc_software(){
   printf "\n$(random_color)Installing miscellaneous software${NC}...\n"
   install_npm_packages
-  # install_cloud9
   sudo usermod -aG docker $(whoami)
   
   case $software_type in 
@@ -118,10 +114,9 @@ install_docker(){
   
   if [ -d /usr/local/bin ] && [ ! -f /usr/local/bin/docker-compose ]; then
     printf "$(random_color)Installing Docker Compose${NC}..."
-    sleep 1
-     curl -L https://github.com/docker/compose/releases/download/1.12.0-rc2/docker-compose-`uname -s`-`uname -m` > tmp/docker-compose
-    sudo cp tmp/* /usr/local/bin/ && \
-    sudo  chmod +x /usr/local/bin/docker-compose
+    curl -L https://github.com/docker/compose/releases/download/1.12.0-rc2/docker-compose-`uname -s`-`uname -m` > temp/docker-compose
+    sudo cp temp/* /usr/local/bin/ && \
+    sudo chmod +x /usr/local/bin/docker-compose
   fi
 }
 
@@ -139,8 +134,8 @@ install_npm_packages(){
 }
 
 install_postman(){
-  wget -O tmp/postman.tar.gz https://dl.pstmn.io/download/latest/linux64 && \
-  tar -xvf tmp/postman.tar.gz -C $HOME && \
+  wget -O temp/postman.tar.gz https://dl.pstmn.io/download/latest/linux64 && \
+  tar -xvf temp/postman.tar.gz -C $HOME && \
   
   chmod +x $(directory)/misc/postman && \
   sudo cp $(directory)/misc/postman /usr/local/bin
@@ -151,12 +146,19 @@ install_node(){
     printf "$(random_color)Installing Node.JS${NC}..."
     strip_url="${node_version##*/}"
     node_directory=${strip_url%.*.*}
-    mkdir temp
     wget $node_version -O temp/node.tar.xz
     tar -xvf temp/node.tar.xz -C temp/
     sudo cp -R temp/$node_directory/* /usr/local/
-    rm -rvf temp
   else
     printf "\nnode is already installed\nskipping...\n"
   fi
+}
+
+install_scripts(){
+  printf "\n$(random_color)Installing scripts${NC}...\n"
+  
+  scripts=($(directory)/scripts/*/*.sh)
+  for script in "${scripts[@]}"; do
+    installer $script
+  done  
 }

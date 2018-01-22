@@ -5,12 +5,12 @@ bashrc_config(){
   sleep 1
   if [ ! -f $(directory)/bashrc.config ]
     then
-      echo "bashrc file configuration..."
-      HOME=$HOME node $(directory)/run/random-ps1/index.js $(pwd) $1 && \
+      echo "configuring .bashrc..."
+      HOME=$HOME node $(directory)/lib/random-ps1/index.js $(pwd) $1 && \
       touch $(directory)/bashrc.config && \
       echo "Done!!"
     else
       echo "bashrc configuration has already been run..."
-      echo "skipping..."
+      printf "skipping...\n"
   fi  
 }

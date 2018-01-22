@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ssh_config(){
-  printf "$(random_color)\n\nChecking for id_rsa...${NC}\n"
+  printf "$(random_color)\nChecking for id_rsa...${NC}\n"
   sleep 1
   if [ ! -f /home/$user/.ssh/id_rsa ]
     then

@@ -22,6 +22,14 @@ read -n 1
 
 touch /home/$user/.hushlogin
 
+if [ ! -d $HOME/opt/bin ]; then
+  mkdir -p $HOME/opt/bin
+fi
+
+if [ ! -d $(directory)/lib ]; then
+  mkdir -p $(directory)/lib
+fi
+
 if [ ! -d data ]; then
   mkdir data
 fi
@@ -32,12 +40,10 @@ fi
 
 for f in $(directory)/run/*.sh; do source $f; done;
 
-# create_user
-
 printf "\nEnter email address:\n"
 read -p "${prompt}" email
 
-printf "\n\n$(random_color)Software installation${NC}..."
+printf "\n$(random_color)Software installation${NC}..."
 printf "\nChoose one:\n"
 printf "1.) XUbuntu 16.04\n"
 printf "2.) Ubuntu Server 16.04\n"
@@ -66,14 +72,11 @@ printf "\n$(random_color)Updating spyware${NC}...\n"
 initialize
 install_node
 git_update
-
 ssh_config
 create_bash_aliases
-install_software
-get_installer  
-install_scripts
-install_js
 bashrc_config
+install_software
+install_scripts
 vim_config
 autofs_config
 mouse_config

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 create_bash_aliases(){
-  printf "\n\n$(random_color)Checking for .bash_aliases${NC}...\n"
+  printf "\n$(random_color)Checking for .bash_aliases${NC}...\n"
   sleep 1
   if [ ! -f /home/$user/.bash_aliases ]
     then

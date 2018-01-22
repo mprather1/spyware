@@ -1,1 +1,4 @@
-https://github.com/mprather1/random-ps1.git run/random-ps1
+https://github.com/shintech/installer.git lib/installer
+https://github.com/mprather1/random-ps1.git lib/random-ps1
+https://github.com/shintech/git-status.git /lib/git-status
+https://github.com/shintech/npm-updater.git /lib/npm-updater
