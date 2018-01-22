@@ -3,7 +3,7 @@
 install_software(){
   if chkarg $software_type; then
     pre_install
-    printf "\n$(random_color)Installing software${NC}...\n\n"
+    printf "\n$(random_color)Installing software${NC}...\n"
     sudo apt-get update && \
     sudo apt-get install $new_software -y
     misc_software
@@ -53,7 +53,7 @@ install_repositories(){
       if chkarg $repo && repo_not_installed $repo; then
         sudo apt-add-repository $repo -y
       fi
-    done    
+    done
 }
 
 get_software_list(){
@@ -61,19 +61,22 @@ get_software_list(){
   readarray software_list < $software
     for software in "${software_list[@]}"; do
       new_software+="${software}"
-    done    
+    done
 }
 
 misc_software(){
   printf "\n$(random_color)Installing miscellaneous software${NC}...\n"
+
   install_npm_packages
+  
   sudo usermod -aG docker $(whoami)
+  
+  install_python_packages
   
   case $software_type in 
     "desktop")
       install_local_packages
       install_ruby_gems
-      install_python_packages
       install_postman
     ;;
     "rpi")
@@ -122,21 +125,26 @@ install_docker(){
 }
 
 install_local_packages(){
+  printf "\n$(random_color)Installing local packages${NC}...\n"
   sudo dpkg -i $(directory)/misc/synergy.deb $(directory)/misc/xscreensaver.deb
 }
 
 install_ruby_gems(){
+  printf "\n$(random_color)Ruby gems${NC}...\n"
   echo "gem: --no-document" >> /home/$user/.gemrc
   bash $(directory)/misc/ruby_gems.sh  
 }
 
 install_npm_packages(){
+  printf "\n$(random_color)NPM packages${NC}...\n"
   bash $(directory)/misc/npm.sh
 }
 
 install_python_packages(){
+  printf "\n$(random_color)Python packages${NC}...\n"
   bash $(directory)/misc/python.sh
 }
+
 
 install_postman(){
   wget -O temp/postman.tar.gz https://dl.pstmn.io/download/latest/linux64 && \
@@ -161,9 +169,9 @@ install_node(){
 
 install_scripts(){
   printf "\n$(random_color)Installing scripts${NC}...\n"
-  
+
   scripts=($(directory)/scripts/*/*.sh)
   for script in "${scripts[@]}"; do
     installer $script
-  done  
+  done
 }
