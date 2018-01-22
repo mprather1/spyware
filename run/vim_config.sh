@@ -8,7 +8,8 @@ vim_config(){
       echo "Vim configuration..."
       cp -rv $(directory)/.vim/ /home/$user/
       touch /home/$user/.vimrc
-      cat $(directory)/vimrc.txt >> /home/$user/.vimrc      echo "Done!!"
+      cat $(directory)/vimrc.txt >> /home/$user/.vimrc
+      echo "Done!!"
     else
       echo "vim is already configured..."
       echo "skipping..."
