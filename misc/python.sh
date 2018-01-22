@@ -1,7 +1,3 @@
-pip install requests prettytable progressbar flask uuid
+# pip install requests prettytable progressbar uuid
 
-pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose bokeh
-
-pip3 install sanic asyncpg
-
-sudo -H pip install flask arrow cython
+pip3 install flask sanic asyncpg prettytable uuid requests numpy scipy matplotlib ipython jupyter pandas sympy nose bokeh arrow cython

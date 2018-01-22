@@ -73,6 +73,7 @@ misc_software(){
     "desktop")
       install_local_packages
       install_ruby_gems
+      install_python_packages
       install_postman
     ;;
     "rpi")
@@ -131,6 +132,10 @@ install_ruby_gems(){
 
 install_npm_packages(){
   bash $(directory)/misc/npm.sh
+}
+
+install_python_packages(){
+  bash $(directory)/misc/python.sh
 }
 
 install_postman(){
