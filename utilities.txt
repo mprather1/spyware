@@ -85,6 +85,10 @@ git_update(){
           printf "updating $(random_color)${NAMES[-1]}${NC}...\n"
           git -C $dir pull --quiet origin master
         fi
+        
       fi
     done
+    
+  printf "Done...\n"
+
 }
