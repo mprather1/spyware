@@ -7,7 +7,7 @@ current_directory="$(pwd)"
 dist=$(head -n1 /etc/issue | sed -e 's/\\n //;s/\\l//;s/ $//g')
 prompt=">>> "
 
-printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> state.sh
+printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" > state.sh
 
 source $(dirname $0)/state.sh
 source $(dirname $0)/utilities.sh
