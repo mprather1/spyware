@@ -7,9 +7,9 @@ current_directory="$(pwd)"
 dist=$(head -n1 /etc/issue | sed -e 's/\\n //;s/\\l//;s/ $//g')
 prompt=">>> "
 
-touch utilities.sh
-cat utilities.txt > utilities.sh
-printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> utilities.sh
+printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" >> state.sh
+
+source $(dirname $0)/state.sh
 source $(dirname $0)/utilities.sh
 
 printf "\nHello $(random_color)${user^}${NC}!!\n"

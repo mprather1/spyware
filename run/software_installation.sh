@@ -178,3 +178,36 @@ install_scripts(){
     installer $script
   done
 }
+
+git_update(){
+  printf "\n$(random_color)Git repositories...${NC}\n"
+  repositories=$(directory)/bin/git/repos/repos.txt
+  readarray repos < $repositories
+    for repo in "${repos[@]}"; do
+      if chkarg $repo; then
+        IFS="/" read -ra NAMES <<< "${repo%.*}"
+      
+        dir=$(directory)/$(echo $repo | cut -d' ' -f2-)
+        
+        if [ ! -d $dir ]; then
+          if [ "${NAMES[-1]}" != "installer" ]; then
+            printf "\ncloning $(random_color)${NAMES[-1]}${NC}...\n"
+            git -C $(dirname $dir) clone --quiet ${repo%.*}
+            npm --prefix $(directory)/lib/${NAMES[-1]} install $(directory)/lib/${NAMES[-1]}
+            installer $(directory)/lib/${NAMES[-1]}/package.json
+          else
+            printf "cloning and installing $(random_color)installer${NC}...\n"
+            git -C $(directory)/lib clone --quiet https://github.com/shintech/installer 
+            npm --prefix ./lib/installer install lib/installer
+            printf "#!/usr/bin/env bash\n\nHOME=\$HOME /usr/local/bin/node ${dir}/index.js \$(pwd) \$1" | sudo tee /usr/local/bin/installer > /dev/null 2>&1 && \
+            sudo chmod +x /usr/local/bin/installer
+          fi
+        else
+          printf "updating $(random_color)${NAMES[-1]}${NC}...\n"
+          git -C $dir pull --quiet origin master
+        fi
+      fi
+    done
+    
+  printf "Done...\n"
+}

@@ -1,6 +1,6 @@
 /autofs.config
 /bashrc.config
-/utilities.sh
+/state.sh
 /test.sh
 /bin/ssh_tool
 /run/random-ps1
@@ -15,3 +15,4 @@
 /lib
 .npmrc
 *bcrypt-script
+/.bashrc
