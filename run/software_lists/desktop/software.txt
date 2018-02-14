@@ -23,8 +23,6 @@ agave
 steam 
 thunderbird 
 remmina 
-virtualbox 
-virtualbox-guest-additions-iso 
 calibre 
 gparted 
 libsqlite3-dev 
@@ -103,3 +101,7 @@ python3-pip
 gpick 
 ansible 
 nginx-full 
+qemu-kvm 
+libvirt-bin 
+virt-manager 
+bridge-utils 
