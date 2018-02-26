@@ -70,23 +70,23 @@ get_software_list(){
 misc_software(){
   printf "\n$(random_color)Installing miscellaneous software${NC}...\n"
 
-  install_npm_packages
+  # install_npm_packages
   
   sudo usermod -aG docker $(whoami)
   
-  install_python_packages
+  # install_python_packages
   
   case $software_type in 
     "desktop")
       install_local_packages
-      install_ruby_gems
+      # install_ruby_gems
       install_postman
     ;;
     "rpi")
       printf "\nNo raspi ruby yet...\n"
     ;;
     "server")
-      install_ruby_gems
+      # install_ruby_gems
     ;;
   esac
   
