@@ -15,13 +15,13 @@ initialize(){
   mkdir temp
   case $dist in 
     "Raspbian GNU/Linux 8")
-      node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.xz'
+      node_version='https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-arm64.tar.xz'
     ;;
     "Raspbian GNU/Linux 9")
-      node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.xz'
+      node_version='https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-arm64.tar.xz'
     ;;    
     *)
-      node_version='https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-x64.tar.xz'
+      node_version='https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz'
     ;;
   esac  
 }
