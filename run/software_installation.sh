@@ -72,7 +72,7 @@ misc_software(){
 
   # install_npm_packages
   
-  sudo usermod -aG docker $(whoami)
+  # sudo usermod -aG docker $(whoami)
   
   # install_python_packages
   
@@ -101,16 +101,16 @@ misc_repos(){
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list      
   fi
   
-  case $software_type in
-    "rpi")
-      if not_installed docker-engine; then
-        curl -sSL https://get.docker.com | sh
-      fi
-    ;;
-    *)
-      install_docker
-    ;;
-  esac
+  # case $software_type in
+  #   "rpi")
+  #     # if not_installed docker-engine; then
+  #     #   curl -sSL https://get.docker.com | sh
+  #     # fi
+  #   ;;
+  #   *)
+  #     # install_docker
+  #   ;;
+  # esac
 }
 
 install_docker(){
