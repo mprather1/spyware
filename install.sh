@@ -46,8 +46,9 @@ read -p "${prompt}" email
 printf "\n$(random_color)Software installation${NC}..."
 printf "\nChoose one:\n"
 printf "1.) XUbuntu 16.04\n"
-printf "2.) Ubuntu Server 16.04\n"
-printf "3.) Raspbian\n"
+printf "2.) Ubuntu Server 18.04\n"
+printf "3.) Ubuntu Server 16.04\n"
+printf "4.) Raspbian\n"
 printf "*.) Skip\n"
 read -p "${prompt}" update_software
 case $update_software in
@@ -56,13 +57,17 @@ case $update_software in
       software_type=desktop
     ;;
   "2")
+    printf "Preparing to install Ubuntu Server 18.04 software...\n"
+      software_type=18.04
+    ;;
+  "3")
     printf "Preparing to install Ubuntu Server software...\n"
       software_type=server
     ;;
-  "3")
+  "4")
     printf "Preparing to install Raspberry Pi software...\n"
       software_type=rpi
-    ;;
+    ;;    
   *)
     printf "skipping...\n"
     ;;

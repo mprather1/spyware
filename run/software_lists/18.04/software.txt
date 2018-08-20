@@ -22,7 +22,6 @@ libxslt1-dev
 libcurl4-openssl-dev 
 libffi-dev 
 build-essential 
-python-software-properties 
 libpq-dev 
 pv 
 toilet 
@@ -41,8 +40,8 @@ libmysqlclient-dev
 redis-server 
 htop 
 moreutils 
-ruby2.3 
-ruby2.3-dev 
+ruby2.5 
+ruby2.5-dev 
 dstat 
 slurm 
 iftop 

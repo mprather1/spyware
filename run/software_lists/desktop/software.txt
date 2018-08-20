@@ -81,8 +81,8 @@ libfox-1.6-dev
 redis-server 
 htop 
 moreutils 
-ruby2.5 
-ruby2.5-dev 
+ruby2.3 
+ruby2.3-dev 
 dstat 
 slurm 
 iftop 
@@ -103,3 +103,4 @@ qemu-kvm
 libvirt-bin 
 virt-manager 
 bridge-utils 
+python-software-properties 
