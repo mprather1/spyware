@@ -75,7 +75,7 @@ misc_software(){
   # sudo usermod -aG docker $(whoami)
   
   # install_python_packages
-  
+
   case $software_type in 
     "desktop")
       install_local_packages
@@ -100,7 +100,7 @@ misc_repos(){
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -  
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list      
   fi
-  
+
   # case $software_type in
   #   "rpi")
   #     # if not_installed docker-engine; then
@@ -118,7 +118,7 @@ install_docker(){
     sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
     sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
   fi
-  
+
   if [ -d /usr/local/bin ] && [ ! -f /usr/local/bin/docker-compose ]; then
     printf "$(random_color)Installing Docker Compose${NC}..."
     curl -L https://github.com/docker/compose/releases/download/1.12.0-rc2/docker-compose-`uname -s`-`uname -m` > temp/docker-compose
@@ -172,7 +172,6 @@ install_node(){
 
 install_scripts(){
   printf "\n$(random_color)Installing scripts${NC}...\n"
-
   scripts=($(directory)/scripts/*/*.sh)
   for script in "${scripts[@]}"; do
     installer $script
@@ -180,25 +179,25 @@ install_scripts(){
 }
 
 git_update(){
-  printf "\n$(random_color)Git repositories...${NC}\n"
+  printf "\n$(random_color)Git repositories - Node.JS...${NC}\n"
   repositories=$(directory)/bin/git/repos/repos.txt
   readarray repos < $repositories
     for repo in "${repos[@]}"; do
       if chkarg $repo; then
         IFS="/" read -ra NAMES <<< "${repo%.*}"
-      
+
         dir=$(directory)/$(echo $repo | cut -d' ' -f2-)
-        
+
         if [ ! -d $dir ]; then
           if [ "${NAMES[-1]}" != "installer" ]; then
             printf "\ncloning $(random_color)${NAMES[-1]}${NC}...\n"
             git -C $(dirname $dir) clone --quiet ${repo%.*}
-            npm --prefix $(directory)/lib/${NAMES[-1]} install $(directory)/lib/${NAMES[-1]}
+            npm --prefix $(directory)/lib/ install $(directory)/lib/${NAMES[-1]}
             installer $(directory)/lib/${NAMES[-1]}/package.json
           else
             printf "cloning and installing $(random_color)installer${NC}...\n"
             git -C $(directory)/lib clone --quiet https://github.com/shintech/installer 
-            npm --prefix ./lib/installer install lib/installer
+            npm --prefix ./lib/ install lib/installer
             printf "#!/usr/bin/env bash\n\nHOME=\$HOME /usr/local/bin/node ${dir}/index.js \$(pwd) \$1" | sudo tee /usr/local/bin/installer > /dev/null 2>&1 && \
             sudo chmod +x /usr/local/bin/installer
           fi
@@ -208,6 +207,6 @@ git_update(){
         fi
       fi
     done
-    
+
   printf "Done...\n"
 }
