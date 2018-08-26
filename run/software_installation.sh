@@ -70,11 +70,9 @@ get_software_list(){
 misc_software(){
   printf "\n$(random_color)Installing miscellaneous software${NC}...\n"
 
-  # install_npm_packages
-  
-  # sudo usermod -aG docker $(whoami)
-  
-  # install_python_packages
+  install_npm_packages
+    # sudo usermod -aG docker $(whoami)
+    # install_python_packages
 
   case $software_type in 
     "desktop")
