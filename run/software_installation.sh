@@ -77,7 +77,7 @@ misc_software(){
     # install_ruby_gems
   fi
   
-  if [ $software_type != 'desktop' ]; then
+  if [ $software_type == 'desktop' ]; then
     install_local_packages
     install_postman
   fi  
