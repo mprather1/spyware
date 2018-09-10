@@ -43,3 +43,4 @@ The installer can safely be ran anytime if autofs.config and bashrc.config exist
 * docker installation
 * c9 installation
 * update repos to 18.04
+* fail2ban

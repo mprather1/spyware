@@ -53,6 +53,7 @@ cloc
 yarn 
 httpie 
 python3-pip 
-ansible 
 nginx-full 
 apt-transport-https 
+docker 
+docker-compose 

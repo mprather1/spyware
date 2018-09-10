@@ -69,25 +69,19 @@ get_software_list(){
 
 misc_software(){
   printf "\n$(random_color)Installing miscellaneous software${NC}...\n"
-
-  install_npm_packages
-    # sudo usermod -aG docker $(whoami)
+  if [ $software_type != 'rpi' ]; then
+    install_npm_packages
+    sudo usermod -aG docker $(whoami)
+    install_c9
     # install_python_packages
-
-  case $software_type in 
-    "desktop")
-      install_local_packages
-      # install_ruby_gems
-      install_postman
-    ;;
-    "rpi")
-      printf "\nNo raspi ruby yet...\n"
-    ;;
-    "server")
-      # install_ruby_gems
-    ;;
-  esac
+    # install_ruby_gems
+  fi
   
+  if [ $software_type != 'desktop' ]; then
+    install_local_packages
+    install_postman
+  fi  
+
   sudo apt-get upgrade -y  
 }
 
@@ -174,4 +168,10 @@ install_scripts(){
   for script in "${scripts[@]}"; do
     installer $script
   done
+}
+
+install_c9(){
+  printf "\n$(random_color)Installing c9${NC}...\n"
+  
+  ./$(directory)/misc/c9/install.sh
 }
