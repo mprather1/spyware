@@ -173,5 +173,5 @@ install_scripts(){
 install_c9(){
   printf "\n$(random_color)Installing c9${NC}...\n"
   
-  ./$(directory)/misc/c9/install.sh
+  bash $(directory)/misc/c9/install.sh
 }
