@@ -37,3 +37,9 @@ The installer can safely be ran anytime if autofs.config and bashrc.config exist
     createpsqluser <username>\ # create a postgresql user
     specific_directory <alias> <user@hostname> <directory> # create alias to ssh to specific directory
     network_config <device> <ip address>\ # configure network device
+    
+### TODO
+    
+* docker installation
+* c9 installation
+* update repos to 18.04
