@@ -6,7 +6,7 @@ _dir=$(pwd)
 git_commit(){
   if [ -f $_dir/package.json ]
     then 
-      standard && npm-updater $2 && git add -A && git commit -m "${1}" && git tag $2
+      npm-updater $2 && git add -A && git commit -m "${1}" && git tag $2
     else 
       npm-updater $2 && git add -A && git commit -m "${1}" && git tag $2
   fi
