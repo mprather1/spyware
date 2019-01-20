@@ -21,7 +21,7 @@ initialize(){
       node_version='https://nodejs.org/dist/v8.11.3/node-v8.11.3-linux-armv7l.tar.xz'
     ;;    
     *)
-      node_version='https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz'
+      node_version='https://nodejs.org/dist/v10.15.0/node-v10.15.0-linux-x64.tar.xz'
     ;;
   esac  
 }
