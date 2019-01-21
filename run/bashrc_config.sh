@@ -6,7 +6,7 @@ bashrc_config(){
   if [ ! -f $(directory)/bashrc.config ]
     then
       echo "configuring .bashrc..."
-      HOME=$HOME node $(directory)/lib/random-ps1/index.js $(pwd) $1 && \
+      HOME=$HOME node $(directory)/lib/random-ps1/index.js && \
       touch $(directory)/bashrc.config && \
       echo "Done!!"
     else
