@@ -72,7 +72,7 @@ git_update(){
           if [ "${NAMES[-1]}" != "installer" ]; then
             printf "\ncloning $(random_color)${NAMES[-1]}${NC}...\n"
             git -C $(dirname $dir) clone --quiet ${repo%.*}
-            npm --prefix $(directory)/lib/ install $(directory)/lib/${NAMES[-1]}/package.json
+            npm --prefix $(directory)/lib/ install $(directory)/lib/${NAMES[-1]}
             installer $(directory)/lib/${NAMES[-1]}
           else
             printf "cloning and installing $(random_color)installer${NC}...\n"
