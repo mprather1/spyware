@@ -73,12 +73,12 @@ git_update(){
             printf "\ncloning $(random_color)${NAMES[-1]}${NC}...\n"
             git -C $(dirname $dir) clone --quiet ${repo%.*}
             npm --prefix $(directory)/lib/ install $(directory)/lib/${NAMES[-1]}
-            installer $(directory)/lib/${NAMES[-1]}/package.json
+            installer $(directory)/lib/${NAMES[-1]}
           else
             printf "cloning and installing $(random_color)installer${NC}...\n"
-            git -C $(directory)/lib clone --quiet https://github.com/shintech/installer 
+            git -C $(directory)/lib clone --quiet https://github.com/shintech/installer
             npm --prefix ./lib/ install lib/installer
-            printf "#!/usr/bin/env bash\n\nHOME=\$HOME /usr/local/bin/node ${dir}/index.js \$(pwd) \$1" | sudo tee /usr/local/bin/installer > /dev/null 2>&1 && \
+            printf "#!/usr/bin/env bash\n\nHOME=\$HOME /usr/local/bin/node ${dir}/index.js \$1" | sudo tee /usr/local/bin/installer > /dev/null 2>&1 && \
             sudo chmod +x /usr/local/bin/installer
           fi
         else
