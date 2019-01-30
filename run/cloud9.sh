@@ -39,7 +39,7 @@ install_cloud9(){
   # pm2 command
   # printf "alias cloud9='pm2 start /home/$user/c9sdk/server.js -x -- -p 8080 -a ${c9Username}:${c9Password} --listen localhost -w /home/$user/Development'\n" >> /home/$user/.bash_aliases
 
-  printf '%s\n' "$systemd_var" | sudo tee -a /lib/systemd/system/c9.service >> /dev/null
+  printf '%s\n' "$systemd_var" | sudo tee -a /lib/systemd/system/c9.service > /dev/null
 
   sudo systemctl enable c9.service
   sudo systemctl start c9
