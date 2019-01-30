@@ -84,6 +84,7 @@ git_update(){
         else
           printf "updating $(random_color)${NAMES[-1]}${NC}...\n"
           git -C $dir pull --quiet origin master
+          npm --prefix $(directory)/lib/ install $(directory)/lib/${NAMES[-1]}
         fi
       fi
     done
