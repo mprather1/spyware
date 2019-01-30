@@ -2,11 +2,11 @@
 source $(dirname $0)/../../utilities.sh
 
 network_config(){
-  if chkarg $2; then
-    printf "auto lo\niface lo inet loopback \n\nauto ${1}\niface ${1} inet static\n  address ${2}\n  gateway 192.168.0.1\n  netmask 255.255.255.0\n  dns-nameservers 8.8.8.8\n " | sudo tee /etc/network/interfaces
+  if chkarg $5; then
+    printf "auto lo\niface lo inet loopback \n\nauto ${1}\niface ${1} inet static\n  address ${2}\n  gateway ${3}\n  netmask ${4}\n  dns-nameservers $5\n " | sudo tee /etc/network/interfaces
     printf "\nPlease reboot or restart networking...\n"
-    printf "New local ip address will be ${2}...\n"
+    printf "New network_config for adapter: ${1}\n  IP: ${2}\n  gateway: ${3}\n  subnet: ${4}\n  DNS Sever: ${5}\n"
   else
-    printf "Input Error...\n\"networkconfig <network adapter> <ip address>\"\n"
+    printf "Input Error...\n\"networkconfig <network adapter> <ip address> <gateway> <subnet> <dns-nameserver>\"\n"
   fi
 }
