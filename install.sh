@@ -47,9 +47,9 @@ printf "\n$(random_color)Software installation${NC}..."
 printf "\nChoose one:\n"
 printf "1.) XUbuntu 16.04\n"
 printf "2.) XUbuntu 18.04\n"
-printf "2.) Ubuntu Server 16.04\n"
-printf "3.) Ubuntu Server 18.04\n"
-printf "4.) Raspbian\n"
+printf "3.) Ubuntu Server 16.04\n"
+printf "4.) Ubuntu Server 18.04\n"
+printf "5.) Raspbian\n"
 printf "*.) Skip\n"
 
 read -p "${prompt}" update_software
