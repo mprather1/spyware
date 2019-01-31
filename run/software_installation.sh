@@ -72,7 +72,7 @@ misc_software(){
   if [ $software_type != 'rpi' ]; then
     install_npm_packages
     sudo usermod -aG docker $(whoami)
-    install_c9
+    # install_c9
     # install_python_packages
     # install_ruby_gems
   fi
