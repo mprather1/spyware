@@ -2,9 +2,15 @@
 source $(dirname $0)/../../utilities.sh
 
 notify(){
+  check=$(echo "$XDG_DATA_DIRS" | grep -Eo 'xfce|kde|gnome')
+
   if chkarg $1; then 
-    $(command) $1 && notify-send "${1} has finished!!!" -i $(directory)/icons/windows-128.png
+    if [ ! -z "${check}" ]; then
+      $(command) $1 && notify-send "${1} has finished!!!" -i $(directory)/icons/windows-128.png
+    else 
+      $(command) $1 && wall "${1} has finished!!!"
+    fi
   else
-    notify-send -i $(directory)/icons/windows-128.png 'Command has finished!!!'
+    printf "Incorrect usage: notify '<arg>'\n"
   fi
 }
