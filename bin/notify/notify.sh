@@ -6,6 +6,7 @@ notify(){
 
   if [ ! -z "${check}" ]; then
     notify-send "Spyware Notification!" "Command has finished!" -i $(directory)/icons/windows-128.png
+    mplayer /usr/share/sounds/freedesktop/stereo/complete.oga > /dev/null 2>&1
   else
     wall "Command has finished!!!"
   fi
