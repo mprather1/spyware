@@ -21,6 +21,7 @@ printf "Press any key to continue..."
 read -n 1
 
 touch /home/$user/.hushlogin
+touch /home/$user/.env
 
 if [ ! -d $HOME/opt/bin ]; then
   mkdir -p $HOME/opt/bin

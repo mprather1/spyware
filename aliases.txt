@@ -1,3 +1,17 @@
+LS_OPTIONS="$LS_OPTIONS -F -h"
+
+alias ls="ls $LS_OPTIONS"
+alias ll="ls $LS_OPTIONS -l"
+alias ll.="ls $LS_OPTIONS -ld" # Usage: ll. ~/.*
+alias la="ls $LS_OPTIONS -la"
+alias lrt="ls $LS_OPTIONS -alrt"
+
+alias ipconfig='ifconfig'
+
+alias iso8601="date '+%Y-%m-%dT%H:%M:%S%z'"
+alias now="date '+%F %T %Z(%z)'"
+alias utc="date --utc '+%F %T %Z(%z)'"
+
 alias rails_s='rails s -b 0.0.0.0 -p 3000'
 alias httpserver='python -m SimpleHTTPServer'
 alias updated='sudo apt-get update'
