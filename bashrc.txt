@@ -5,6 +5,10 @@ source $HOME/.env
 
 shopt -q -s cdspell
 
+CDPATH=.:~:~/Development
+
+PATH=$PATH:~/opt/bin
+
 ################################################################
 #Function to start ssh-agent
 
@@ -67,7 +71,3 @@ yellow="\[\033[01;33m\]"
 white="\[\033[00;37m\]"
 
 #################################################################
-
-PATH=$PATH:~/opt/bin
-PATH=~/opt/bin:$PATH >> .bashrc
-
