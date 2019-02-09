@@ -21,7 +21,20 @@ Put spyware folder in desired location and open a terminal in the folder.
   
 Leave the folder in the location where the installer was ran or it will break some of the aliases.
 If the folder needs to be moved then the installer can be ran again in the new location.
-The installer can safely be ran anytime if autofs.config and bashrc.config exist in the root folder.  
+The installer can safely be ran anytime if autofs.config and bashrc.config exist in the root folder. 
+
+### How to do a clean installation
+
+If something is broken, especially in the Node.js scripts located in the lib directory. It might be useful to do a full reinstall.
+
+    # Step 1 - remove the lib directory
+    rm -vfr ~/spyware/lib
+    
+    # Step 2 - remove the bashrc.config file. - Don't do this if you have edited your .bashrc file. It will be replaced.
+    rm ~/spyware/bashrc.config
+    
+    # Step 3 - run the install script again
+    ./install.sh
 
 ## Usage
 
