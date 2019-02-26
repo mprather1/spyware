@@ -24,7 +24,6 @@ sqlite3
 libxml2-dev 
 libxslt1-dev 
 libcurl4-openssl-dev 
-python-software-properties 
 libpq-dev 
 libffi-dev 
 libpq-dev 
@@ -38,7 +37,6 @@ python-pip
 nmap 
 whois 
 make 
-libmysqlclient-dev 
 redis-server 
 netdiscover 
 htop 
