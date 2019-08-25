@@ -1,3 +1,2 @@
-  ppa:webupd8team/atom 
   ppa:ansible/ansible
   ppa:numix/ppa 
