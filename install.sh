@@ -5,20 +5,19 @@ user_id=$(id -u $user)
 group_id=$(id -g $user)
 current_directory="$(pwd)"
 dist=$(head -n1 /etc/issue | sed -e 's/\\n //;s/\\l//;s/ $//g')
-prompt=">>> "
 
 printf "\ndirectory(){\n  printf \"${current_directory}\"\n}" > state.sh
 
 source $(dirname $0)/state.sh
 source $(dirname $0)/utilities.sh
 
-printf "\nHello $(random_color)${user^}${NC}!!\n"
-printf "Welcome to $(random_color)Spyware Installer${NC}...\n"
-echo "${dist}..."
-printf "$(random_color)........................................................................................${NC}\n\n"
-printf "Press any key to continue..."
-
-read -n 1
+if (whiptail --title "Spyware Installer" --yesno "${dist}\nHello ${user}!\nWelcome to Spyware Installer.\nAre you sure you want to proceed?"  12 78)
+  then
+    printf "Installing spyware....\n"
+  else
+    printf "Exiting...\n"
+    exit 1
+  fi
 
 touch /home/$user/.hushlogin
 touch /home/$user/.env
@@ -41,19 +40,16 @@ fi
 
 for f in $(directory)/run/*.sh; do source $f; done;
 
-printf "\nEnter email address:\n"
-read -p "${prompt}" email
+email=$(whiptail --fb --inputbox "Please enter an email address" 12 78 3>&1 1>&2 2>&3)
 
-printf "\n$(random_color)Software installation${NC}..."
-printf "\nChoose one:\n"
-printf "1.) XUbuntu 16.04\n"
-printf "2.) XUbuntu 18.04\n"
-printf "3.) Ubuntu Server 16.04\n"
-printf "4.) Ubuntu Server 18.04\n"
-printf "5.) Raspbian\n"
-printf "*.) Skip\n"
-
-read -p "${prompt}" update_software
+update_software=$(whiptail --title "Operating System" --fb --menu "Choose an option" 25 70 16 \
+    "1" "XUbuntu 16.04" \
+    "2" "XUbuntu 18.04" \
+    "3" "Ubuntu Server 16.04" \
+    "4" "Ubuntu Server 18.04" \
+    "5" "Raspbian" \
+    "6" "Skip" \
+    3>&1 1>&2 2>&3)
 case $update_software in
   "1")
     printf "Preparing to install Xbuntu Desktop 16.04 software...\n"
