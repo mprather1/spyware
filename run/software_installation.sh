@@ -19,14 +19,14 @@ initialize(){
     ;;
     "Raspbian GNU/Linux 9")
       node_version='https://nodejs.org/dist/v12.13.0/node-v12.13.0-linux-armv7l.tar.xz'
-    ;;    
+    ;;
     "Raspbian GNU/Linux 10")
       node_version='https://nodejs.org/dist/v12.13.0/node-v12.13.0-linux-armv7l.tar.xz'
-    ;;        
+    ;;
     *)
       node_version='https://nodejs.org/dist/v12.13.0/node-v12.13.0-linux-x64.tar.xz'
     ;;
-  esac  
+  esac
 }
 
 pre_install(){
@@ -40,7 +40,7 @@ pre_install(){
     sudo apt-get update && \
     sudo apt-get install apt-transport-https -y
   fi
-  
+
   if not_installed software-properties-common; then
     sudo apt-get update && \
     sudo apt-get install software-properties-common -y
@@ -83,9 +83,9 @@ misc_software(){
   if [ $software_type == 'desktop' ]; then
     install_local_packages
     install_postman
-  fi  
+  fi
 
-  sudo apt-get upgrade -y  
+  sudo apt-get upgrade -y
 }
 
 misc_repos(){
@@ -93,7 +93,7 @@ misc_repos(){
 
   if not_installed yarn; then
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -  
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list      
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   fi
 
   # case $software_type in
@@ -143,11 +143,10 @@ install_python_packages(){
   bash $(directory)/misc/python.sh
 }
 
-
 install_postman(){
   wget -O temp/postman.tar.gz https://dl.pstmn.io/download/latest/linux64 && \
   tar -xvf temp/postman.tar.gz -C $HOME && \
-  
+
   chmod +x $(directory)/misc/postman && \
   sudo cp $(directory)/misc/postman /usr/local/bin
 }
@@ -175,6 +174,6 @@ install_scripts(){
 
 install_c9(){
   printf "\n$(random_color)Installing c9${NC}...\n"
-  
+
   bash $(directory)/misc/c9/install.sh
 }

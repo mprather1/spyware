@@ -100,3 +100,4 @@ qemu-kvm
 libvirt-bin 
 virt-manager 
 bridge-utils 
+qrencode 

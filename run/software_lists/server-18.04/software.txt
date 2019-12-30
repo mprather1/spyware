@@ -57,3 +57,4 @@ nginx-full
 apt-transport-https 
 docker 
 docker-compose 
+qrencode 

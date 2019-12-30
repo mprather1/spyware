@@ -50,6 +50,7 @@ update_software=$(whiptail --title "Operating System" --fb --menu "Choose an opt
     "5" "Raspbian" \
     "6" "Skip" \
     3>&1 1>&2 2>&3)
+
 case $update_software in
   "1")
     printf "Preparing to install Xbuntu Desktop 16.04 software...\n"
