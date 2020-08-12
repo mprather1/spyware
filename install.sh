@@ -43,32 +43,27 @@ for f in $(directory)/run/*.sh; do source $f; done;
 email=$(whiptail --fb --inputbox "Please enter an email address" 12 78 3>&1 1>&2 2>&3)
 
 update_software=$(whiptail --title "Operating System" --fb --menu "Choose an option" 25 70 16 \
-    "1" "XUbuntu 16.04" \
-    "2" "XUbuntu 18.04" \
-    "3" "Ubuntu Server 16.04" \
-    "4" "Ubuntu Server 18.04" \
-    "5" "Raspbian" \
-    "6" "Skip" \
+    "1" "XUbuntu 18.04" \
+    "2" "Ubuntu Server 16.04" \
+    "3" "Ubuntu Server 18.04" \
+    "4" "Raspbian" \
+    "*" "Skip" \
     3>&1 1>&2 2>&3)
 
 case $update_software in
   "1")
-    printf "Preparing to install Xbuntu Desktop 16.04 software...\n"
-      software_type=desktop-16.04
-    ;;
-  "2")
     printf "Preparing to install Xbuntu Desktop 18.04 software...\n"
-      software_type=desktop-18.04
+      software_type=desktop
     ;;    
-  "3")
+  "2")
     printf "Preparing to install Ubuntu Server 16.04 software...\n"
       software_type=server-16.04
     ;;
-  "4")
+  "3")
     printf "Preparing to install Ubuntu Server 18.04 software...\n"
       software_type=server-18.04
     ;;
-  "5")
+  "4")
     printf "Preparing to install Raspberry Pi software...\n"
       software_type=rpi
     ;;    
