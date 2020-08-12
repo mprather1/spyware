@@ -7,7 +7,7 @@ install_spyware(){
     cat $(directory)/tmux.conf.txt > /home/$user/.tmux.conf
   fi
   
-  if [ -z $software_type ] && [ "${software_type}" == "desktop" ]; then
+  if [ -z $software_type ] && [ "${software_type}" == "desktop-18.04" ]; then
     sudo cp -rv $(directory)/themes/* /usr/share/themes/
     sudo cp -rv $(directory)/wallpaper/* /usr/share/xfce4/backdrops/    
     sudo cp -rv $(directory)/icons/* /usr/share/pixmaps/
