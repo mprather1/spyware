@@ -81,8 +81,8 @@ misc_software(){
   fi
   
   if [ $software_type == 'desktop' ]; then
-    install_local_packages
-    install_postman
+fix    # install_local_packages
+    # install_postman
   fi
 
   sudo apt-get upgrade -y

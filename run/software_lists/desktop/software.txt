@@ -19,7 +19,6 @@ soundconverter
 fortunes 
 fortunes-off 
 gimp 
-agave 
 steam 
 thunderbird 
 remmina 
@@ -56,13 +55,11 @@ dosbox
 putty 
 putty-tools 
 unzip 
-python-pip 
 nmap 
 whois 
 atom 
 mplayer 
 make 
-midori 
 tuxguitar-alsa 
 tuxguitar-jsa 
 tuxguitar-oss 
@@ -81,9 +78,8 @@ libfox-1.6-dev
 redis-server 
 htop 
 moreutils 
-ruby2.3 
-ruby2.3-dev 
 dstat 
+ruby 
 slurm 
 iftop 
 iptraf 
@@ -95,6 +91,7 @@ numix-icon-theme
 numix-icon-theme-circle 
 yarn 
 httpie 
+python 
 python3-pip 
 gpick 
 ansible 
@@ -103,4 +100,4 @@ qemu-kvm
 libvirt-bin 
 virt-manager 
 bridge-utils 
-python-software-properties 
+qrencode 
