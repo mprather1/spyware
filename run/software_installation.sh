@@ -81,7 +81,7 @@ misc_software(){
   fi
   
   if [ $software_type == 'desktop' ]; then
-fix    # install_local_packages
+    #fix    # install_local_packages
     # install_postman
   fi
 
